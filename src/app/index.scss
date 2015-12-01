@@ -1,0 +1,169 @@
+.fancymodal.fancymodal-theme-programming .fancymodal-content {
+  max-width: 80%;
+ /*  background-color: #fceed4; */
+  color: #000; }
+.fancymodal.fancymodal-theme-programming .fancymodal-content-opening {
+  -webkit-animation: fancymodal-in 1s;
+  animation: fancymodal-in 1s; }
+.fancymodal.fancymodal-theme-programming .fancymodal-content-closing {
+  -webkit-animation: fancymodal-out 1s;
+  animation: fancymodal-out 1s; }
+.fancymodal.fancymodal-theme-programming .fancymodal-overlay-opening {
+  -webkit-animation: fancymodal-fadeIn 1s;
+  animation: fancymodal-fadeIn 1s; }
+.fancymodal.fancymodal-theme-programming .fancymodal-overlay-closing {
+  -webkit-animation: fancymodal-fadeOut 1s;
+  animation: fancymodal-fadeOut 1s; }  
+
+
+
+
+html,body {
+  
+ /*  background-image: url("/assets/images/crissXcross/crissXcross.png");  */
+ 	/* margin:0; */
+	/* padding:0; */
+	height:100%;
+	/* width:100%; */
+	
+    background:url("/assets/images/592.jpg") no-repeat center center fixed;
+    background-size: cover;
+ 
+  	font-family: 'McLaren', cursive !important; 
+  	text-shadow: 1px 1px 1px #aaa;
+ 	font-size: 170%;
+  
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating .filled {
+  /* color: #21568b; */
+  color: red;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.programmingthumbnail {
+  /* height: 150px; */
+/* margin-right:50px; */
+/*   img.pull-right { */
+    width: 100px;
+/*   } */
+}
+
+.navbar-default {
+    background-color: transparent !important;
+   /*  border-color: #E7E7E7; */
+    border-color: transparent !important;
+}
+
+.boxImage {
+	-moz-box-shadow: 10px 10px 5px #623114;
+	-webkit-box-shadow: 10px 10px 5px #623114;
+	box-shadow: 10px 10px 5px #623114;
+	 margin-bottom: 15px;
+	 width: 70%;
+}
+
+.boxImageProgramming {
+	-moz-box-shadow: 10px 10px 5px #623114;
+	-webkit-box-shadow: 10px 10px 5px #623114;
+	box-shadow: 10px 10px 5px #623114;
+	 margin-bottom: 15px;
+	
+}
+
+.linuxinside {
+	
+	width: 70%;
+	
+}
+
+
+.modalwidth {
+	
+	width: 300px;
+	
+}
+.mainTitle {
+	font-family: 'Faster One', cursive !important;
+	text-shadow: 4px 4px 4px #aaa;
+	display:inline-block;
+	font-size: 200%;
+	margin-left: 20px;
+	
+}
+
+.mobilethumbnail {
+ /*  height: 150px; */
+ 
+
+  img.pull-right {
+    width: 50%;
+  }
+}
+
+.mobileTitle {
+	
+	font-size: 250%;
+	text-shadow: 4px 4px 4px #aaa;
+
+	
+}
+
+.flex {
+	display:flex;
+	
+}
+
+em {
+	color: red;	
+	
+}
+.Objective {
+	
+	font-family: 'Faster One', cursive !important;
+	text-shadow: 4px 4px 4px #aaa;
+	display:inline-block;
+	font-size: 250%;
+	/* margin-left: 20px; */
+
+	
+	
+}
+
+
+
+// injector
+// endinjector

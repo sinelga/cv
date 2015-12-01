@@ -1,0 +1,26 @@
+
+<nav class="navbar navbar-static-top navbar-default" ng-controller="NavbarCtrl">
+<!--   <div class="container-fluid"> -->
+  	
+    <div class="navbar-header">
+      
+        <span class="fa fa-linux fa-4x"></span>
+     
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active:statename==='Goal'}"><a ng-href="/">Home</a></li>
+        <li ng-class="{active:statename==='Home'}"><a ng-href="/Demo.html">Demo</a></li>
+        <li ng-class="{active:statename==='Programming Details'}"><a ng-href="Programming.html">Programming</a></li>
+        <li><a ng-href="Contact.html" ng-click="showContactModal()">Contact</a></li>
+        <li ng-class="{active:statename==='Pdf'}"><a ng-href="Pdfcv.html">CV in PDF</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>Today: {{ date | date:'yyyy-MM-dd' }}</li>
+      </ul>
+    </div>
+
+</nav>
+

@@ -1,0 +1,25 @@
+<div data-ar-lg  class="container">
+
+
+<div class="mainTitle" >Esperience in {{experiences.Name}}</div>
+
+
+<div class="row" ng-repeat="experience in experiences.Item">
+
+	<div class="col-md-2">
+		
+		<img class="programmingthumbnail boxImage" ng-src="{{experience.Img}}" alt="programming languages">
+	</div>
+	
+	<div class="col-md-5">
+		<h4>{{experience.Title}}</h4>
+		Duration: {{experience.Duration}} y.
+	</div>
+	<div class="col-md-5">
+		<h4>{{experience.Extra}}</h4>
+		
+	</div>
+		
+</div>
+
+</div>			

@@ -1,0 +1,41 @@
+<div data-ar-lg  class="container">
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+<img class="programmingthumbnail boxImageProgramming" ng-src="assets/images/programming-languages-1.jpg" alt="programming languages">
+
+<div class="mainTitle">Programming Skills</div>
+
+<div class="jumbotron">
+
+
+<div class="row" ng-repeat="skill in cv" >
+
+	<div class="col-md-3">
+		<h4>{{skill.Name}}</h4>
+	</div>
+	<div class="col-md-6">
+		<div ng-repeat="item in skill.Item | orderBy:'-rank'">
+		
+			<div ng-init="rating =item.Rank"></div>
+				<div class="flex"> {{item.Title}}&nbsp;
+								
+					<div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+				</div>		
+		</div>
+	
+	</div>
+		<div class="col-md-3">	
+		<a class="btn btn-info btn-lg" ng-href="Experience/{{skill.Path}}" role="button">More Details</a>
+	
+	
+	</div>
+
+</p>
+</div>
+
+
+</div>
+
+
+</div>

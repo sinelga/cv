@@ -1,0 +1,42 @@
+<div data-ar-lg  class="container">
+
+<img class="programmingthumbnail boxImageProgramming" ng-src="assets/images/programming-languages-1.jpg" alt="programming languages">
+
+<div class="mainTitle" >Programming Skills</div>
+
+
+<div class="row" ng-repeat="skill in cv" >
+
+	<div class="col-md-3">
+		<h4>{{skill.Name}}</h4>
+	</div>
+	<div class="col-md-9">
+		<div ng-repeat="item in skill.Item | orderBy:'-rank'">
+		
+
+				<div class="flex"> {{item.Title}}&nbsp;
+								
+				</div>		
+		</div>
+	
+
+</p>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div data-ar-responsive="{ 'xs': true, 'sm': true, 'md': true,'lg': false }">
+		
+		Programming Skills<br><br>
+		Languages<br>--------
+		<div ng-repeat="language in languages">{{language.title}}</div><br>
+		OS<br>--------
+		<div ng-repeat="os in oss">{{os.title}}</div>
+
+</div>
+
+
