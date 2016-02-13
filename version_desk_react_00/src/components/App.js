@@ -1,7 +1,8 @@
 import React from 'react'
-//import ObjList from './ObjList'
 import {Grid} from 'react-bootstrap'
 import DocumentMeta from 'react-document-meta'
+import GlobalNav from './GlobalNav'
+import Dashboard from './Dashboard'
 
 
 class App extends React.Component {
@@ -34,14 +35,17 @@ class App extends React.Component {
   render() {
 	  
 	  const meta = {
-		      title: 'Sex Pillu',
+		      title: 'CV',
 		      }
 	  	  
     return (
       <div>
       <DocumentMeta {...meta} />	 
+      <GlobalNav />
       <Grid>
-      	{this.props.children} 
+      	{this.props.children || <Dashboard  />} 
+      	
+      	 
      </Grid>   
      </div>
     )

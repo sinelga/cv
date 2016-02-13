@@ -1,9 +1,8 @@
 body {
         
-           background: url('/img/backgroundimg.jpg') no-repeat center center fixed;
-           background-size: cover;
-           height: 100%;
-           /*color:#4d4d4d ;*/
+   background: url('/img/backgroundimg.jpg') no-repeat center center fixed;
+   background-size: cover;
+   height: 100%;
         
   	font-family: 'Finger Paint', cursive  !important;
 /*  	color:#ffd9d9;
