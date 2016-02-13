@@ -10,3 +10,41 @@ git subtree push --prefix version_desk_react_00  origin version_desk_react_00
 cd version_desk_react_00
 
 npm install react react-bootstrap react-document-meta react-dom react-router --save
+
+
+mkdir dist src
+
+.babelrc
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": [
+  ]
+}
+
+webpack.config.js
+
+var webpack = require('webpack');
+
+module.exports = {
+                entry: {
+                    app: [ './src/app.js'],
+                        vendor: ["react","react-router","react-bootstrap","node-uuid","react-document-meta"],
+                  },
+   output: {
+     path: __dirname + '/dist/',
+     filename: 'deskbundle.js',
+     publicPath: '/'
+   },
+   module: {
+     loaders: [
+       { test: /\.js$/, loader: 'babel', exclude: [/node_modules/]  }
+      ]
+   },
+   
+   plugins: [
+             new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.deskbundle.js")
+           ]
+};
