@@ -299,7 +299,7 @@ webpackJsonp([0],{
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -310,6 +310,12 @@ webpackJsonp([0],{
 
 	var _reactRouter = __webpack_require__(160);
 
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -318,28 +324,109 @@ webpackJsonp([0],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com');
+
+	//var languges []
+
 	var Dashboard = function (_React$Component) {
-	  _inherits(Dashboard, _React$Component);
+		_inherits(Dashboard, _React$Component);
 
-	  function Dashboard() {
-	    _classCallCheck(this, Dashboard);
+		function Dashboard() {
+			_classCallCheck(this, Dashboard);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).apply(this, arguments));
-	  }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).apply(this, arguments));
+		}
 
-	  _createClass(Dashboard, [{
-	    key: 'render',
-	    value: function render() {
+		_createClass(Dashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				baseRef.on("value", function (snapshot) {
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Resent activity'
-	      );
-	    }
-	  }]);
+					//			console.log(snapshot)
 
-	  return Dashboard;
+					//			var
+					snapshot.forEach(function (vdata) {
+
+						if (vdata.val().hasOwnProperty("languages")) {
+
+							console.log(vdata.val().languages);
+
+							vdata.val().languages.map(function (vvdata) {
+
+								console.log(vvdata);
+							});
+
+							//					vdata.val()["languages"].forEach(function(vvdata) {
+							//						
+							//						console.log(vvdata.val())
+							//						
+							//					});
+						}
+					});
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Well,
+						null,
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Professional  Programming'
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 4 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/mazurov.jpg', thumbnail: true, responsive: true })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 12, md: 8 },
+								_react2.default.createElement(
+									'p',
+									{ className: 'cvbigtitle' },
+									'CV'
+								),
+								_react2.default.createElement(
+									'p',
+									{ className: 'name' },
+									'Mazurov Aleksander'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'h3',
+							null,
+							'Languages'
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 3, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/programming-languages-1.jpg', thumbnail: true, responsive: true })
+							),
+							_react2.default.createElement(_reactBootstrap.Col, { xs: 12, md: 8 })
+						)
+					)
+				);
+			}
+		}]);
+
+		return Dashboard;
 	}(_react2.default.Component);
 
 	exports.default = Dashboard;

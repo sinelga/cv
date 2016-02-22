@@ -13,18 +13,22 @@ body {
  	/*background-color: white;*/
 }
 
-.phone {
-  font-size: 210%;
+
+
+
+.cvbigtitle {
+  font-size: 410%;
   text-shadow: 2px 2px 2px #aaa;
   color: red;
   
 }
-.transparent {
-	
-	opacity: 0.1;
-	color:black;
+.name {
+  font-size: 210%;
+  text-shadow: 2px 2px 2px #aaa;
 	
 }
+
+
 .bigclose{
 
   font-size: 150%;
