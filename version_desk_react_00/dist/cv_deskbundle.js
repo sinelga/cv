@@ -316,6 +316,10 @@ webpackJsonp([0],{
 
 	var _firebase2 = _interopRequireDefault(_firebase);
 
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -326,51 +330,84 @@ webpackJsonp([0],{
 
 	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com');
 
-	//var languges []
-
 	var Dashboard = function (_React$Component) {
 		_inherits(Dashboard, _React$Component);
 
-		function Dashboard() {
+		function Dashboard(props) {
 			_classCallCheck(this, Dashboard);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).call(this, props));
+
+			_this.state = {
+				languages: [],
+				frameworks: []
+
+			};
+
+			return _this;
 		}
 
 		_createClass(Dashboard, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {}
+			value: function componentDidMount() {
+
+				//		console.log("this.languages",languages)
+				//		this.setState({languages: this.languages})
+
+			}
 		}, {
 			key: 'componentWillMount',
 			value: function componentWillMount() {
 				baseRef.on("value", function (snapshot) {
 
-					//			console.log(snapshot)
-
-					//			var
 					snapshot.forEach(function (vdata) {
 
 						if (vdata.val().hasOwnProperty("languages")) {
 
 							console.log(vdata.val().languages);
-
-							vdata.val().languages.map(function (vvdata) {
-
-								console.log(vvdata);
-							});
-
-							//					vdata.val()["languages"].forEach(function(vvdata) {
-							//						
-							//						console.log(vvdata.val())
-							//						
-							//					});
+							this.setState({ languages: vdata.val().languages });
 						}
-					});
-				});
+						if (vdata.val().hasOwnProperty("frameworks")) {
+
+							console.log(vdata.val().frameworks);
+							this.setState({ frameworks: vdata.val().frameworks });
+						}
+					}.bind(this));
+				}.bind(this));
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+
+				var languages = [];
+				var languages_link = "/languages";
+
+				var frameworks = [];
+				var frameworks_link = "/frameworks";
+
+				this.state.languages.map(function (vvdata) {
+					console.log("vvdata", vvdata);
+					var rating = vvdata.rating;
+
+					languages.push(_react2.default.createElement(
+						_reactBootstrap.ListGroupItem,
+						{ key: vvdata.id },
+						vvdata.language,
+						'  ',
+						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 25 })
+					));
+				});
+				this.state.frameworks.map(function (vvdata) {
+					console.log("vvdata", vvdata);
+					var rating = vvdata.rating;
+					frameworks.push(_react2.default.createElement(
+						_reactBootstrap.ListGroupItem,
+						{ key: vvdata.id },
+						vvdata.framework,
+						'  ',
+						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 25 })
+					));
+				});
 
 				return _react2.default.createElement(
 					'div',
@@ -397,29 +434,120 @@ webpackJsonp([0],{
 								_react2.default.createElement(
 									'p',
 									{ className: 'cvbigtitle' },
-									'CV'
+									'CV '
 								),
+								'(curriculum vitae)',
 								_react2.default.createElement(
 									'p',
 									{ className: 'name' },
 									'Mazurov Aleksander'
+								),
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Latest Activity'
 								)
 							)
 						),
 						_react2.default.createElement(
-							'h3',
+							_reactBootstrap.Row,
 							null,
-							'Languages'
+							_react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 2 }),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 8 },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Languages'
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Details'
+								)
+							)
 						),
 						_react2.default.createElement(
 							_reactBootstrap.Row,
 							null,
 							_react2.default.createElement(
 								_reactBootstrap.Col,
-								{ xs: 3, md: 2 },
-								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/programming-languages-1.jpg', thumbnail: true, responsive: true })
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/Programming.png', responsive: true })
 							),
-							_react2.default.createElement(_reactBootstrap.Col, { xs: 12, md: 8 })
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 8 },
+								_react2.default.createElement(
+									_reactBootstrap.ListGroup,
+									null,
+									languages
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: languages_link },
+									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+								)
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 2 }),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 8 },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Frameworks'
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									'h3',
+									null,
+									'Details'
+								)
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/gears-framework-transparent.png', responsive: true })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 8 },
+								_react2.default.createElement(
+									_reactBootstrap.ListGroup,
+									null,
+									frameworks
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: frameworks_link },
+									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+								)
+							)
 						)
 					)
 				);
