@@ -30,20 +30,18 @@ webpackJsonp([0],{
 	  childRoutes: [{
 	    path: '/',
 	    component: __webpack_require__(217),
-	    childRoutes: [
-	      //      require('./routes/Details'),
-	      //      require('./routes/NotFound'),
-	      //      require('./routes/Sale'),
-	      //      require('./routes/Apartment'),
-	      ////      require('./routes/Course'),
-	      //      require('./routes/Grades'),
-	      //      require('./routes/Messages')
-	      //      require('./routes/Profile')
-	    ]
+	    childRoutes: [__webpack_require__(471)]
 	  }]
 	}; /*eslint-disable no-unused-vars */
 
 
+	//      require('./routes/NotFound'),
+	//      require('./routes/Sale'),
+	//      require('./routes/Apartment'),
+	////      require('./routes/Course'),
+	//      require('./routes/Grades'),
+	//      require('./routes/Messages')
+	//      require('./routes/Profile')
 	(0, _reactDom.render)(_react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: rootRoute }), document.getElementById('content'));
 
 /***/ },
@@ -364,12 +362,10 @@ webpackJsonp([0],{
 
 						if (vdata.val().hasOwnProperty("languages")) {
 
-							console.log(vdata.val().languages);
 							this.setState({ languages: vdata.val().languages });
 						}
 						if (vdata.val().hasOwnProperty("frameworks")) {
 
-							console.log(vdata.val().frameworks);
 							this.setState({ frameworks: vdata.val().frameworks });
 						}
 					}.bind(this));
@@ -386,26 +382,25 @@ webpackJsonp([0],{
 				var frameworks_link = "/frameworks";
 
 				this.state.languages.map(function (vvdata) {
-					console.log("vvdata", vvdata);
-					var rating = vvdata.rating;
 
+					var rating = vvdata.rating;
 					languages.push(_react2.default.createElement(
 						_reactBootstrap.ListGroupItem,
 						{ key: vvdata.id },
 						vvdata.language,
 						'  ',
-						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 25 })
+						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 15 })
 					));
 				});
 				this.state.frameworks.map(function (vvdata) {
-					console.log("vvdata", vvdata);
+
 					var rating = vvdata.rating;
 					frameworks.push(_react2.default.createElement(
 						_reactBootstrap.ListGroupItem,
 						{ key: vvdata.id },
 						vvdata.framework,
 						'  ',
-						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 25 })
+						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 15 })
 					));
 				});
 
@@ -558,6 +553,37 @@ webpackJsonp([0],{
 	}(_react2.default.Component);
 
 	exports.default = Dashboard;
+
+/***/ },
+
+/***/ 471:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: ':id',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/Details')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(1, function (require) {
+							cb(null, __webpack_require__(472));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
 
 /***/ }
 

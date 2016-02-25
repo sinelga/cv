@@ -33,14 +33,12 @@ class Dashboard extends React.Component {
 								
 				
 				if (vdata.val().hasOwnProperty("languages")) {
-				
-					console.log(vdata.val().languages)
+
 					this.setState({languages: vdata.val().languages })
 				
 				}
 				if (vdata.val().hasOwnProperty("frameworks")) {
-					
-					console.log(vdata.val().frameworks)
+
 					this.setState({frameworks: vdata.val().frameworks})
 				
 				}				
@@ -61,16 +59,15 @@ class Dashboard extends React.Component {
 		var frameworks_link ="/frameworks"
 		
 		this.state.languages.map(function(vvdata) {
-			console.log("vvdata",vvdata)
-			let rating = vvdata.rating
-			
-			languages.push(<ListGroupItem key={vvdata.id}>{vvdata.language}  <StarRating name="airbnb-rating" totalStars={10} rating={rating} size={25}/></ListGroupItem>)
+		
+			let rating = vvdata.rating			
+			languages.push(<ListGroupItem key={vvdata.id}>{vvdata.language}  <StarRating name="airbnb-rating" totalStars={10} rating={rating} size={15}/></ListGroupItem>)
 			
 		})
 		this.state.frameworks.map(function(vvdata) {
-			console.log("vvdata",vvdata)
+			
 			let rating = vvdata.rating
-			frameworks.push(<ListGroupItem key={vvdata.id}>{vvdata.framework}  <StarRating name="airbnb-rating" totalStars={10} rating={rating} size={25}/></ListGroupItem>)
+			frameworks.push(<ListGroupItem key={vvdata.id}>{vvdata.framework}  <StarRating name="airbnb-rating" totalStars={10} rating={rating} size={15}/></ListGroupItem>)
 		})	  
 		
 
