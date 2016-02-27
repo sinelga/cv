@@ -337,8 +337,10 @@ webpackJsonp([0],{
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).call(this, props));
 
 			_this.state = {
-				languages: [],
-				frameworks: []
+				items: []
+				//	    	languages: [],
+				//	    	frameworks: [],
+				//	    	operatingsystems: []
 
 			};
 
@@ -358,49 +360,74 @@ webpackJsonp([0],{
 			value: function componentWillMount() {
 				baseRef.on("value", function (snapshot) {
 
+					var items = [];
+
 					snapshot.forEach(function (vdata) {
 
-						if (vdata.val().hasOwnProperty("languages")) {
-
-							this.setState({ languages: vdata.val().languages });
-						}
-						if (vdata.val().hasOwnProperty("frameworks")) {
-
-							this.setState({ frameworks: vdata.val().frameworks });
-						}
+						items.push(vdata);
 					}.bind(this));
+
+					this.setState({ items: items });
 				}.bind(this));
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 
-				var languages = [];
-				var languages_link = "/languages";
+				var htmlitem = [];
+				var htmlListItems = [];
 
-				var frameworks = [];
-				var frameworks_link = "/frameworks";
+				this.state.items.map(function (vvdata) {
 
-				this.state.languages.map(function (vvdata) {
+					var item_obj = vvdata.val();
+					htmlListItems = [];
 
-					var rating = vvdata.rating;
-					languages.push(_react2.default.createElement(
-						_reactBootstrap.ListGroupItem,
-						{ key: vvdata.id },
-						vvdata.language,
-						'  ',
-						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 15 })
+					item_obj.items.map(function (data) {
+						var key = data.id + data.item;
+						htmlListItems.push(_react2.default.createElement(
+							_reactBootstrap.ListGroupItem,
+							null,
+							data.item,
+							'  ',
+							_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 18 })
+						));
+					});
+
+					htmlitem.push(_react2.default.createElement(
+						'h2',
+						null,
+						item_obj.title
 					));
-				});
-				this.state.frameworks.map(function (vvdata) {
 
-					var rating = vvdata.rating;
-					frameworks.push(_react2.default.createElement(
-						_reactBootstrap.ListGroupItem,
-						{ key: vvdata.id },
-						vvdata.framework,
-						'  ',
-						_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 10, rating: rating, size: 15 })
+					var imglink = '/img/' + item_obj.img;
+					var link = '/' + item_obj.link;
+
+					htmlitem.push(_react2.default.createElement(
+						_reactBootstrap.Row,
+						null,
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 2 },
+							_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 8 },
+							_react2.default.createElement(
+								_reactBootstrap.ListGroup,
+								null,
+								htmlListItems
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 2 },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: link },
+								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+							)
+						)
 					));
 				});
 
@@ -444,106 +471,7 @@ webpackJsonp([0],{
 								)
 							)
 						),
-						_react2.default.createElement(
-							_reactBootstrap.Row,
-							null,
-							_react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 2 }),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 8 },
-								_react2.default.createElement(
-									'h3',
-									null,
-									'Languages'
-								)
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(
-									'h3',
-									null,
-									'Details'
-								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Row,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/Programming.png', responsive: true })
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 8 },
-								_react2.default.createElement(
-									_reactBootstrap.ListGroup,
-									null,
-									languages
-								)
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: languages_link },
-									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
-								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Row,
-							null,
-							_react2.default.createElement(_reactBootstrap.Col, { xs: 6, md: 2 }),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 8 },
-								_react2.default.createElement(
-									'h3',
-									null,
-									'Frameworks'
-								)
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(
-									'h3',
-									null,
-									'Details'
-								)
-							)
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Row,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/gears-framework-transparent.png', responsive: true })
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 8 },
-								_react2.default.createElement(
-									_reactBootstrap.ListGroup,
-									null,
-									frameworks
-								)
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: frameworks_link },
-									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
-								)
-							)
-						)
+						htmlitem
 					)
 				);
 			}
@@ -574,7 +502,7 @@ webpackJsonp([0],{
 			//		  },
 
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(1, function (require) {
+					__webpack_require__.e/* nsure */(1/* empty */, function (require) {
 							cb(null, __webpack_require__(472));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),

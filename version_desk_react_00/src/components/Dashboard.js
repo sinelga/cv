@@ -12,8 +12,10 @@ class Dashboard extends React.Component {
 	constructor(props){
 	    super(props);
 	    this.state = {
-	    	languages: [],
-	    	frameworks: []
+	    	items: []	
+//	    	languages: [],
+//	    	frameworks: [],
+//	    	operatingsystems: []
 	    	
 	    }
 
@@ -29,22 +31,16 @@ class Dashboard extends React.Component {
 	componentWillMount(){
 		baseRef.on("value", function(snapshot) {
 
+			var items = []
+
 			snapshot.forEach(function(vdata) {
-								
 				
-				if (vdata.val().hasOwnProperty("languages")) {
-
-					this.setState({languages: vdata.val().languages })
-				
-				}
-				if (vdata.val().hasOwnProperty("frameworks")) {
-
-					this.setState({frameworks: vdata.val().frameworks})
-				
-				}				
-				
-								
-			}.bind(this));
+				items.push(vdata) 
+											
+			}.bind(this))
+			
+			this.setState({items:items})
+			
 		}.bind(this))
 		
 	}
@@ -52,59 +48,42 @@ class Dashboard extends React.Component {
 	
 	render() {
 		
-		var languages= []
-		var languages_link ="/languages"
+		var htmlitem =[]
+		var htmlListItems =[]
+				
+		this.state.items.map(function(vvdata) {
+
+			var item_obj =vvdata.val()
+			htmlListItems =[]
 			
-		var frameworks = []
-		var frameworks_link ="/frameworks"
-		
-		this.state.languages.map(function(vvdata) {
-		
-			let rating = vvdata.rating			
-			languages.push(<ListGroupItem key={vvdata.id}>{vvdata.language}  <StarRating name="airbnb-rating" totalStars={10} rating={rating} size={15}/></ListGroupItem>)
+			item_obj.items.map(function(data){
+				var key =data.id + data.item
+				htmlListItems.push(<ListGroupItem >{data.item}  <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={18}/></ListGroupItem>)
+				
+			})	
+									
+			htmlitem.push(<h2>{item_obj.title}</h2>)
+			
+			var imglink = '/img/'+item_obj.img
+			var link ='/'+item_obj.link
+
+			htmlitem.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={8}><ListGroup>{htmlListItems}</ListGroup></Col><Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
+	
 			
 		})
-		this.state.frameworks.map(function(vvdata) {
-			
-			let rating = vvdata.rating
-			frameworks.push(<ListGroupItem key={vvdata.id}>{vvdata.framework}  <StarRating name="airbnb-rating" totalStars={10} rating={rating} size={15}/></ListGroupItem>)
-		})	  
 		
 
     return (
       <div>
-      <Well>
-      <h2>Professional  Programming</h2>
-
-      <Row>
-      	<Col xs={6} md={4}><Image src='/img/mazurov.jpg' thumbnail responsive/></Col>
-      	<Col xs={12} md={8}><p className='cvbigtitle'>CV </p>(curriculum vitae)<p className='name'>Mazurov Aleksander</p><h3>Latest Activity</h3></Col>
-      </Row>
-            
-      <Row>
-  		<Col xs={6} md={2}></Col>
-  		<Col xs={6} md={8}><h3>Languages</h3></Col>
-  		<Col xs={6} md={2}><h3>Details</h3></Col>     
-      </Row> 
-      
-      <Row >
-    	<Col xs={6} md={2}><Image src='/img/Programming.png' responsive/></Col>
-    	<Col xs={6} md={8}><ListGroup>{languages}</ListGroup></Col>
-    	<Col xs={6} md={2}><Link to={languages_link}><Image src='/img/orange-arrow-right.png'  responsive/></Link></Col>
-      </Row>      
-
-      <Row>
-		<Col xs={6} md={2}></Col>
-		<Col xs={6} md={8}><h3>Frameworks</h3></Col>
-		<Col xs={6} md={2}><h3>Details</h3></Col>     
-	  </Row> 
-    
-      <Row >
-  		<Col xs={6} md={2}><Image src='/img/gears-framework-transparent.png' responsive/></Col>
-  	    <Col xs={6} md={8}><ListGroup>{frameworks}</ListGroup></Col>
-  	    <Col xs={6} md={2}><Link to={frameworks_link}><Image src='/img/orange-arrow-right.png'  responsive/></Link></Col>
-      </Row>      
-      
+      	<Well>
+      	<h2>Professional  Programming</h2>
+      	<Row>
+  			<Col xs={6} md={4}><Image src='/img/mazurov.jpg' thumbnail responsive/></Col>
+  			<Col xs={12} md={8}><p className='cvbigtitle'>CV </p>(curriculum vitae)<p className='name'>Mazurov Aleksander</p><h3>Latest Activity</h3></Col>
+  		</Row>
+  	  	
+  		{htmlitem}
+   
     	</Well>           
       </div>
     )
