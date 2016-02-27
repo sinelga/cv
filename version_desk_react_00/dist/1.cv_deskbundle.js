@@ -161,8 +161,15 @@ webpackJsonp([1],{
 					console.log(title);
 					this.state.data.items.map(function (data) {
 						var imglink = "img/" + link + "/" + data.img;
-						var outlink = data.link;
-						//			  console.log(imglink)
+						var outlink = "/" + link + "/" + data.link;
+						var duration = '';
+
+						if (data.duration === 1) {
+							duration = data.duration + ' year';
+						} else {
+							duration = data.duration + ' years';
+						}
+
 						var key = data.id;
 						htmlListItems.push(_react2.default.createElement(
 							_reactBootstrap.Row,
@@ -174,7 +181,7 @@ webpackJsonp([1],{
 							),
 							_react2.default.createElement(
 								_reactBootstrap.Col,
-								{ xs: 6, md: 6 },
+								{ xs: 6, md: 4 },
 								_react2.default.createElement(
 									'h2',
 									null,
@@ -185,7 +192,16 @@ webpackJsonp([1],{
 							),
 							_react2.default.createElement(
 								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
+								{ xs: 6, md: 1 },
+								_react2.default.createElement(
+									'p',
+									null,
+									duration
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 3 },
 								data.extra
 							),
 							_react2.default.createElement(
@@ -198,7 +214,6 @@ webpackJsonp([1],{
 								)
 							)
 						));
-						//			  imgListItems.push(<ListGroupItem key={key}></ListGroupItem>)
 					});
 				}
 
