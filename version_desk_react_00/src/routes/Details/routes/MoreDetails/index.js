@@ -1,19 +1,19 @@
 module.exports = {
-		  path: ':id',
+		  path: '/:id/:moredetail',
 				
-		  getChildRoutes(location, cb) {
-		    require.ensure([], (require) => {
-		      cb(null, [
-		        require('./routes/MoreDetails')
-	
-		      ])
-		    })
-		  },
+//		  getChildRoutes(location, cb) {
+//		    require.ensure([], (require) => {
+//		      cb(null, [
+//		        require('./routes/Details')
+//	
+//		      ])
+//		    })
+//		  },
 
 		  getComponents(location, cb) {
 		    require.ensure([], (require) => {
 		      cb(null, 
-		    		  require('./components/Details')
+		    		  require('./components/MoreDetails')
 		    		  
 		      )
 //		        cb(null,{

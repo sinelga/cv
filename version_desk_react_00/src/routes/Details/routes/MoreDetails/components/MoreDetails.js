@@ -5,16 +5,15 @@ import ReactDOM from 'react-dom'
 //import DocumentMeta from 'react-document-meta'
 import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
-import DetailsDashboard from './DetailsDashboard'
+import MoreDetailsDashboard from './MoreDetailsDashboard'
 
 var baseRef
-var title ='not define'
-	
 var dblink='https://cv-mazurov.firebaseio.com/'
-		
+	
 baseRef = new Firebase(dblink);	
 //var item={}
-class Details extends React.Component {
+
+class MoreDetails extends React.Component {
 
 	constructor(props){
 	  super(props);
@@ -30,31 +29,40 @@ class Details extends React.Component {
 	}
 		
 	componentWillMount(){
-		console.log("Willmount Details",this.props.params.id)
-
+		console.log("Willmount MoreDetails",this.props.params.id)
+		
+//		var dblink='https://cv-mazurov.firebaseio.com/'
+//						
+//		baseRef = new Firebase(dblink);
+//		
+//		baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
+//
+//			snapshot.forEach(function(vdata) {
+//				
+//				this.setState({data: vdata.val()})
+//							
+//								
+//			}.bind(this));
+//		}.bind(this))
 		
 
 	}	
 	
-	componentDidMount(){
-		console.log("Didmount Details")
+	componentDidMount(){		
+		console.log("Didmount MoreDetails",this.props.params.id,this.props.params.moredetail)
 		
 			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
 
 			snapshot.forEach(function(vdata) {
 				
 				this.setState({data: vdata.val()})
-				title = vdata.val().title
+				
 							
 								
 			}.bind(this));
 		}.bind(this))
-		
-		
-		
+						   
 	}
-	
-	
 	
 	componentWillReceiveProps(){
 		console.log("componentWillReceiveProps Details",this.props.params)
@@ -62,16 +70,16 @@ class Details extends React.Component {
 	}
 	
 	componentWillUpdate(prevProps) {
-		console.log("Details componentWillUpdate")	
+//		console.log("componentWillUpdate")	
 	}
 	
 	
 	componentDidUpdate(prevProps) {
 		
-		console.log("Details componentDidUpdate")
+//		console.log("componentDidUpdate")
 					
 	}
-
+ 
 	 componentWillUnmount(){		 
 
 		baseRef.off()
@@ -79,18 +87,12 @@ class Details extends React.Component {
 	 } 
   render() {
 	  
+
 	  	  
     return (
       <div>
-      <Well>
-      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-      	<h1>Details</h1>
-     
-      
-      	{this.props.children || <DetailsDashboard data={this.state.data} />}
-      
-      </Well>
-      
+ 
+      <MoreDetailsDashboard data={this.state.data} link={this.props.params.moredetail} />
   		   	
       </div>
     )
@@ -98,4 +100,4 @@ class Details extends React.Component {
 
 }
 
-module.exports = Details
+module.exports = MoreDetails
