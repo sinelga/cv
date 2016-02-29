@@ -1,6 +1,6 @@
-webpackJsonp([1],{
+webpackJsonp([3],{
 
-/***/ 473:
+/***/ 477:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19,13 +19,17 @@ webpackJsonp([1],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
 	var _reactStarRating = __webpack_require__(470);
 
 	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
 
-	var _JobsDashboard = __webpack_require__(474);
+	var _MoreDetailsDashboard = __webpack_require__(478);
 
-	var _JobsDashboard2 = _interopRequireDefault(_JobsDashboard);
+	var _MoreDetailsDashboard2 = _interopRequireDefault(_MoreDetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,36 +39,30 @@ webpackJsonp([1],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	//import DocumentMeta from 'react-document-meta'
-	//import Firebase from 'firebase'
 
 
-	var dark = 'hsl(200, 20%, 20%)';
-	var light = '#fff';
-	var styles = {};
+	var baseRef;
+	var dblink = 'https://cv-mazurov.firebaseio.com/';
 
-	styles.wrapper = {
-		padding: '10px 20px',
-		overflow: 'hidden',
-		background: dark
-		//  color: light
-	};
+	baseRef = new _firebase2.default(dblink);
+	//var item={}
 
-	var Jobs = function (_React$Component) {
-		_inherits(Jobs, _React$Component);
+	var MoreDetails = function (_React$Component) {
+		_inherits(MoreDetails, _React$Component);
 
-		function Jobs(props) {
-			_classCallCheck(this, Jobs);
+		function MoreDetails(props) {
+			_classCallCheck(this, MoreDetails);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Jobs).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetails).call(this, props));
 
 			_this.state = {
-				data: []
+				data: {}
 
 			};
 			return _this;
 		}
 
-		_createClass(Jobs, [{
+		_createClass(MoreDetails, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
@@ -72,58 +70,57 @@ webpackJsonp([1],{
 		}, {
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				//		console.log("Willmount Details",this.props.params.id)
+				console.log("Willmount MoreDetails", this.props.params.id);
 
+				//		var dblink='https://cv-mazurov.firebaseio.com/'
+				//						
+				//		baseRef = new Firebase(dblink);
+				//		
+				//		baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
+				//
+				//			snapshot.forEach(function(vdata) {
+				//				
+				//				this.setState({data: vdata.val()})
+				//							
+				//								
+				//			}.bind(this));
+				//		}.bind(this))
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		console.log("Didmount Details")
+				console.log("Didmount MoreDetails", this.props.params.id, this.props.params.moredetail);
 
-				var request = new XMLHttpRequest();
-				request.open('GET', '/jobs.json', true);
+				baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function (snapshot) {
 
-				request.onload = function () {
-					if (request.status >= 200 && request.status < 400) {
-						// Success!			 
-						var data = JSON.parse(request.responseText);
-						console.log(data.jobs[0].item);
-						this.setState({ data: data.jobs[0].item });
-					} else {
-						// We reached our target server, but it returned an error
+					snapshot.forEach(function (vdata) {
 
-					}
-				}.bind(this);
-
-				request.onerror = function () {
-					// There was a connection error of some sort
-				};
-
-				request.send();
+						this.setState({ data: vdata.val() });
+					}.bind(this));
+				}.bind(this));
 			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps() {
-				//		console.log("componentWillReceiveProps Details",this.props.params)
-
+				console.log("componentWillReceiveProps Details", this.props.params);
 			}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
-				//		console.log("Details componentWillUpdate")	
+				//		console.log("componentWillUpdate")	
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("Details componentDidUpdate")
+				//		console.log("componentDidUpdate")
 
 			}
 		}, {
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
 
-				//		baseRef.off()
+				baseRef.off();
 				//		baseRefClients.off()
 			}
 		}, {
@@ -133,37 +130,19 @@ webpackJsonp([1],{
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(
-						'div',
-						{ style: styles.wrapper },
-						_react2.default.createElement(
-							_reactBootstrap.Well,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.Button,
-								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
-								'Return'
-							),
-							_react2.default.createElement(
-								'h1',
-								null,
-								'Work Expirience'
-							),
-							this.props.children || _react2.default.createElement(_JobsDashboard2.default, { data: this.state.data })
-						)
-					)
+					_react2.default.createElement(_MoreDetailsDashboard2.default, { data: this.state.data, link: this.props.params.moredetail })
 				);
 			}
 		}]);
 
-		return Jobs;
+		return MoreDetails;
 	}(_react2.default.Component);
 
-	module.exports = Jobs;
+	module.exports = MoreDetails;
 
 /***/ },
 
-/***/ 474:
+/***/ 478:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -199,80 +178,71 @@ webpackJsonp([1],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
-	var title = '';
+	//var title =''
 
-	var JobsDashboard = function (_React$Component) {
-		_inherits(JobsDashboard, _React$Component);
+	var MoreDetailsDashboard = function (_React$Component) {
+		_inherits(MoreDetailsDashboard, _React$Component);
 
-		function JobsDashboard(props) {
-			_classCallCheck(this, JobsDashboard);
+		function MoreDetailsDashboard(props) {
+			_classCallCheck(this, MoreDetailsDashboard);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobsDashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetailsDashboard).call(this, props));
 
 			_this.state = {
-				data: []
-
+				data: {}
 			};
 
 			return _this;
 		}
 
-		_createClass(JobsDashboard, [{
+		_createClass(MoreDetailsDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 
-				//		console.log("DetailsDashboard componentDidMount")
+				console.log("MoreDetailsDashboard componentDidMount");
 				//		this.setState({languages: this.languages})
-
 			}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
-				//		console.log("DetailsDashboard componentWillUpdate")	
+				console.log("MoreDetailsDashboard componentWillUpdate");
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("DetailsDashboard componentDidUpdate")
-
+				console.log("MoreDetailsDashboard componentDidUpdate");
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {}
+			value: function componentWillMount() {
+				console.log('MoreDetailsDashboard componentWillMount', this.props);
+			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				console.log("DetailsDashboard  receive props", nextProps.data);
+				console.log("MoreDetailsDashboard  receive props", nextProps);
+				var link = nextProps.link;
 
-				this.setState({ data: nextProps.data });
-				//		console.log(this.props)
+				console.log(link);
+
+				nextProps.data.items.map(function (item) {
+
+					if (item.link === link) {
+
+						this.setState({ data: item });
+					}
+				}.bind(this));
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 
-				var htmlListItems = [];
-
 				console.log(this.state.data);
 
-				//		  if (this.state.data.jobs[0].item !== "undefined"){
-
-				this.state.data.map(function (data) {
-
-					console.log(data);
-				});
-
-				//		  }
-
-				//		  this.state.data.jobs[0].item.map(function(data) {
-				//			
-				//			  console.log(data)
-				//			 
-				//		  })
-
-				//		  var imgListItems =[]
-
+				//		  var htmlListItems =[]
+				////		  var imgListItems =[]
+				//
 				//		  if (this.state.data.items !== undefined) {
 				//			  var link = this.state.data.link
 				//	         
@@ -302,16 +272,17 @@ webpackJsonp([1],{
 					_react2.default.createElement(
 						'h2',
 						null,
-						' JobsDashbord'
-					)
+						' MoreDetailsDashbord'
+					),
+					this.state.data.extra
 				);
 			}
 		}]);
 
-		return JobsDashboard;
+		return MoreDetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = JobsDashboard;
+	exports.default = MoreDetailsDashboard;
 
 /***/ }
 

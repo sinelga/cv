@@ -30,18 +30,11 @@ webpackJsonp([0],{
 	  childRoutes: [{
 	    path: '/',
 	    component: __webpack_require__(217),
-	    childRoutes: [__webpack_require__(471)]
+	    childRoutes: [__webpack_require__(472), __webpack_require__(475)]
 	  }]
 	}; /*eslint-disable no-unused-vars */
 
 
-	//      require('./routes/NotFound'),
-	//      require('./routes/Sale'),
-	//      require('./routes/Apartment'),
-	////      require('./routes/Course'),
-	//      require('./routes/Grades'),
-	//      require('./routes/Messages')
-	//      require('./routes/Profile')
 	(0, _reactDom.render)(_react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: rootRoute }), document.getElementById('content'));
 
 /***/ },
@@ -70,6 +63,10 @@ webpackJsonp([0],{
 	var _Dashboard = __webpack_require__(468);
 
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
+
+	var _Head = __webpack_require__(471);
+
+	var _Head2 = _interopRequireDefault(_Head);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -131,6 +128,7 @@ webpackJsonp([0],{
 					_react2.default.createElement(
 						_reactBootstrap.Grid,
 						null,
+						_react2.default.createElement(_Head2.default, null),
 						this.props.children || _react2.default.createElement(_Dashboard2.default, null)
 					)
 				);
@@ -257,21 +255,6 @@ webpackJsonp([0],{
 	            'Messages'
 	          ),
 	          ' '
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { style: { float: 'right' } },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { style: styles.link, to: '/profile' },
-	            user.name
-	          ),
-	          ' ',
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: this.logOut },
-	            'log out'
-	          )
 	        )
 	      );
 	    }
@@ -280,12 +263,12 @@ webpackJsonp([0],{
 	  return GlobalNav;
 	}(_react2.default.Component);
 
-	GlobalNav.defaultProps = {
-	  user: {
-	    id: 1,
-	    name: 'Ryan Florence'
-	  }
-	};
+	//GlobalNav.defaultProps = {
+	//  user: {
+	//    id: 1,
+	//    name: 'Ryan Florence'
+	//  }
+	//}
 
 	exports.default = GlobalNav;
 
@@ -325,6 +308,17 @@ webpackJsonp([0],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+		//  color: light
+	};
 
 	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com');
 
@@ -435,43 +429,13 @@ webpackJsonp([0],{
 					'div',
 					null,
 					_react2.default.createElement(
-						_reactBootstrap.Well,
-						null,
+						'div',
+						{ style: styles.wrapper },
 						_react2.default.createElement(
-							'h2',
+							_reactBootstrap.Well,
 							null,
-							'Professional  Programming'
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Row,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 4 },
-								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/mazurov.jpg', thumbnail: true, responsive: true })
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 12, md: 8 },
-								_react2.default.createElement(
-									'p',
-									{ className: 'cvbigtitle' },
-									'CV '
-								),
-								'(curriculum vitae)',
-								_react2.default.createElement(
-									'p',
-									{ className: 'name' },
-									'Mazurov Aleksander'
-								),
-								_react2.default.createElement(
-									'h3',
-									null,
-									'Latest Activity'
-								)
-							)
-						),
-						htmlitem
+							htmlitem
+						)
 					)
 				);
 			}
@@ -489,17 +453,216 @@ webpackJsonp([0],{
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+	  padding: '10px 20px',
+	  overflow: 'hidden',
+	  background: dark
+	  //  color: light
+	};
+
+	styles.link = {
+	  padding: 11,
+	  color: light,
+	  fontWeight: 200
+	};
+
+	styles.activeLink = {
+
+	  background: light,
+	  color: dark
+	};
+
+	var Head = function (_React$Component) {
+	  _inherits(Head, _React$Component);
+
+	  function Head(props, context) {
+	    _classCallCheck(this, Head);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Head).call(this, props, context));
+	  }
+
+	  _createClass(Head, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      console.log("Didmount Head", this.props);
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(prevProps) {
+	      //		console.log("Head componentWillUpdate",prevProps)	
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps) {
+
+	      //		console.log("Head componentDidUpdate",prevProps)
+
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      //    const { user } = this.props
+	      var link = '/jobs';
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: styles.wrapper },
+	        _react2.default.createElement(
+	          _reactBootstrap.Well,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Row,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 3 },
+	              _react2.default.createElement(_reactBootstrap.Image, { src: '/img/freelancer_transp.png', responsive: true })
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 7 },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                'Professional Programming'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 2 },
+	              _react2.default.createElement(_reactBootstrap.Image, { src: '/img/free_for_job.png', responsive: true })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Row,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 4 },
+	              _react2.default.createElement(_reactBootstrap.Image, { src: '/img/mazurov.jpg', thumbnail: true, responsive: true })
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 6 },
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'cvbigtitle' },
+	                'CV '
+	              ),
+	              '(curriculum vitae)',
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'name' },
+	                'Mazurov Aleksander'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 2 },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: link },
+	                _react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+	              ),
+	              _react2.default.createElement(
+	                'h4',
+	                null,
+	                'Work Experience'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Head;
+	}(_react2.default.Component);
+
+	//GlobalNav.defaultProps = {
+	//  user: {
+	//    id: 1,
+	//    name: 'Ryan Florence'
+	//  }
+	//}
+
+	exports.default = Head;
+
+/***/ },
+
+/***/ 472:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'jobs',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(1, function (require) {
+							cb(null, __webpack_require__(473));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 475:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	module.exports = {
 			path: ':id',
 
 			getChildRoutes: function getChildRoutes(location, cb) {
-					__webpack_require__.e/* nsure */(1, function (require) {
-							cb(null, [__webpack_require__(472)]);
+					__webpack_require__.e/* nsure */(2, function (require) {
+							cb(null, [__webpack_require__(476)]);
 					});
 			},
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(3/* empty */, function (require) {
-							cb(null, __webpack_require__(474));
+					__webpack_require__.e/* nsure */(4, function (require) {
+							cb(null, __webpack_require__(479));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
 							//		        	main: require('./components/Details'),

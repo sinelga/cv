@@ -49,19 +49,16 @@ class GlobalNav extends React.Component {
           <Link to="/messages" style={styles.link} activeStyle={styles.activeLink}>Messages</Link>{' '}
          
         </div>
-        <div style={{ float: 'right' }}>
-          <Link style={styles.link} to="/profile">{user.name}</Link> <button onClick={this.logOut}>log out</button>
-        </div>
       </div>
     )
   }
 }
 
-GlobalNav.defaultProps = {
-  user: {
-    id: 1,
-    name: 'Ryan Florence'
-  }
-}
+//GlobalNav.defaultProps = {
+//  user: {
+//    id: 1,
+//    name: 'Ryan Florence'
+//  }
+//}
 
 export default GlobalNav

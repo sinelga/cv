@@ -1,6 +1,6 @@
-webpackJsonp([1],{
+webpackJsonp([5],{
 
-/***/ 473:
+/***/ 479:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23,7 +23,7 @@ webpackJsonp([1],{
 
 	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
 
-	var _JobsDashboard = __webpack_require__(474);
+	var _JobsDashboard = __webpack_require__(480);
 
 	var _JobsDashboard2 = _interopRequireDefault(_JobsDashboard);
 
@@ -48,6 +48,13 @@ webpackJsonp([1],{
 		background: dark
 		//  color: light
 	};
+	//var baseRef
+	////var title ='not define'
+	//	
+	//var dblink='https://cv-mazurov.firebaseio.com/'
+	//		
+	//baseRef = new Firebase(dblink);	
+	//var item={}
 
 	var Jobs = function (_React$Component) {
 		_inherits(Jobs, _React$Component);
@@ -58,7 +65,7 @@ webpackJsonp([1],{
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Jobs).call(this, props));
 
 			_this.state = {
-				data: []
+				data: {}
 
 			};
 			return _this;
@@ -80,26 +87,16 @@ webpackJsonp([1],{
 			value: function componentDidMount() {
 				//		console.log("Didmount Details")
 
-				var request = new XMLHttpRequest();
-				request.open('GET', '/jobs.json', true);
+				//			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
+				//
+				//			snapshot.forEach(function(vdata) {
+				//				
+				//				this.setState({data: vdata.val()})
+				////				title = vdata.val().title
+				//															
+				//			}.bind(this));
+				//		}.bind(this))
 
-				request.onload = function () {
-					if (request.status >= 200 && request.status < 400) {
-						// Success!			 
-						var data = JSON.parse(request.responseText);
-						console.log(data.jobs[0].item);
-						this.setState({ data: data.jobs[0].item });
-					} else {
-						// We reached our target server, but it returned an error
-
-					}
-				}.bind(this);
-
-				request.onerror = function () {
-					// There was a connection error of some sort
-				};
-
-				request.send();
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -147,7 +144,7 @@ webpackJsonp([1],{
 							_react2.default.createElement(
 								'h1',
 								null,
-								'Work Expirience'
+								'Work'
 							),
 							this.props.children || _react2.default.createElement(_JobsDashboard2.default, { data: this.state.data })
 						)
@@ -163,7 +160,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 474:
+/***/ 480:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -210,7 +207,7 @@ webpackJsonp([1],{
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobsDashboard).call(this, props));
 
 			_this.state = {
-				data: []
+				data: {}
 
 			};
 
@@ -243,9 +240,9 @@ webpackJsonp([1],{
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				console.log("DetailsDashboard  receive props", nextProps.data);
+				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
-				this.setState({ data: nextProps.data });
+				//		this.setState({data: nextProps.data})
 				//		console.log(this.props)
 			}
 		}, {
@@ -253,24 +250,6 @@ webpackJsonp([1],{
 			value: function render() {
 
 				var htmlListItems = [];
-
-				console.log(this.state.data);
-
-				//		  if (this.state.data.jobs[0].item !== "undefined"){
-
-				this.state.data.map(function (data) {
-
-					console.log(data);
-				});
-
-				//		  }
-
-				//		  this.state.data.jobs[0].item.map(function(data) {
-				//			
-				//			  console.log(data)
-				//			 
-				//		  })
-
 				//		  var imgListItems =[]
 
 				//		  if (this.state.data.items !== undefined) {

@@ -1,6 +1,6 @@
-webpackJsonp([1],{
+webpackJsonp([4],{
 
-/***/ 473:
+/***/ 479:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19,13 +19,17 @@ webpackJsonp([1],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
 	var _reactStarRating = __webpack_require__(470);
 
 	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
 
-	var _JobsDashboard = __webpack_require__(474);
+	var _DetailsDashboard = __webpack_require__(480);
 
-	var _JobsDashboard2 = _interopRequireDefault(_JobsDashboard);
+	var _DetailsDashboard2 = _interopRequireDefault(_DetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,7 +39,6 @@ webpackJsonp([1],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	//import DocumentMeta from 'react-document-meta'
-	//import Firebase from 'firebase'
 
 
 	var dark = 'hsl(200, 20%, 20%)';
@@ -48,23 +51,30 @@ webpackJsonp([1],{
 		background: dark
 		//  color: light
 	};
+	var baseRef;
+	//var title ='not define'
 
-	var Jobs = function (_React$Component) {
-		_inherits(Jobs, _React$Component);
+	var dblink = 'https://cv-mazurov.firebaseio.com/';
 
-		function Jobs(props) {
-			_classCallCheck(this, Jobs);
+	baseRef = new _firebase2.default(dblink);
+	//var item={}
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Jobs).call(this, props));
+	var Details = function (_React$Component) {
+		_inherits(Details, _React$Component);
+
+		function Details(props) {
+			_classCallCheck(this, Details);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
 
 			_this.state = {
-				data: []
+				data: {}
 
 			};
 			return _this;
 		}
 
-		_createClass(Jobs, [{
+		_createClass(Details, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
@@ -80,26 +90,14 @@ webpackJsonp([1],{
 			value: function componentDidMount() {
 				//		console.log("Didmount Details")
 
-				var request = new XMLHttpRequest();
-				request.open('GET', '/jobs.json', true);
+				baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function (snapshot) {
 
-				request.onload = function () {
-					if (request.status >= 200 && request.status < 400) {
-						// Success!			 
-						var data = JSON.parse(request.responseText);
-						console.log(data.jobs[0].item);
-						this.setState({ data: data.jobs[0].item });
-					} else {
-						// We reached our target server, but it returned an error
+					snapshot.forEach(function (vdata) {
 
-					}
-				}.bind(this);
-
-				request.onerror = function () {
-					// There was a connection error of some sort
-				};
-
-				request.send();
+						this.setState({ data: vdata.val() });
+						//				title = vdata.val().title
+					}.bind(this));
+				}.bind(this));
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -123,7 +121,7 @@ webpackJsonp([1],{
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
 
-				//		baseRef.off()
+				baseRef.off();
 				//		baseRefClients.off()
 			}
 		}, {
@@ -147,23 +145,23 @@ webpackJsonp([1],{
 							_react2.default.createElement(
 								'h1',
 								null,
-								'Work Expirience'
+								'Details'
 							),
-							this.props.children || _react2.default.createElement(_JobsDashboard2.default, { data: this.state.data })
+							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
 						)
 					)
 				);
 			}
 		}]);
 
-		return Jobs;
+		return Details;
 	}(_react2.default.Component);
 
-	module.exports = Jobs;
+	module.exports = Details;
 
 /***/ },
 
-/***/ 474:
+/***/ 480:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -201,23 +199,23 @@ webpackJsonp([1],{
 	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
 	var title = '';
 
-	var JobsDashboard = function (_React$Component) {
-		_inherits(JobsDashboard, _React$Component);
+	var DetailsDashboard = function (_React$Component) {
+		_inherits(DetailsDashboard, _React$Component);
 
-		function JobsDashboard(props) {
-			_classCallCheck(this, JobsDashboard);
+		function DetailsDashboard(props) {
+			_classCallCheck(this, DetailsDashboard);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobsDashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailsDashboard).call(this, props));
 
 			_this.state = {
-				data: []
+				data: {}
 
 			};
 
 			return _this;
 		}
 
-		_createClass(JobsDashboard, [{
+		_createClass(DetailsDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 
@@ -243,7 +241,7 @@ webpackJsonp([1],{
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				console.log("DetailsDashboard  receive props", nextProps.data);
+				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
 				this.setState({ data: nextProps.data });
 				//		console.log(this.props)
@@ -253,48 +251,70 @@ webpackJsonp([1],{
 			value: function render() {
 
 				var htmlListItems = [];
-
-				console.log(this.state.data);
-
-				//		  if (this.state.data.jobs[0].item !== "undefined"){
-
-				this.state.data.map(function (data) {
-
-					console.log(data);
-				});
-
-				//		  }
-
-				//		  this.state.data.jobs[0].item.map(function(data) {
-				//			
-				//			  console.log(data)
-				//			 
-				//		  })
-
 				//		  var imgListItems =[]
 
-				//		  if (this.state.data.items !== undefined) {
-				//			  var link = this.state.data.link
-				//	         
-				//			  title = this.state.data.title
-				//			  console.log(title)
-				//			  this.state.data.items.map(function(data) {
-				//				  let imglink = "img/"+link+"/"+data.img
-				//				  let outlink ="/"+link+"/"+ data.link
-				//				  let duration =''
-				//				 
-				//				  if (data.duration === 1) {
-				//					  duration =data.duration+' year'
-				//				  }	else {
-				//					  duration =data.duration+' years'
-				//				  } 
-				//				  	 
-				//				  var key =data.id
-				//				  htmlListItems.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={4}><h2>{data.item}</h2> <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={20}/></Col><Col xs={6} md={1}><p>{duration}</p></Col><Col xs={6} md={3}>{data.extra}</Col><Col xs={6} md={2}><Link to={outlink}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-				//				 
-				//			  })		 
-				//			 
-				//		  }
+				if (this.state.data.items !== undefined) {
+					var link = this.state.data.link;
+
+					title = this.state.data.title;
+					console.log(title);
+					this.state.data.items.map(function (data) {
+						var imglink = "img/" + link + "/" + data.img;
+						var outlink = "/" + link + "/" + data.link;
+						var duration = '';
+
+						if (data.duration === 1) {
+							duration = data.duration + ' year';
+						} else {
+							duration = data.duration + ' years';
+						}
+
+						var key = data.id;
+						htmlListItems.push(_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 4 },
+								_react2.default.createElement(
+									'h2',
+									null,
+									data.item
+								),
+								' ',
+								_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 20 })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 1 },
+								_react2.default.createElement(
+									'p',
+									null,
+									duration
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 3 },
+								data.extra
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: outlink },
+									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+								)
+							)
+						));
+					});
+				}
 
 				return _react2.default.createElement(
 					'div',
@@ -302,16 +322,17 @@ webpackJsonp([1],{
 					_react2.default.createElement(
 						'h2',
 						null,
-						' JobsDashbord'
-					)
+						' DetailsDashbord'
+					),
+					htmlListItems
 				);
 			}
 		}]);
 
-		return JobsDashboard;
+		return DetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = JobsDashboard;
+	exports.default = DetailsDashboard;
 
 /***/ }
 

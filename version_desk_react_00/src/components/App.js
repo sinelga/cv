@@ -3,6 +3,7 @@ import {Grid} from 'react-bootstrap'
 import DocumentMeta from 'react-document-meta'
 import GlobalNav from './GlobalNav'
 import Dashboard from './Dashboard'
+import Head from './Head'
 
 
 
@@ -44,6 +45,7 @@ class App extends React.Component {
       <DocumentMeta {...meta} />	 
       <GlobalNav />
       <Grid>
+      	<Head />
       	{this.props.children || <Dashboard  />} 
       	
       	 

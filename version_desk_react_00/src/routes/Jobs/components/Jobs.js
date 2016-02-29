@@ -3,9 +3,9 @@ import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGrou
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import DocumentMeta from 'react-document-meta'
-import Firebase from 'firebase'
+//import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
-import DetailsDashboard from './DetailsDashboard'
+import JobsDashboard from './JobsDashboard'
 
 
 const dark = 'hsl(200, 20%, 20%)'
@@ -18,19 +18,13 @@ const dark = 'hsl(200, 20%, 20%)'
 	  background: dark
 	//  color: light
 	}
-var baseRef
-//var title ='not define'
-	
-var dblink='https://cv-mazurov.firebaseio.com/'
-		
-baseRef = new Firebase(dblink);	
-//var item={}
-class Details extends React.Component {
+
+class Jobs extends React.Component {
 
 	constructor(props){
 	  super(props);
 	  this.state = {
-	    data: {}
+	    data: []
 
 	   }
 	}
@@ -50,16 +44,27 @@ class Details extends React.Component {
 	componentDidMount(){
 //		console.log("Didmount Details")
 		
-			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
-
-			snapshot.forEach(function(vdata) {
-				
-				this.setState({data: vdata.val()})
-//				title = vdata.val().title
-															
-			}.bind(this));
-		}.bind(this))
+		var request = new XMLHttpRequest();
+		request.open('GET', '/jobs.json', true);
 		
+		request.onload = function() {
+			  if (request.status >= 200 && request.status < 400) {
+			    // Success!			  
+			    var data = JSON.parse(request.responseText);
+			    console.log(data.jobs[0].item)
+			    this.setState({data: data.jobs[0].item});
+			    
+			  } else {
+			    // We reached our target server, but it returned an error
+
+			  }
+			}.bind(this);
+
+			request.onerror = function() {
+			  // There was a connection error of some sort
+			};
+
+			request.send();	
 		
 		
 	}
@@ -84,7 +89,7 @@ class Details extends React.Component {
 
 	 componentWillUnmount(){		 
 
-		baseRef.off()
+//		baseRef.off()
 //		baseRefClients.off()
 	 } 
   render() {
@@ -95,10 +100,10 @@ class Details extends React.Component {
       <div style={styles.wrapper}> 
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-      	<h1>Details</h1>
+      	<h1>Work Expirience</h1>
      
       
-      	{this.props.children || <DetailsDashboard data={this.state.data} />}
+      	{this.props.children || <JobsDashboard data={this.state.data} />}
       
       </Well>
       
@@ -109,4 +114,4 @@ class Details extends React.Component {
 
 }
 
-module.exports = Details
+module.exports = Jobs

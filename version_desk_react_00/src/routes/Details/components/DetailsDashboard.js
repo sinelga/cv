@@ -21,19 +21,19 @@ class DetailsDashboard extends React.Component {
 
 	componentDidMount(){
 		
-		console.log("DetailsDashboard componentDidMount")
+//		console.log("DetailsDashboard componentDidMount")
 //		this.setState({languages: this.languages})
 						
 	}	
 	
 	componentWillUpdate(prevProps) {
-		console.log("DetailsDashboard componentWillUpdate")	
+//		console.log("DetailsDashboard componentWillUpdate")	
 	}
 	
 	
 	componentDidUpdate(prevProps) {
 		
-		console.log("DetailsDashboard componentDidUpdate")
+//		console.log("DetailsDashboard componentDidUpdate")
 					
 	}
 	
@@ -44,15 +44,14 @@ class DetailsDashboard extends React.Component {
 		
 	}
 	componentWillReceiveProps(nextProps){
-		console.log("DetailsDashboard  receive props",nextProps.data.title)
+//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 		
 		this.setState({data: nextProps.data})
 //		console.log(this.props)
 	}
 	
 	render() {
-		
-		  
+				  
 		  var htmlListItems =[]
 //		  var imgListItems =[]
 

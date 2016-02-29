@@ -4,6 +4,18 @@ import {Grid,Image,Row,Col,Well,ListGroup,ListGroupItem} from 'react-bootstrap'
 import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
 
+	const dark = 'hsl(200, 20%, 20%)'
+	const light = '#fff'
+	const styles = {}
+
+	styles.wrapper = {
+	  padding: '10px 20px',
+	  overflow: 'hidden',
+	  background: dark
+	//  color: light
+	}
+
+
 var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
 
 
@@ -75,16 +87,13 @@ class Dashboard extends React.Component {
 
     return (
       <div>
+      <div style={styles.wrapper}>
       	<Well>
-      	<h2>Professional  Programming</h2>
-      	<Row>
-  			<Col xs={6} md={4}><Image src='/img/mazurov.jpg' thumbnail responsive/></Col>
-  			<Col xs={12} md={8}><p className='cvbigtitle'>CV </p>(curriculum vitae)<p className='name'>Mazurov Aleksander</p><h3>Latest Activity</h3></Col>
-  		</Row>
-  	  	
+   	  	
   		{htmlitem}
    
-    	</Well>           
+    	</Well>
+    	</div>
       </div>
     )
   }

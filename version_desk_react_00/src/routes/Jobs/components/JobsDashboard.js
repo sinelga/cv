@@ -5,66 +5,78 @@ import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
 
 //var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
-//var title =''
+var title =''
 
-class MoreDetailsDashboard extends React.Component {
+class JobsDashboard extends React.Component {
 	
 	constructor(props){
 	    super(props);
 	    this.state = {
-	    	data: {}		    	
+	    	data: []	
+
+	    	
 	    }
 
 	}
 
 	componentDidMount(){
 		
-		console.log("MoreDetailsDashboard componentDidMount")
+//		console.log("DetailsDashboard componentDidMount")
 //		this.setState({languages: this.languages})
 						
 	}	
 	
 	componentWillUpdate(prevProps) {
-		console.log("MoreDetailsDashboard componentWillUpdate")	
+//		console.log("DetailsDashboard componentWillUpdate")	
 	}
 	
 	
 	componentDidUpdate(prevProps) {
 		
-		console.log("MoreDetailsDashboard componentDidUpdate")
+//		console.log("DetailsDashboard componentDidUpdate")
 					
 	}
 	
 	
 	
 	componentWillMount(){
-		console.log('MoreDetailsDashboard componentWillMount',this.props)
+
 		
 	}
 	componentWillReceiveProps(nextProps){
-		console.log("MoreDetailsDashboard  receive props",nextProps)
-		let link = nextProps.link
+		console.log("DetailsDashboard  receive props",nextProps.data)
 		
-		console.log(link)
-		
-		nextProps.data.items.map(function(item){
-			
-			if (item.link === link){
-
-				this.setState({data: item})
-			}
-			
-		}.bind(this))
-		
+		this.setState({data: nextProps.data})
+//		console.log(this.props)
 	}
 	
 	render() {
-		
-		console.log(this.state.data)
+				  
+		  var htmlListItems =[]
 		  
-//		  var htmlListItems =[]
-////		  var imgListItems =[]
-//
+		  console.log(this.state.data)
+		  
+//		  if (this.state.data.jobs[0].item !== "undefined"){
+			  
+			  this.state.data.map(function(data) {
+				 
+				  console.log(data)
+				  
+			  })
+			  
+			  
+//		  }
+		  
+//		  this.state.data.jobs[0].item.map(function(data) {
+//			 
+//			  console.log(data)
+//			  
+//		  })
+		  
+		  
+		  
+//		  var imgListItems =[]
+
 //		  if (this.state.data.items !== undefined) {
 //			  var link = this.state.data.link
 //	          
@@ -91,9 +103,9 @@ class MoreDetailsDashboard extends React.Component {
     return (
       <div>
       	
-      	<h2> MoreDetailsDashbord</h2>
+      	<h2> JobsDashbord</h2>
   	  	
-  	     {this.state.data.extra}
+  		
    
     	        
       </div>
@@ -101,4 +113,4 @@ class MoreDetailsDashboard extends React.Component {
   }
 }
 
-export default MoreDetailsDashboard
+export default JobsDashboard
