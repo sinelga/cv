@@ -10,8 +10,10 @@ const rootRoute = {
     path: '/',
     component: require('./components/App'),
     childRoutes: [
-      require('./routes/Jobs'),            	
+      require('./routes/Jobs'),
+      require('./routes/Contacts'),
       require('./routes/Details')
+      
 
     ]
   } ]

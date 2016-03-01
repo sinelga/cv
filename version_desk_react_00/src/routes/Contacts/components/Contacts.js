@@ -1,11 +1,11 @@
 import React from 'react'
-import {Button,Image,Well} from 'react-bootstrap'
+import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import DocumentMeta from 'react-document-meta'
-import Firebase from 'firebase'
-//import StarRating from 'react-star-rating'
-import DetailsDashboard from './DetailsDashboard'
+//import Firebase from 'firebase'
+import StarRating from 'react-star-rating'
+import ContactsDashboard from './ContactsDashboard'
 
 
 const dark = 'hsl(200, 20%, 20%)'
@@ -19,14 +19,12 @@ const dark = 'hsl(200, 20%, 20%)'
 	//  color: light
 	}
 
-var baseRef = new Firebase('https://cv-mazurov.firebaseio.com/');	
-//var item={}
-class Details extends React.Component {
+class Contacts extends React.Component {
 
 	constructor(props){
 	  super(props);
 	  this.state = {
-	    data: {}
+	    data: []
 
 	   }
 	}
@@ -44,16 +42,9 @@ class Details extends React.Component {
 	}	
 	
 	componentDidMount(){
-		
-			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
 
-			snapshot.forEach(function(vdata) {
-				
-				this.setState({data: vdata.val()})
-															
-			}.bind(this));
-		}.bind(this))
-				
+		
+		
 	}
 	
 	
@@ -76,7 +67,7 @@ class Details extends React.Component {
 
 	 componentWillUnmount(){		 
 
-		baseRef.off()
+//		baseRef.off()
 //		baseRefClients.off()
 	 } 
   render() {
@@ -87,9 +78,10 @@ class Details extends React.Component {
       <div style={styles.wrapper}> 
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-      	<h1>Details</h1>     
+      	<h1>Contacts</h1>
+     
       
-      	{this.props.children || <DetailsDashboard data={this.state.data} />}
+      	{this.props.children || <ContactsDashboard data={this.state.data} />}
       
       </Well>
       
@@ -100,4 +92,4 @@ class Details extends React.Component {
 
 }
 
-module.exports = Details
+module.exports = Contacts

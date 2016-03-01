@@ -28,13 +28,13 @@ styles.activeLink = {
 
 class Head extends React.Component {
 
-  constructor(props, context) {
-    super(props, context)
-    
-  }
+//  constructor(props, context) {
+//    super(props, context)
+//    
+//  }
 
 	componentDidMount(){		
-		console.log("Didmount Head",this.props)
+//		console.log("Didmount Head",this.props)
 		
 	}
 	componentWillUpdate(prevProps) {

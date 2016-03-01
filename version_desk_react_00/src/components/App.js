@@ -43,8 +43,9 @@ class App extends React.Component {
     return (
       <div>
       <DocumentMeta {...meta} />	 
-      <GlobalNav />
+      
       <Grid>
+      	<GlobalNav />
       	<Head />
       	{this.props.children || <Dashboard  />} 
       	

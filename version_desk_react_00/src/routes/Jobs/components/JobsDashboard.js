@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import {Grid,Image,Row,Col,Well,ListGroup,ListGroupItem} from 'react-bootstrap'
+import {Grid,Image,Row,Col,Well,ListGroup,ListGroupItem,Table} from 'react-bootstrap'
 import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
 
@@ -13,7 +13,6 @@ class JobsDashboard extends React.Component {
 	    super(props);
 	    this.state = {
 	    	data: []	
-
 	    	
 	    }
 
@@ -44,7 +43,6 @@ class JobsDashboard extends React.Component {
 		
 	}
 	componentWillReceiveProps(nextProps){
-		console.log("DetailsDashboard  receive props",nextProps.data)
 		
 		this.setState({data: nextProps.data})
 //		console.log(this.props)
@@ -52,61 +50,43 @@ class JobsDashboard extends React.Component {
 	
 	render() {
 				  
-		  var htmlListItems =[]
-		  
-		  console.log(this.state.data)
-		  
-//		  if (this.state.data.jobs[0].item !== "undefined"){
-			  
-			  this.state.data.map(function(data) {
-				 
-				  console.log(data)
+		  var htmlTableItems =[]
+		  			  
+		  this.state.data.map(function(data) {
+			let key=data.title+ data.duration 
+			htmlTableItems.push(<tr key={key}>
+			<td>{data.title}</td>
+			<td>{data.duration}</td>
+			<td>{data.position}</td>
+			<td>{data.details}</td>
+			<td>{data.location}</td>
+			<td>{data.country}</td>
+			</tr>) 
 				  
-			  })
+				  
+		  })
 			  
-			  
-//		  }
-		  
-//		  this.state.data.jobs[0].item.map(function(data) {
-//			 
-//			  console.log(data)
-//			  
-//		  })
-		  
-		  
-		  
-//		  var imgListItems =[]
-
-//		  if (this.state.data.items !== undefined) {
-//			  var link = this.state.data.link
-//	          
-//			  title = this.state.data.title
-//			  console.log(title)
-//			  this.state.data.items.map(function(data) {
-//				  let imglink = "img/"+link+"/"+data.img
-//				  let outlink ="/"+link+"/"+ data.link
-//				  let duration =''
-//				  
-//				  if (data.duration === 1) {
-//					  duration =data.duration+' year'
-//				  }	else {
-//					  duration =data.duration+' years'
-//				  }  
-//				  	  
-//				  var key =data.id
-//				  htmlListItems.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={4}><h2>{data.item}</h2> <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={20}/></Col><Col xs={6} md={1}><p>{duration}</p></Col><Col xs={6} md={3}>{data.extra}</Col><Col xs={6} md={2}><Link to={outlink}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-//				  
-//			  })		  
-//			  
-//		  }
 
     return (
       <div>
       	
       	<h2> JobsDashbord</h2>
-  	  	
-  		
-   
+      	<Table responsive>
+      		<thead>
+      			<tr>
+      			<th>Company</th>
+      			<th>Duration</th>
+      			<th>Position</th>
+      			<th>Details</th>
+      			<th>Location</th>
+      			<th>Country</th>
+      			</tr>
+      		</thead>
+      		<tbody>
+      			{htmlTableItems}
+      		</tbody>
+      	</Table>
+      	   
     	        
       </div>
     )
