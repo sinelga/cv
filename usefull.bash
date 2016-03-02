@@ -1,3 +1,12 @@
+ git init cv
+ 
+ cd cv/
+ git remote add -f origin https://github.com/sinelga/cv.git
+ git config core.sparseCheckout true
+ echo "version_desk_react_00/" >> .git/info/sparse-checkout
+ git pull origin master
+ 
+
 live-server --no-browser --entry-file=index.html
 
 mkdir version_desk_react_00
