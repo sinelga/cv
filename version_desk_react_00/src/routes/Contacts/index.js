@@ -1,5 +1,5 @@
 module.exports = {
-		  path: 'contacts',
+		  path: 'contacts.html',
 				
 //		  getChildRoutes(location, cb) {
 //		    require.ensure([], (require) => {

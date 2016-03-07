@@ -1,5 +1,5 @@
 module.exports = {
-		  path: 'jobs',
+		  path: 'jobs.html',
 				
 //		  getChildRoutes(location, cb) {
 //		    require.ensure([], (require) => {

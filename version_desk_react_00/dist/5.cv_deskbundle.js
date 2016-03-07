@@ -83,7 +83,8 @@ webpackJsonp([5],{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 
-				baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function (snapshot) {
+				var idlink = this.props.params.id.split(".")[0];
+				baseRef.orderByChild("link").equalTo(idlink).on("value", function (snapshot) {
 
 					snapshot.forEach(function (vdata) {
 
@@ -252,7 +253,7 @@ webpackJsonp([5],{
 					console.log(title);
 					this.state.data.items.map(function (data) {
 						var imglink = "img/" + link + "/" + data.img;
-						var outlink = "/" + link + "/" + data.link;
+						var outlink = "/" + link + "/" + data.link + ".html";
 						var duration = '';
 
 						if (data.duration === 1) {

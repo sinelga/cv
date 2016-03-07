@@ -42,8 +42,8 @@ class MoreDetailsDashboard extends React.Component {
 		
 	}
 	componentWillReceiveProps(nextProps){
-		console.log("MoreDetailsDashboard  receive props",nextProps)
-		let link = nextProps.link
+//		console.log("MoreDetailsDashboard  receive props",nextProps)
+		let link = nextProps.link.split(".")[0]
 		
 		console.log(link)
 		
@@ -60,7 +60,7 @@ class MoreDetailsDashboard extends React.Component {
 	
 	render() {
 		
-		console.log(this.state.data)
+//		console.log(this.state.data)
 		  
 //		  var htmlListItems =[]
 ////		  var imgListItems =[]

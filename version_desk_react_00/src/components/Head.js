@@ -51,7 +51,7 @@ class Head extends React.Component {
 	
   render() {
 //    const { user } = this.props
-    let link = '/jobs'
+    let link = '/jobs.html'
 
     return (
       <div style={styles.wrapper}>

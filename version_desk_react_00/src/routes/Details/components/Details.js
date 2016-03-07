@@ -38,14 +38,14 @@ class Details extends React.Component {
 		
 	componentWillMount(){
 //		console.log("Willmount Details",this.props.params.id)
-
 		
 
 	}	
 	
 	componentDidMount(){
-		
-			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
+		   
+		   var idlink =this.props.params.id.split(".")[0]
+			baseRef.orderByChild("link").equalTo(idlink).on("value", function(snapshot) {
 
 			snapshot.forEach(function(vdata) {
 				

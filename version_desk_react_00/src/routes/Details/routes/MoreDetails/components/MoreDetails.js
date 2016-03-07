@@ -29,7 +29,7 @@ class MoreDetails extends React.Component {
 	}
 		
 	componentWillMount(){
-		console.log("Willmount MoreDetails",this.props.params.id)
+//		console.log("Willmount MoreDetails",this.props.params.id)
 		
 //		var dblink='https://cv-mazurov.firebaseio.com/'
 //						
@@ -49,8 +49,10 @@ class MoreDetails extends React.Component {
 	}	
 	
 	componentDidMount(){		
-		console.log("Didmount MoreDetails",this.props.params.id,this.props.params.moredetail)
-		
+//		console.log("Didmount MoreDetails",this.props.params.id,this.props.params.moredetail)
+//		 	var idlink =this.props.params.id.split(".")[0]
+//		 	console.log(this.props.params.id)
+//		 	console.log("idlink",this.props.params.id)
 			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
 
 			snapshot.forEach(function(vdata) {

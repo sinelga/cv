@@ -62,7 +62,7 @@ class DetailsDashboard extends React.Component {
 			  console.log(title)
 			  this.state.data.items.map(function(data) {
 				  let imglink = "img/"+link+"/"+data.img
-				  let outlink ="/"+link+"/"+ data.link
+				  let outlink ="/"+link+"/"+ data.link+".html"
 				  let duration =''
 				  
 				  if (data.duration === 1) {

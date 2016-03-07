@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
 			htmlitem.push(<h2>{item_obj.title}</h2>)
 			
 			var imglink = '/img/'+item_obj.img
-			var link ='/'+item_obj.link
+			var link ='/'+item_obj.link+".html"
 
 			htmlitem.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={8}><ListGroup>{htmlListItems}</ListGroup></Col><Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
 	

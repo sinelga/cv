@@ -42,8 +42,8 @@ class GlobalNav extends React.Component {
       <div style={styles.wrapper}>
         <div style={{ float: 'left' }}>
           <Link to="/" style={styles.link}>Home</Link>{' '}
-          <Link to="/jobs" style={styles.link} activeStyle={styles.activeLink}>Work Expirience</Link>{' '}
-          <Link to="/contacts" style={styles.link} activeStyle={styles.activeLink}>Contact</Link>{' '}
+          <Link to="/jobs.html" style={styles.link} activeStyle={styles.activeLink}>Work Expirience</Link>{' '}
+          <Link to="/contacts.html" style={styles.link} activeStyle={styles.activeLink}>Contact</Link>{' '}
          
         </div>
       </div>
