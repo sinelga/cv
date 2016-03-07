@@ -4,7 +4,7 @@
  git remote add -f origin https://github.com/sinelga/cv.git
  git config core.sparseCheckout true
  echo "version_desk_react_00/" >> .git/info/sparse-checkout
- git pull origin master
+ git pull --depth=1 origin master
  
 
 live-server --no-browser --entry-file=index.html
@@ -21,7 +21,7 @@ cd version_desk_react_00
 npm install react react-bootstrap react-document-meta react-dom react-router --save
 
 
-mkdir dist src
+mkdir dist src links
 
 .babelrc
 {
