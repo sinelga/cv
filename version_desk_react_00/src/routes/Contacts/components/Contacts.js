@@ -2,8 +2,6 @@ import React from 'react'
 import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
-//import DocumentMeta from 'react-document-meta'
-//import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
 import ContactsDashboard from './ContactsDashboard'
 
@@ -24,7 +22,7 @@ class Contacts extends React.Component {
 	constructor(props){
 	  super(props);
 	  this.state = {
-	    data: []
+	    data: {}
 
 	   }
 	}
@@ -42,13 +40,31 @@ class Contacts extends React.Component {
 	}	
 	
 	componentDidMount(){
-
 		
+		var request = new XMLHttpRequest();
+		request.open('GET', '/www/remotejob.work/contacts/contacts.html.json', true);
+		
+		request.onload = function() {
+			  if (request.status >= 200 && request.status < 400) {
+			    // Success!			  
+			    var data = JSON.parse(request.responseText);
+//			    console.log(data)
+			    this.setState({data: data});
+			    
+			  } else {
+			    // We reached our target server, but it returned an error
+
+			  }
+			}.bind(this);
+
+			request.onerror = function() {
+			  // There was a connection error of some sort
+			};
+
+			request.send();	
 		
 	}
-	
-	
-	
+			
 	componentWillReceiveProps(){
 //		console.log("componentWillReceiveProps Details",this.props.params)
 
@@ -67,25 +83,28 @@ class Contacts extends React.Component {
 
 	 componentWillUnmount(){		 
 
-//		baseRef.off()
-//		baseRefClients.off()
 	 } 
   render() {
-	  
+	
+	var contents = this.state.data.Contents
+	console.log(contents)
 	  	  
     return (
-      <div>
-      <div style={styles.wrapper}> 
+      <div id="container">
+     
+      <div style={styles.wrapper}>
+      
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
       	<h1>Contacts</h1>
-     
-      
-      	{this.props.children || <ContactsDashboard data={this.state.data} />}
+           
+      	{this.props.children || <ContactsDashboard  />}
       
       </Well>
       
-  		</div>   	
+  		</div>
+  		<div id="background"> {contents}</div>
+  		
       </div>
     )
   }

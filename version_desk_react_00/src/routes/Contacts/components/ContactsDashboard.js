@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {Table} from 'react-bootstrap'
-//import Firebase from 'firebase'
-//import StarRating from 'react-star-rating'
 import FontAwesome from 'react-fontawesome'
 
 class ContactsDashboard extends React.Component {
