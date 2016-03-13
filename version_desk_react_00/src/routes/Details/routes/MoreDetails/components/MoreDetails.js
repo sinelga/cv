@@ -18,7 +18,8 @@ class MoreDetails extends React.Component {
 	constructor(props){
 	  super(props);
 	  this.state = {
-	    data: {}
+	    data: {},
+	    mark: {}
 
 	   }
 	}
@@ -29,45 +30,51 @@ class MoreDetails extends React.Component {
 	}
 		
 	componentWillMount(){
-//		console.log("Willmount MoreDetails",this.props.params.id)
-		
-//		var dblink='https://cv-mazurov.firebaseio.com/'
-//						
-//		baseRef = new Firebase(dblink);
-//		
-//		baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
-//
-//			snapshot.forEach(function(vdata) {
-//				
-//				this.setState({data: vdata.val()})
-//							
-//								
-//			}.bind(this));
-//		}.bind(this))
-		
+
 
 	}	
 	
 	componentDidMount(){		
-//		console.log("Didmount MoreDetails",this.props.params.id,this.props.params.moredetail)
-//		 	var idlink =this.props.params.id.split(".")[0]
-//		 	console.log(this.props.params.id)
-//		 	console.log("idlink",this.props.params.id)
+			
+//		console.log(this.props.params)
+		var jsonlink = '/www/remotejob.work/'+this.props.params.id+'/'+this.props.params.moredetail.split(".")[0]+'/'+this.props.params.moredetail+'.json'
+		console.log(jsonlink)
+		
+		var requestm = new XMLHttpRequest();
+		requestm.open('GET', jsonlink, true);
+		
+		requestm.onload = function() {
+			  if (requestm.status >= 200 && requestm.status < 400) {
+			    		  
+			    var data = JSON.parse(requestm.responseText);
+			    console.log(data)
+			    this.setState({mark: data});
+			    
+			  } else {
+			    
+
+			  }
+			}.bind(this);
+
+			requestm.onerror = function() {
+			 
+			};
+
+			requestm.send();
+						
 			baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function(snapshot) {
 
 			snapshot.forEach(function(vdata) {
 				
 				this.setState({data: vdata.val()})
 				
-							
-								
 			}.bind(this));
 		}.bind(this))
 						   
 	}
 	
 	componentWillReceiveProps(){
-		console.log("componentWillReceiveProps Details",this.props.params)
+//		console.log("componentWillReceiveProps Details",this.props.params)
 
 	}
 	
@@ -89,13 +96,14 @@ class MoreDetails extends React.Component {
 	 } 
   render() {
 	  
-
+	var contents = this.state.mark.Contents
+//	console.log("contents more detals",contents)
 	  	  
     return (
       <div>
  
       <MoreDetailsDashboard data={this.state.data} link={this.props.params.moredetail} />
-  		   	
+      <div id="background"> {contents}</div>
       </div>
     )
   }

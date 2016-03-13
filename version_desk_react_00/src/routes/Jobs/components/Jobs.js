@@ -2,8 +2,6 @@ import React from 'react'
 import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
-//import DocumentMeta from 'react-document-meta'
-//import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
 import JobsDashboard from './JobsDashboard'
 
@@ -24,7 +22,8 @@ class Jobs extends React.Component {
 	constructor(props){
 	  super(props);
 	  this.state = {
-	    data: []
+	    data: [],
+	    mark: {}
 
 	   }
 	}
@@ -51,7 +50,7 @@ class Jobs extends React.Component {
 			  if (request.status >= 200 && request.status < 400) {
 			    // Success!			  
 			    var data = JSON.parse(request.responseText);
-			    console.log(data.jobs[0].item)
+//			    console.log(data.jobs[0].item)
 			    this.setState({data: data.jobs[0].item});
 			    
 			  } else {
@@ -64,8 +63,29 @@ class Jobs extends React.Component {
 			  // There was a connection error of some sort
 			};
 
-			request.send();	
-		
+			request.send();
+			
+			var requestm = new XMLHttpRequest();
+			requestm.open('GET', '/www/remotejob.work/jobs/jobs.html.json', true);
+			
+			requestm.onload = function() {
+				  if (requestm.status >= 200 && requestm.status < 400) {
+				    // Success!			  
+				    var data = JSON.parse(requestm.responseText);
+//				    console.log(data)
+				    this.setState({mark: data});
+				    
+				  } else {
+				    // We reached our target server, but it returned an error
+
+				  }
+				}.bind(this);
+
+				requestm.onerror = function() {
+				  // There was a connection error of some sort
+				};
+
+				requestm.send();			
 		
 	}
 	
@@ -94,7 +114,8 @@ class Jobs extends React.Component {
 	 } 
   render() {
 	  
-	  	  
+	var contents = this.state.mark.Contents
+//	console.log(contents)
     return (
       <div>
       <div style={styles.wrapper}> 
@@ -107,7 +128,8 @@ class Jobs extends React.Component {
       
       </Well>
       
-  		</div>   	
+  		</div>
+  		<div id="background"> {contents}</div>
       </div>
     )
   }

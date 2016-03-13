@@ -12,42 +12,49 @@ class MoreDetailsDashboard extends React.Component {
 	constructor(props){
 	    super(props);
 	    this.state = {
-	    	data: {}		    	
+	    	data: {},
+	    	mark: {}
 	    }
 
 	}
 
 	componentDidMount(){
-		
-		console.log("MoreDetailsDashboard componentDidMount")
+//		console.log(this.props.params)
+//		console.log("MoreDetailsDashboard componentDidMount")
 //		this.setState({languages: this.languages})
 						
 	}	
 	
 	componentWillUpdate(prevProps) {
-		console.log("MoreDetailsDashboard componentWillUpdate")	
+//		console.log("MoreDetailsDashboard componentWillUpdate")	
 	}
 	
 	
 	componentDidUpdate(prevProps) {
 		
-		console.log("MoreDetailsDashboard componentDidUpdate")
+//		console.log("MoreDetailsDashboard componentDidUpdate")
 					
 	}
 	
 	
 	
 	componentWillMount(){
-		console.log('MoreDetailsDashboard componentWillMount',this.props)
+//		console.log('MoreDetailsDashboard componentWillMount',this.props)
 		
 	}
 	componentWillReceiveProps(nextProps){
 //		console.log("MoreDetailsDashboard  receive props",nextProps)
-		let link = nextProps.link.split(".")[0]
+		if ( nextProps.data.items === undefined) {
+			
+//			console.log("NO items")
+			
+		} else {
+			
+//			console.log("OK items")
+			
+			let link = nextProps.link.split(".")[0]
 		
-		console.log(link)
-		
-		nextProps.data.items.map(function(item){
+			nextProps.data.items.map(function(item){
 			
 			if (item.link === link){
 
@@ -55,38 +62,26 @@ class MoreDetailsDashboard extends React.Component {
 			}
 			
 		}.bind(this))
+			
+			
+			
+		}
+		
+//		let link = nextProps.link.split(".")[0]
+//		
+//		nextProps.data.items.map(function(item){
+//			
+//			if (item.link === link){
+//
+//				this.setState({data: item})
+//			}
+//			
+//		}.bind(this))
 		
 	}
 	
 	render() {
 		
-//		console.log(this.state.data)
-		  
-//		  var htmlListItems =[]
-////		  var imgListItems =[]
-//
-//		  if (this.state.data.items !== undefined) {
-//			  var link = this.state.data.link
-//	          
-//			  title = this.state.data.title
-//			  console.log(title)
-//			  this.state.data.items.map(function(data) {
-//				  let imglink = "img/"+link+"/"+data.img
-//				  let outlink ="/"+link+"/"+ data.link
-//				  let duration =''
-//				  
-//				  if (data.duration === 1) {
-//					  duration =data.duration+' year'
-//				  }	else {
-//					  duration =data.duration+' years'
-//				  }  
-//				  	  
-//				  var key =data.id
-//				  htmlListItems.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={4}><h2>{data.item}</h2> <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={20}/></Col><Col xs={6} md={1}><p>{duration}</p></Col><Col xs={6} md={3}>{data.extra}</Col><Col xs={6} md={2}><Link to={outlink}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-//				  
-//			  })		  
-//			  
-//		  }
 
     return (
       <div>

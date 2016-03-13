@@ -87,7 +87,7 @@ class Contacts extends React.Component {
   render() {
 	
 	var contents = this.state.data.Contents
-	console.log(contents)
+//	console.log(contents)
 	  	  
     return (
       <div id="container">

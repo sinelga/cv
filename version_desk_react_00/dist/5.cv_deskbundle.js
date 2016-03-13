@@ -62,7 +62,8 @@ webpackJsonp([5],{
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
 
 			_this.state = {
-				data: {}
+				data: {},
+				mark: {}
 
 			};
 			return _this;
@@ -82,8 +83,36 @@ webpackJsonp([5],{
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-
 				var idlink = this.props.params.id.split(".")[0];
+
+				//		console.log(this.props.params)
+
+				if (this.props.params.moredetail === undefined) {
+
+					var jsonlink = '/www/remotejob.work/' + idlink + '/' + idlink + '.html.json';
+					console.log(jsonlink);
+
+					var requestm = new XMLHttpRequest();
+					requestm.open('GET', jsonlink, true);
+
+					requestm.onload = function () {
+						if (requestm.status >= 200 && requestm.status < 400) {
+							// Success!			 
+							var data = JSON.parse(requestm.responseText);
+							this.setState({ mark: data });
+						} else {
+							// We reached our target server, but it returned an error
+
+						}
+					}.bind(this);
+
+					requestm.onerror = function () {
+						// There was a connection error of some sort
+					};
+
+					requestm.send();
+				}
+
 				baseRef.orderByChild("link").equalTo(idlink).on("value", function (snapshot) {
 
 					snapshot.forEach(function (vdata) {
@@ -120,6 +149,7 @@ webpackJsonp([5],{
 		}, {
 			key: 'render',
 			value: function render() {
+				var contents = this.state.mark.Contents;
 
 				return _react2.default.createElement(
 					'div',
@@ -142,6 +172,12 @@ webpackJsonp([5],{
 							),
 							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
 						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ id: 'background' },
+						' ',
+						contents
 					)
 				);
 			}

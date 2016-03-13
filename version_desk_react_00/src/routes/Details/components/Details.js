@@ -26,7 +26,8 @@ class Details extends React.Component {
 	constructor(props){
 	  super(props);
 	  this.state = {
-	    data: {}
+	    data: {},
+	    mark: {}
 
 	   }
 	}
@@ -43,8 +44,38 @@ class Details extends React.Component {
 	}	
 	
 	componentDidMount(){
+		var idlink =this.props.params.id.split(".")[0]
+
+//		console.log(this.props.params)
+
+		if ( this.props.params.moredetail === undefined) { 
+		
+		
+		var jsonlink = '/www/remotejob.work/'+idlink+'/'+idlink+'.html.json'
+		console.log(jsonlink)
+		
+		var requestm = new XMLHttpRequest();
+		requestm.open('GET', jsonlink, true);
+		
+		requestm.onload = function() {
+			  if (requestm.status >= 200 && requestm.status < 400) {
+			    // Success!			  
+			    var data = JSON.parse(requestm.responseText);
+			    this.setState({mark: data});
+			    
+			  } else {
+			    // We reached our target server, but it returned an error
+
+			  }
+			}.bind(this);
+
+			requestm.onerror = function() {
+			  // There was a connection error of some sort
+			};
+
+			requestm.send();
+	}
 		   
-		   var idlink =this.props.params.id.split(".")[0]
 			baseRef.orderByChild("link").equalTo(idlink).on("value", function(snapshot) {
 
 			snapshot.forEach(function(vdata) {
@@ -80,7 +111,7 @@ class Details extends React.Component {
 //		baseRefClients.off()
 	 } 
   render() {
-	  
+	var contents = this.state.mark.Contents  
 	  	  
     return (
       <div>
@@ -93,7 +124,8 @@ class Details extends React.Component {
       
       </Well>
       
-  		</div>   	
+  		</div>
+  		<div id="background"> {contents}</div>
       </div>
     )
   }

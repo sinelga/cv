@@ -5,6 +5,7 @@
  git config core.sparseCheckout true
  echo "version_desk_react_00/" >> .git/info/sparse-checkout
  git pull --depth=1 origin master
+ git pull --depth=1 origin master version_desk_react_00 -> origin/version_desk_react_00
  
 
 live-server --no-browser --entry-file=index.html
