@@ -90,7 +90,7 @@ class Contacts extends React.Component {
 //	console.log(contents)
 	  	  
     return (
-      <div id="container">
+      <div>
      
       <div style={styles.wrapper}>
       
