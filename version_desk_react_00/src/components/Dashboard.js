@@ -15,7 +15,6 @@ import StarRating from 'react-star-rating'
 	//  color: light
 	}
 
-
 var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
 
 
@@ -31,9 +30,6 @@ class Dashboard extends React.Component {
 	}
 
 	componentDidMount(){
-		
-//		console.log("this.languages",languages)
-//		this.setState({languages: this.languages})
 						
 	}	
 		  

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
+//import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import DocumentMeta from 'react-document-meta'
@@ -39,7 +39,7 @@ class MoreDetails extends React.Component {
 		var site =document.domain
 		
 		var jsonlink = '/www/'+site+'/'+this.props.params.id+'/'+this.props.params.moredetail.split(".")[0]+'/'+this.props.params.moredetail+'.json'
-		console.log(jsonlink)
+//		console.log(jsonlink)
 		
 		var requestm = new XMLHttpRequest();
 		requestm.open('GET', jsonlink, true);
@@ -98,7 +98,6 @@ class MoreDetails extends React.Component {
   render() {
 	  
 	var contents = this.state.mark.Contents
-//	console.log("contents more detals",contents)
 	  	  
     return (
       <div>

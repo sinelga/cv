@@ -1,8 +1,8 @@
 import React from 'react'
-import {Button,Image,Well} from 'react-bootstrap'
+import {Button,Well} from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
-//import DocumentMeta from 'react-document-meta'
+import DocumentMeta from 'react-document-meta'
 import Firebase from 'firebase'
 //import StarRating from 'react-star-rating'
 import DetailsDashboard from './DetailsDashboard'
@@ -44,9 +44,8 @@ class Details extends React.Component {
 	}	
 	
 	componentDidMount(){
+			
 		var idlink =this.props.params.id.split(".")[0]
-
-//		console.log(this.props.params)
 
 		if ( this.props.params.moredetail === undefined) { 
 		
@@ -74,7 +73,7 @@ class Details extends React.Component {
 			};
 
 			requestm.send();
-	}
+		}
 		   
 			baseRef.orderByChild("link").equalTo(idlink).on("value", function(snapshot) {
 
@@ -86,9 +85,7 @@ class Details extends React.Component {
 		}.bind(this))
 				
 	}
-	
-	
-	
+			
 	componentWillReceiveProps(){
 //		console.log("componentWillReceiveProps Details",this.props.params)
 
@@ -97,8 +94,7 @@ class Details extends React.Component {
 	componentWillUpdate(prevProps) {
 //		console.log("Details componentWillUpdate")	
 	}
-	
-	
+
 	componentDidUpdate(prevProps) {
 		
 //		console.log("Details componentDidUpdate")
@@ -108,17 +104,27 @@ class Details extends React.Component {
 	 componentWillUnmount(){		 
 
 		baseRef.off()
-//		baseRefClients.off()
 	 } 
   render() {
-	var contents = this.state.mark.Contents  
+	var contents = this.state.mark.Contents
+	
+	var meta ={}
+	
+	if (this.state.data.title !== undefined) {
+		console.log(this.state.data)
+		meta = {
+			title: this.state.data.title,
+			description: this.state.data.title
+		}
+		
+	}
 	  	  
     return (
       <div>
+      <DocumentMeta {...meta} />
       <div style={styles.wrapper}> 
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-      	<h1>Details</h1>     
       
       	{this.props.children || <DetailsDashboard data={this.state.data} />}
       

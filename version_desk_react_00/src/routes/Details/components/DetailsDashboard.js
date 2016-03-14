@@ -20,9 +20,6 @@ class DetailsDashboard extends React.Component {
 	}
 
 	componentDidMount(){
-		
-//		console.log("DetailsDashboard componentDidMount")
-//		this.setState({languages: this.languages})
 						
 	}	
 	
@@ -36,8 +33,6 @@ class DetailsDashboard extends React.Component {
 //		console.log("DetailsDashboard componentDidUpdate")
 					
 	}
-	
-	
 	
 	componentWillMount(){
 
@@ -53,13 +48,12 @@ class DetailsDashboard extends React.Component {
 	render() {
 				  
 		  var htmlListItems =[]
-//		  var imgListItems =[]
 
 		  if (this.state.data.items !== undefined) {
 			  var link = this.state.data.link
 	          
 			  title = this.state.data.title
-			  console.log(title)
+	
 			  this.state.data.items.map(function(data) {
 				  let imglink = "img/"+link+"/"+data.img
 				  let outlink ="/"+link+"/"+ data.link+".html"
@@ -80,12 +74,11 @@ class DetailsDashboard extends React.Component {
 
     return (
       <div>
-      	
-      	<h2> DetailsDashbord</h2>
+      	<h2>{title}</h2>
+      	<h3>Professional skills</h3>
   	  	
   		{htmlListItems}
-   
-    	        
+       	        
       </div>
     )
   }

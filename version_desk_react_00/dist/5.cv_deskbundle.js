@@ -19,6 +19,10 @@ webpackJsonp([5],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _reactDocumentMeta = __webpack_require__(460);
+
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+
 	var _firebase = __webpack_require__(469);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
@@ -34,8 +38,6 @@ webpackJsonp([5],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import DocumentMeta from 'react-document-meta'
-
 	//import StarRating from 'react-star-rating'
 
 
@@ -83,9 +85,8 @@ webpackJsonp([5],{
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var idlink = this.props.params.id.split(".")[0];
 
-				//		console.log(this.props.params)
+				var idlink = this.props.params.id.split(".")[0];
 
 				if (this.props.params.moredetail === undefined) {
 
@@ -145,16 +146,26 @@ webpackJsonp([5],{
 			value: function componentWillUnmount() {
 
 				baseRef.off();
-				//		baseRefClients.off()
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 				var contents = this.state.mark.Contents;
 
+				var meta = {};
+
+				if (this.state.data.title !== undefined) {
+					console.log(this.state.data);
+					meta = {
+						title: this.state.data.title,
+						description: this.state.data.title
+					};
+				}
+
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
 					_react2.default.createElement(
 						'div',
 						{ style: styles.wrapper },
@@ -165,11 +176,6 @@ webpackJsonp([5],{
 								_reactBootstrap.Button,
 								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
 								'Return'
-							),
-							_react2.default.createElement(
-								'h1',
-								null,
-								'Details'
 							),
 							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
 						)
@@ -247,12 +253,7 @@ webpackJsonp([5],{
 
 		_createClass(DetailsDashboard, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-
-				//		console.log("DetailsDashboard componentDidMount")
-				//		this.setState({languages: this.languages})
-
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
@@ -281,13 +282,12 @@ webpackJsonp([5],{
 			value: function render() {
 
 				var htmlListItems = [];
-				//		  var imgListItems =[]
 
 				if (this.state.data.items !== undefined) {
 					var link = this.state.data.link;
 
 					title = this.state.data.title;
-					console.log(title);
+
 					this.state.data.items.map(function (data) {
 						var imglink = "img/" + link + "/" + data.img;
 						var outlink = "/" + link + "/" + data.link + ".html";
@@ -352,7 +352,12 @@ webpackJsonp([5],{
 					_react2.default.createElement(
 						'h2',
 						null,
-						' DetailsDashbord'
+						title
+					),
+					_react2.default.createElement(
+						'h3',
+						null,
+						'Professional skills'
 					),
 					htmlListItems
 				);

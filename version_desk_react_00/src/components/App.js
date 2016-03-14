@@ -18,27 +18,24 @@ class App extends React.Component {
 	  }
 			
 	componentWillUpdate(){
-		
-//		console.log("componentWillUpdate App ")
-//		global.OPERATORS_OBJS =this.state.data;
+
 	}
 	
 	componentDidMount(){
-		
-//		console.log("mount App ")
+
 				   
 	}
 	componentWillReceiveProps(){
-//		console.log("App  receive props")
-//		console.log(this.props)
+
 	}
 	
 	
   render() {
 	  
-	  const meta = {
-		      title: 'CV',
-		      }
+	 const meta = {
+		title: 'CV',
+		description: 'CV curriculum vitae'
+     }
 	  	  
     return (
       <div>
