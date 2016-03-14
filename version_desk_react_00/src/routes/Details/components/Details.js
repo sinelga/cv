@@ -50,14 +50,14 @@ class Details extends React.Component {
 
 		if ( this.props.params.moredetail === undefined) { 
 		
+			var site =document.domain			
+			var jsonlink = '/www/'+site+'/'+idlink+'/'+idlink+'.html.json'
+			console.log(jsonlink)
 		
-		var jsonlink = '/www/remotejob.work/'+idlink+'/'+idlink+'.html.json'
-		console.log(jsonlink)
+			var requestm = new XMLHttpRequest();
+			requestm.open('GET', jsonlink, true);
 		
-		var requestm = new XMLHttpRequest();
-		requestm.open('GET', jsonlink, true);
-		
-		requestm.onload = function() {
+			requestm.onload = function() {
 			  if (requestm.status >= 200 && requestm.status < 400) {
 			    // Success!			  
 			    var data = JSON.parse(requestm.responseText);

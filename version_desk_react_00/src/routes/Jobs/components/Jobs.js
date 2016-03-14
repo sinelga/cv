@@ -36,12 +36,11 @@ class Jobs extends React.Component {
 	componentWillMount(){
 //		console.log("Willmount Details",this.props.params.id)
 
-		
-
 	}	
 	
 	componentDidMount(){
 //		console.log("Didmount Details")
+		var site =document.domain
 		
 		var request = new XMLHttpRequest();
 		request.open('GET', '/jobs.json', true);
@@ -50,7 +49,6 @@ class Jobs extends React.Component {
 			  if (request.status >= 200 && request.status < 400) {
 			    // Success!			  
 			    var data = JSON.parse(request.responseText);
-//			    console.log(data.jobs[0].item)
 			    this.setState({data: data.jobs[0].item});
 			    
 			  } else {
@@ -66,7 +64,7 @@ class Jobs extends React.Component {
 			request.send();
 			
 			var requestm = new XMLHttpRequest();
-			requestm.open('GET', '/www/remotejob.work/jobs/jobs.html.json', true);
+			requestm.open('GET', '/www/'+site+'/jobs/jobs.html.json', true);
 			
 			requestm.onload = function() {
 				  if (requestm.status >= 200 && requestm.status < 400) {
@@ -76,7 +74,6 @@ class Jobs extends React.Component {
 				    this.setState({mark: data});
 				    
 				  } else {
-				    // We reached our target server, but it returned an error
 
 				  }
 				}.bind(this);
@@ -88,9 +85,7 @@ class Jobs extends React.Component {
 				requestm.send();			
 		
 	}
-	
-	
-	
+
 	componentWillReceiveProps(){
 //		console.log("componentWillReceiveProps Details",this.props.params)
 
@@ -109,8 +104,6 @@ class Jobs extends React.Component {
 
 	 componentWillUnmount(){		 
 
-//		baseRef.off()
-//		baseRefClients.off()
 	 } 
   render() {
 	  
@@ -122,8 +115,7 @@ class Jobs extends React.Component {
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
       	<h1>Work Expirience</h1>
-     
-      
+           
       	{this.props.children || <JobsDashboard data={this.state.data} />}
       
       </Well>

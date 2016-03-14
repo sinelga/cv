@@ -89,7 +89,8 @@ webpackJsonp([5],{
 
 				if (this.props.params.moredetail === undefined) {
 
-					var jsonlink = '/www/remotejob.work/' + idlink + '/' + idlink + '.html.json';
+					var site = document.domain;
+					var jsonlink = '/www/' + site + '/' + idlink + '/' + idlink + '.html.json';
 					console.log(jsonlink);
 
 					var requestm = new XMLHttpRequest();

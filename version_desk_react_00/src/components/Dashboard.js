@@ -25,9 +25,6 @@ class Dashboard extends React.Component {
 	    super(props);
 	    this.state = {
 	    	items: []	
-//	    	languages: [],
-//	    	frameworks: [],
-//	    	operatingsystems: []
 	    	
 	    }
 
@@ -80,8 +77,7 @@ class Dashboard extends React.Component {
 			var link ='/'+item_obj.link+".html"
 
 			htmlitem.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={8}><ListGroup>{htmlListItems}</ListGroup></Col><Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-	
-			
+				
 		})
 		
 
@@ -90,7 +86,7 @@ class Dashboard extends React.Component {
       <div style={styles.wrapper}>
       	<Well>
    	  	
-  		{htmlitem}
+  			{htmlitem}
    
     	</Well>
     	</div>

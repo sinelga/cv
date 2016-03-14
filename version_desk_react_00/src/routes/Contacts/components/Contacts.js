@@ -14,7 +14,7 @@ const dark = 'hsl(200, 20%, 20%)'
 	  padding: '10px 20px',
 	  overflow: 'hidden',
 	  background: dark
-	//  color: light
+	
 	}
 
 class Contacts extends React.Component {
@@ -35,14 +35,14 @@ class Contacts extends React.Component {
 	componentWillMount(){
 //		console.log("Willmount Details",this.props.params.id)
 
-		
-
 	}	
 	
 	componentDidMount(){
 		
+		console.log(document.domain)
+		var site =document.domain
 		var request = new XMLHttpRequest();
-		request.open('GET', '/www/remotejob.work/contacts/contacts.html.json', true);
+		request.open('GET', '/www/'+site+'/contacts/contacts.html.json', true);
 		
 		request.onload = function() {
 			  if (request.status >= 200 && request.status < 400) {

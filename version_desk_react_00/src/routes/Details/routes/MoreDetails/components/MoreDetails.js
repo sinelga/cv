@@ -31,13 +31,14 @@ class MoreDetails extends React.Component {
 		
 	componentWillMount(){
 
-
 	}	
 	
 	componentDidMount(){		
 			
 //		console.log(this.props.params)
-		var jsonlink = '/www/remotejob.work/'+this.props.params.id+'/'+this.props.params.moredetail.split(".")[0]+'/'+this.props.params.moredetail+'.json'
+		var site =document.domain
+		
+		var jsonlink = '/www/'+site+'/'+this.props.params.id+'/'+this.props.params.moredetail.split(".")[0]+'/'+this.props.params.moredetail+'.json'
 		console.log(jsonlink)
 		
 		var requestm = new XMLHttpRequest();
@@ -47,7 +48,7 @@ class MoreDetails extends React.Component {
 			  if (requestm.status >= 200 && requestm.status < 400) {
 			    		  
 			    var data = JSON.parse(requestm.responseText);
-			    console.log(data)
+//			    console.log(data)
 			    this.setState({mark: data});
 			    
 			  } else {
