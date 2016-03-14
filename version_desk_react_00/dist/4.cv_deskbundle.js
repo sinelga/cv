@@ -1,1 +1,1 @@
-webpackJsonp([4],{247:function(n,t,e){"use strict";n.exports={path:"/:id/:moredetail",getComponents:function(n,t){e.e(6,function(n){t(null,e(245))})}}}});
+webpackJsonp([4],{249:function(n,t,e){"use strict";n.exports={path:"/:id/:moredetail",getComponents:function(n,t){e.e(7,function(n){t(null,e(247))})}}}});

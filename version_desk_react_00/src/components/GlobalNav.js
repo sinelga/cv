@@ -44,6 +44,7 @@ class GlobalNav extends React.Component {
           <Link to="/" style={styles.link}>Home</Link>{' '}
           <Link to="/jobs.html" style={styles.link} activeStyle={styles.activeLink}>Work Expirience</Link>{' '}
           <Link to="/contacts.html" style={styles.link} activeStyle={styles.activeLink}>Contact</Link>{' '}
+          <Link to="/cvpdf.html" style={styles.link} activeStyle={styles.activeLink}>CV in PDF</Link>{' '}
          
         </div>
       </div>

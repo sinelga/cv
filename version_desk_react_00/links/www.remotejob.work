@@ -17,3 +17,4 @@
 /operatingsystems/linux.html
 /operatingsystems/freebsd.html
 /operatingsystems/solaris.html
+/cvpdf.html
