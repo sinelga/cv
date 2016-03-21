@@ -1,1 +1,336 @@
-webpackJsonp([3],{239:function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function r(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var l=t[n];l.enumerable=l.enumerable||!1,l.configurable=!0,"value"in l&&(l.writable=!0),Object.defineProperty(e,l.key,l)}}return function(t,n,l){return n&&e(t.prototype,n),l&&e(t,l),t}}(),c=n(1),i=l(c),f=n(26),d=n(22),s=n(13),p=(l(s),n(37)),m=(l(p),n(240)),y=l(m),b="hsl(200, 20%, 20%)",v={};v.wrapper={padding:"10px 20px",overflow:"hidden",background:b};var h=function(e){function t(e){a(this,t);var n=o(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{}},n}return r(t,e),u(t,[{key:"handleReturn",value:function(){d.browserHistory.push("/")}},{key:"componentWillMount",value:function(){}},{key:"componentDidMount",value:function(){console.log(document.domain);var e=document.domain,t=new XMLHttpRequest;t.open("GET","/www/"+e+"/contacts/contacts.html.json",!0),t.onload=function(){if(t.status>=200&&t.status<400){var e=JSON.parse(t.responseText);this.setState({data:e})}}.bind(this),t.onerror=function(){},t.send()}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillUnmount",value:function(){}},{key:"render",value:function(){var e=this.state.data.Contents;return i["default"].createElement("div",null,i["default"].createElement("div",{style:v.wrapper},i["default"].createElement(f.Well,null,i["default"].createElement(f.Button,{onClick:this.handleReturn,bsStyle:"primary",bsSize:"large",className:"pull-right"},"Return"),i["default"].createElement("h1",null,"Contacts"),this.props.children||i["default"].createElement(y["default"],null))),i["default"].createElement("div",{id:"background"}," ",e))}}]),t}(i["default"].Component);e.exports=h},240:function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function r(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var l=t[n];l.enumerable=l.enumerable||!1,l.configurable=!0,"value"in l&&(l.writable=!0),Object.defineProperty(e,l.key,l)}}return function(t,n,l){return n&&e(t.prototype,n),l&&e(t,l),t}}(),c=n(1),i=l(c),f=(n(22),n(26)),d=n(188),s=l(d),p=function(e){function t(e){a(this,t);var n=o(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:[]},n}return r(t,e),u(t,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillMount",value:function(){}},{key:"componentWillReceiveProps",value:function(e){this.setState({data:e.data})}},{key:"render",value:function(){return i["default"].createElement("div",null,i["default"].createElement(f.Table,{responsive:!0},i["default"].createElement("tbody",null,i["default"].createElement("tr",null,i["default"].createElement("td",null,i["default"].createElement(s["default"],{name:"home",size:"4x"})," "),i["default"].createElement("td",null,"Högberginkuja 1",i["default"].createElement("br",null),"10820 Lappohja",i["default"].createElement("br",null),"Finland")),i["default"].createElement("tr",null,i["default"].createElement("td",null,i["default"].createElement(s["default"],{name:"phone",size:"4x"})," "),i["default"].createElement("td",null,"+358451202801")),i["default"].createElement("tr",null,i["default"].createElement("td",null,i["default"].createElement(s["default"],{name:"envelope",size:"4x"})," "),i["default"].createElement("td",null,"support@mazurov.eu")),i["default"].createElement("tr",null,i["default"].createElement("td",null,i["default"].createElement(s["default"],{name:"skype",size:"4x"})," "),i["default"].createElement("td",null,"mazurovfi")))))}}]),t}(i["default"].Component);t["default"]=p}});
+webpackJsonp([3],{
+
+/***/ 480:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	var _ContactsDashboard = __webpack_require__(481);
+
+	var _ContactsDashboard2 = _interopRequireDefault(_ContactsDashboard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+
+	};
+
+	var Contacts = function (_React$Component) {
+		_inherits(Contacts, _React$Component);
+
+		function Contacts(props) {
+			_classCallCheck(this, Contacts);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Contacts).call(this, props));
+
+			_this.state = {
+				data: {}
+
+			};
+			return _this;
+		}
+
+		_createClass(Contacts, [{
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params.id)
+
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				console.log(document.domain);
+				var site = document.domain;
+				var request = new XMLHttpRequest();
+				request.open('GET', '/www/' + site + '/contacts/contacts.html.json', true);
+
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+						//			    console.log(data)
+						this.setState({ data: data });
+					} else {
+						// We reached our target server, but it returned an error
+
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				//		console.log("componentWillReceiveProps Details",this.props.params)
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("Details componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("Details componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var contents = this.state.data.Contents;
+				//	console.log(contents)
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'div',
+						{ style: styles.wrapper },
+						_react2.default.createElement(
+							_reactBootstrap.Well,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Button,
+								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
+								'Return'
+							),
+							_react2.default.createElement(
+								'h1',
+								null,
+								'Contacts'
+							),
+							this.props.children || _react2.default.createElement(_ContactsDashboard2.default, null)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ id: 'background' },
+						' ',
+						contents
+					)
+				);
+			}
+		}]);
+
+		return Contacts;
+	}(_react2.default.Component);
+
+	module.exports = Contacts;
+
+/***/ },
+
+/***/ 481:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _reactFontawesome = __webpack_require__(482);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ContactsDashboard = function (_React$Component) {
+		_inherits(ContactsDashboard, _React$Component);
+
+		function ContactsDashboard(props) {
+			_classCallCheck(this, ContactsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ContactsDashboard).call(this, props));
+
+			_this.state = {
+				data: []
+
+			};
+
+			return _this;
+		}
+
+		_createClass(ContactsDashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				//		console.log("DetailsDashboard componentDidMount")
+				//		this.setState({languages: this.languages})
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("DetailsDashboard componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("DetailsDashboard componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+
+				this.setState({ data: nextProps.data });
+				//		console.log(this.props)
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Table,
+						{ responsive: true },
+						_react2.default.createElement(
+							'tbody',
+							null,
+							_react2.default.createElement(
+								'tr',
+								null,
+								_react2.default.createElement(
+									'td',
+									null,
+									_react2.default.createElement(_reactFontawesome2.default, { name: 'home', size: '4x' }),
+									' '
+								),
+								_react2.default.createElement(
+									'td',
+									null,
+									'Högberginkuja 1',
+									_react2.default.createElement('br', null),
+									'10820 Lappohja',
+									_react2.default.createElement('br', null),
+									'Finland'
+								)
+							),
+							_react2.default.createElement(
+								'tr',
+								null,
+								_react2.default.createElement(
+									'td',
+									null,
+									_react2.default.createElement(_reactFontawesome2.default, { name: 'phone', size: '4x' }),
+									' '
+								),
+								_react2.default.createElement(
+									'td',
+									null,
+									'+358451202801'
+								)
+							),
+							_react2.default.createElement(
+								'tr',
+								null,
+								_react2.default.createElement(
+									'td',
+									null,
+									_react2.default.createElement(_reactFontawesome2.default, { name: 'envelope', size: '4x' }),
+									' '
+								),
+								_react2.default.createElement(
+									'td',
+									null,
+									'support@mazurov.eu'
+								)
+							),
+							_react2.default.createElement(
+								'tr',
+								null,
+								_react2.default.createElement(
+									'td',
+									null,
+									_react2.default.createElement(_reactFontawesome2.default, { name: 'skype', size: '4x' }),
+									' '
+								),
+								_react2.default.createElement(
+									'td',
+									null,
+									'mazurovfi'
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return ContactsDashboard;
+	}(_react2.default.Component);
+
+	exports.default = ContactsDashboard;
+
+/***/ }
+
+});

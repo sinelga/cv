@@ -1,1 +1,373 @@
-webpackJsonp([6],{245:function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var u,l=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),c=n(1),s=o(c),f=n(22),p=n(13),d=(o(p),n(41)),m=o(d),h=n(37),y=(o(h),n(246)),v=o(y),b="https://cv-mazurov.firebaseio.com/";u=new m["default"](b);var k=function(e){function t(e){r(this,t);var n=a(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{},mark:{}},n}return i(t,e),l(t,[{key:"handleReturn",value:function(){f.browserHistory.push("/")}},{key:"componentWillMount",value:function(){}},{key:"componentDidMount",value:function(){var e=document.domain,t="/www/"+e+"/"+this.props.params.id+"/"+this.props.params.moredetail.split(".")[0]+"/"+this.props.params.moredetail+".json",n=new XMLHttpRequest;n.open("GET",t,!0),n.onload=function(){if(n.status>=200&&n.status<400){var e=JSON.parse(n.responseText);this.setState({mark:e})}}.bind(this),n.onerror=function(){},n.send(),u.orderByChild("link").equalTo(this.props.params.id).on("value",function(e){e.forEach(function(e){this.setState({data:e.val()})}.bind(this))}.bind(this))}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillUnmount",value:function(){u.off()}},{key:"render",value:function(){var e=this.state.mark.Contents;return s["default"].createElement("div",null,s["default"].createElement(v["default"],{data:this.state.data,link:this.props.params.moredetail}),s["default"].createElement("div",{id:"background"}," ",e))}}]),t}(s["default"].Component);e.exports=k},246:function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),l=n(1),c=o(l),s=(n(22),n(41)),f=(o(s),n(37)),p=(o(f),function(e){function t(e){r(this,t);var n=a(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{},mark:{}},n}return i(t,e),u(t,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillMount",value:function(){}},{key:"componentWillReceiveProps",value:function(e){var t=this;void 0===e.data.items||!function(){var n=e.link.split(".")[0];e.data.items.map(function(e){e.link===n&&this.setState({data:e})}.bind(t))}()}},{key:"render",value:function(){return c["default"].createElement("div",null,c["default"].createElement("h2",null,this.state.data.item),c["default"].createElement("h4",null," More Details"),this.state.data.extra)}}]),t}(c["default"].Component));t["default"]=p}});
+webpackJsonp([6],{
+
+/***/ 487:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactDocumentMeta = __webpack_require__(460);
+
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _DetailsDashboard = __webpack_require__(488);
+
+	var _DetailsDashboard2 = _interopRequireDefault(_DetailsDashboard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import StarRating from 'react-star-rating'
+
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+		//  color: light
+	};
+
+	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com/');
+	//var item={}
+
+	var Details = function (_React$Component) {
+		_inherits(Details, _React$Component);
+
+		function Details(props) {
+			_classCallCheck(this, Details);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
+
+			_this.state = {
+				data: {},
+				mark: {}
+
+			};
+			return _this;
+		}
+
+		_createClass(Details, [{
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params.id)
+
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				var idlink = this.props.params.id.split(".")[0];
+
+				if (this.props.params.moredetail === undefined) {
+
+					var site = document.domain;
+					var jsonlink = '/www/' + site + '/' + idlink + '/' + idlink + '.html.json';
+					console.log(jsonlink);
+
+					var requestm = new XMLHttpRequest();
+					requestm.open('GET', jsonlink, true);
+
+					requestm.onload = function () {
+						if (requestm.status >= 200 && requestm.status < 400) {
+							// Success!			 
+							var data = JSON.parse(requestm.responseText);
+							this.setState({ mark: data });
+						} else {
+							// We reached our target server, but it returned an error
+
+						}
+					}.bind(this);
+
+					requestm.onerror = function () {
+						// There was a connection error of some sort
+					};
+
+					requestm.send();
+				}
+
+				baseRef.orderByChild("link").equalTo(idlink).on("value", function (snapshot) {
+
+					snapshot.forEach(function (vdata) {
+
+						this.setState({ data: vdata.val() });
+					}.bind(this));
+				}.bind(this));
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				//		console.log("componentWillReceiveProps Details",this.props.params)
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("Details componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("Details componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+
+				baseRef.off();
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var contents = this.state.mark.Contents;
+
+				var meta = {};
+
+				if (this.state.data.title !== undefined) {
+					console.log(this.state.data);
+					meta = {
+						title: this.state.data.title,
+						description: this.state.data.title
+					};
+				}
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
+					_react2.default.createElement(
+						'div',
+						{ style: styles.wrapper },
+						_react2.default.createElement(
+							_reactBootstrap.Well,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Button,
+								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
+								'Return'
+							),
+							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ id: 'background' },
+						' ',
+						contents
+					)
+				);
+			}
+		}]);
+
+		return Details;
+	}(_react2.default.Component);
+
+	module.exports = Details;
+
+/***/ },
+
+/***/ 488:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
+	var title = '';
+
+	var DetailsDashboard = function (_React$Component) {
+		_inherits(DetailsDashboard, _React$Component);
+
+		function DetailsDashboard(props) {
+			_classCallCheck(this, DetailsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailsDashboard).call(this, props));
+
+			_this.state = {
+				data: {}
+			};
+
+			return _this;
+		}
+
+		_createClass(DetailsDashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("DetailsDashboard componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("DetailsDashboard componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
+
+				this.setState({ data: nextProps.data });
+				//		console.log(this.props)
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var htmlListItems = [];
+
+				if (this.state.data.items !== undefined) {
+					var link = this.state.data.link;
+
+					title = this.state.data.title;
+
+					this.state.data.items.map(function (data) {
+						var imglink = "img/" + link + "/" + data.img;
+						var outlink = "/" + link + "/" + data.link + ".html";
+						var duration = '';
+
+						if (data.duration === 1) {
+							duration = data.duration + ' year';
+						} else {
+							duration = data.duration + ' years';
+						}
+
+						var key = data.id;
+						htmlListItems.push(_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 4 },
+								_react2.default.createElement(
+									'h2',
+									null,
+									data.item
+								),
+								' ',
+								_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 20 })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 1 },
+								_react2.default.createElement(
+									'p',
+									null,
+									duration
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 3 },
+								data.extra
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: outlink },
+									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+								)
+							)
+						));
+					});
+				}
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h2',
+						null,
+						title
+					),
+					_react2.default.createElement(
+						'h3',
+						null,
+						'Professional skills'
+					),
+					htmlListItems
+				);
+			}
+		}]);
+
+		return DetailsDashboard;
+	}(_react2.default.Component);
+
+	exports.default = DetailsDashboard;
+
+/***/ }
+
+});

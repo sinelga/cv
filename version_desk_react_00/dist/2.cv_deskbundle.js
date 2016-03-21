@@ -1,1 +1,380 @@
-webpackJsonp([2],{244:function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),u=n(1),c=a(u),s=n(26),f=n(22),d=n(13),p=(a(d),n(104)),m=a(p),h=n(41),v=a(h),y=n(245),b=a(y),E="hsl(200, 20%, 20%)",k={};k.wrapper={padding:"10px 20px",overflow:"hidden",background:E};var w=new v["default"]("https://cv-mazurov.firebaseio.com/"),g=function(e){function t(e){o(this,t);var n=r(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{},mark:{}},n}return l(t,e),i(t,[{key:"handleReturn",value:function(){f.browserHistory.push("/")}},{key:"componentWillMount",value:function(){}},{key:"componentDidMount",value:function(){var e=this.props.params.id.split(".")[0];if(void 0===this.props.params.moredetail){var t=document.domain,n="/www/"+t+"/"+e+"/"+e+".html.json";console.log(n);var a=new XMLHttpRequest;a.open("GET",n,!0),a.onload=function(){if(a.status>=200&&a.status<400){var e=JSON.parse(a.responseText);this.setState({mark:e})}}.bind(this),a.onerror=function(){},a.send()}w.orderByChild("link").equalTo(e).on("value",function(e){e.forEach(function(e){this.setState({data:e.val()})}.bind(this))}.bind(this))}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillUnmount",value:function(){w.off()}},{key:"render",value:function(){var e=this.state.mark.Contents,t={};return void 0!==this.state.data.title&&(console.log(this.state.data),t={title:this.state.data.title,description:this.state.data.title}),c["default"].createElement("div",null,c["default"].createElement(m["default"],t),c["default"].createElement("div",{style:k.wrapper},c["default"].createElement(s.Well,null,c["default"].createElement(s.Button,{onClick:this.handleReturn,bsStyle:"primary",bsSize:"large",className:"pull-right"},"Return"),this.props.children||c["default"].createElement(b["default"],{data:this.state.data}))),c["default"].createElement("div",{id:"background"}," ",e))}}]),t}(c["default"].Component);e.exports=g},245:function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),u=n(1),c=a(u),s=n(22),f=n(26),d=n(41),p=(a(d),n(37)),m=a(p),h="",v=function(e){function t(e){o(this,t);var n=r(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{}},n}return l(t,e),i(t,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillMount",value:function(){}},{key:"componentWillReceiveProps",value:function(e){this.setState({data:e.data})}},{key:"render",value:function(){var e=[];if(void 0!==this.state.data.items){var t=this.state.data.link;h=this.state.data.title,this.state.data.items.map(function(n){var a="img/"+t+"/"+n.img,o="/"+t+"/"+n.link+".html",r="";r=1===n.duration?n.duration+" year":n.duration+" years";n.id;e.push(c["default"].createElement(f.Row,null,c["default"].createElement(f.Col,{xs:6,md:2},c["default"].createElement(f.Image,{src:a,responsive:!0})),c["default"].createElement(f.Col,{xs:6,md:4},c["default"].createElement("h2",null,n.item)," ",c["default"].createElement(m["default"],{name:"airbnb-rating",totalStars:5,rating:n.rating,size:20})),c["default"].createElement(f.Col,{xs:6,md:1},c["default"].createElement("p",null,r)),c["default"].createElement(f.Col,{xs:6,md:3},n.extra),c["default"].createElement(f.Col,{xs:6,md:2},c["default"].createElement(s.Link,{to:o},c["default"].createElement(f.Image,{src:"/img/orange-arrow-right.png",responsive:!0})))))})}return c["default"].createElement("div",null,c["default"].createElement("h2",null,h),c["default"].createElement("h3",null,"Professional skills"),e)}}]),t}(c["default"].Component);t["default"]=v}});
+webpackJsonp([2],{
+
+/***/ 477:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	var _JobsDashboard = __webpack_require__(478);
+
+	var _JobsDashboard2 = _interopRequireDefault(_JobsDashboard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+		//  color: light
+	};
+
+	var Jobs = function (_React$Component) {
+		_inherits(Jobs, _React$Component);
+
+		function Jobs(props) {
+			_classCallCheck(this, Jobs);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Jobs).call(this, props));
+
+			_this.state = {
+				data: [],
+				mark: {}
+
+			};
+			return _this;
+		}
+
+		_createClass(Jobs, [{
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params.id)
+
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//		console.log("Didmount Details")
+				var site = document.domain;
+
+				var request = new XMLHttpRequest();
+				request.open('GET', '/jobs.json', true);
+
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+						this.setState({ data: data.jobs[0].item });
+					} else {
+						// We reached our target server, but it returned an error
+
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+
+				var requestm = new XMLHttpRequest();
+				requestm.open('GET', '/www/' + site + '/jobs/jobs.html.json', true);
+
+				requestm.onload = function () {
+					if (requestm.status >= 200 && requestm.status < 400) {
+						// Success!			 
+						var data = JSON.parse(requestm.responseText);
+						//				    console.log(data)
+						this.setState({ mark: data });
+					} else {}
+				}.bind(this);
+
+				requestm.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				requestm.send();
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				//		console.log("componentWillReceiveProps Details",this.props.params)
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("Details componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("Details componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var contents = this.state.mark.Contents;
+				//	console.log(contents)
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'div',
+						{ style: styles.wrapper },
+						_react2.default.createElement(
+							_reactBootstrap.Well,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Button,
+								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
+								'Return'
+							),
+							_react2.default.createElement(
+								'h1',
+								null,
+								'Work Expirience'
+							),
+							this.props.children || _react2.default.createElement(_JobsDashboard2.default, { data: this.state.data })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ id: 'background' },
+						' ',
+						contents
+					)
+				);
+			}
+		}]);
+
+		return Jobs;
+	}(_react2.default.Component);
+
+	module.exports = Jobs;
+
+/***/ },
+
+/***/ 478:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
+	var title = '';
+
+	var JobsDashboard = function (_React$Component) {
+		_inherits(JobsDashboard, _React$Component);
+
+		function JobsDashboard(props) {
+			_classCallCheck(this, JobsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobsDashboard).call(this, props));
+
+			_this.state = {
+				data: []
+
+			};
+
+			return _this;
+		}
+
+		_createClass(JobsDashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				//		console.log("DetailsDashboard componentDidMount")
+				//		this.setState({languages: this.languages})
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("DetailsDashboard componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("DetailsDashboard componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+
+				this.setState({ data: nextProps.data });
+				//		console.log(this.props)
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var htmlTableItems = [];
+
+				this.state.data.map(function (data) {
+					var key = data.title + data.duration;
+					htmlTableItems.push(_react2.default.createElement(
+						'tr',
+						{ key: key },
+						_react2.default.createElement(
+							'td',
+							null,
+							data.title
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.duration
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.position
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.details
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.location
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.country
+						)
+					));
+				});
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h2',
+						null,
+						' JobsDashbord'
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Table,
+						{ responsive: true },
+						_react2.default.createElement(
+							'thead',
+							null,
+							_react2.default.createElement(
+								'tr',
+								null,
+								_react2.default.createElement(
+									'th',
+									null,
+									'Company'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Duration'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Position'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Details'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Location'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Country'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'tbody',
+							null,
+							htmlTableItems
+						)
+					)
+				);
+			}
+		}]);
+
+		return JobsDashboard;
+	}(_react2.default.Component);
+
+	exports.default = JobsDashboard;
+
+/***/ }
+
+});
