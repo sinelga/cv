@@ -62,7 +62,7 @@ class MoreDetailsDashboard extends React.Component {
       <div>
       	
       	<h2>{this.state.data.item}</h2>
-      	<h4> More Details</h4>
+      	<h4>More Details</h4>
   	  	
   	     {this.state.data.extra}
    

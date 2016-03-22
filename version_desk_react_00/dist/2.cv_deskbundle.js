@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 477:
+/***/ 474:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11,21 +11,23 @@ webpackJsonp([2],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(218);
-
 	var _reactRouter = __webpack_require__(160);
 
 	var _reactDom = __webpack_require__(159);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
 	var _reactStarRating = __webpack_require__(470);
 
 	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
 
-	var _JobsDashboard = __webpack_require__(478);
+	var _MoreDetailsDashboard = __webpack_require__(475);
 
-	var _JobsDashboard2 = _interopRequireDefault(_JobsDashboard);
+	var _MoreDetailsDashboard2 = _interopRequireDefault(_MoreDetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,88 +36,74 @@ webpackJsonp([2],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
 
-	var dark = 'hsl(200, 20%, 20%)';
-	var light = '#fff';
-	var styles = {};
+	//import DocumentMeta from 'react-document-meta'
 
-	styles.wrapper = {
-		padding: '10px 20px',
-		overflow: 'hidden',
-		background: dark
-		//  color: light
-	};
 
-	var Jobs = function (_React$Component) {
-		_inherits(Jobs, _React$Component);
+	var baseRef;
+	var dblink = 'https://cv-mazurov.firebaseio.com/';
 
-		function Jobs(props) {
-			_classCallCheck(this, Jobs);
+	baseRef = new _firebase2.default(dblink);
+	//var item={}
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Jobs).call(this, props));
+	var MoreDetails = function (_React$Component) {
+		_inherits(MoreDetails, _React$Component);
+
+		function MoreDetails(props) {
+			_classCallCheck(this, MoreDetails);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetails).call(this, props));
 
 			_this.state = {
-				data: [],
+				data: {},
 				mark: {}
 
 			};
 			return _this;
 		}
 
-		_createClass(Jobs, [{
+		_createClass(MoreDetails, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {
-				//		console.log("Willmount Details",this.props.params.id)
-
-			}
+			value: function componentWillMount() {}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		console.log("Didmount Details")
+
+				//		console.log(this.props.params)
 				var site = document.domain;
 
-				var request = new XMLHttpRequest();
-				request.open('GET', '/jobs.json', true);
-
-				request.onload = function () {
-					if (request.status >= 200 && request.status < 400) {
-						// Success!			 
-						var data = JSON.parse(request.responseText);
-						this.setState({ data: data.jobs[0].item });
-					} else {
-						// We reached our target server, but it returned an error
-
-					}
-				}.bind(this);
-
-				request.onerror = function () {
-					// There was a connection error of some sort
-				};
-
-				request.send();
+				var jsonlink = '/www/' + site + '/' + this.props.params.id + '/' + this.props.params.moredetail.split(".")[0] + '/' + this.props.params.moredetail + '.json';
+				//		console.log(jsonlink)
 
 				var requestm = new XMLHttpRequest();
-				requestm.open('GET', '/www/' + site + '/jobs/jobs.html.json', true);
+				requestm.open('GET', jsonlink, true);
 
 				requestm.onload = function () {
 					if (requestm.status >= 200 && requestm.status < 400) {
-						// Success!			 
+
 						var data = JSON.parse(requestm.responseText);
-						//				    console.log(data)
+						//			    console.log(data)
 						this.setState({ mark: data });
 					} else {}
 				}.bind(this);
 
-				requestm.onerror = function () {
-					// There was a connection error of some sort
-				};
+				requestm.onerror = function () {};
 
 				requestm.send();
+
+				baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function (snapshot) {
+
+					snapshot.forEach(function (vdata) {
+
+						this.setState({ data: vdata.val() });
+					}.bind(this));
+				}.bind(this));
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -126,46 +114,32 @@ webpackJsonp([2],{
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
-				//		console.log("Details componentWillUpdate")	
+				//		console.log("componentWillUpdate")	
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("Details componentDidUpdate")
+				//		console.log("componentDidUpdate")
 
 			}
 		}, {
 			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {}
+			value: function componentWillUnmount() {
+
+				baseRef.off();
+				//		baseRefClients.off()
+			}
 		}, {
 			key: 'render',
 			value: function render() {
 
 				var contents = this.state.mark.Contents;
-				//	console.log(contents)
+
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(
-						'div',
-						{ style: styles.wrapper },
-						_react2.default.createElement(
-							_reactBootstrap.Well,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.Button,
-								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
-								'Return'
-							),
-							_react2.default.createElement(
-								'h1',
-								null,
-								'Work Expirience'
-							),
-							this.props.children || _react2.default.createElement(_JobsDashboard2.default, { data: this.state.data })
-						)
-					),
+					_react2.default.createElement(_MoreDetailsDashboard2.default, { data: this.state.data, link: this.props.params.moredetail }),
 					_react2.default.createElement(
 						'div',
 						{ id: 'background' },
@@ -176,14 +150,14 @@ webpackJsonp([2],{
 			}
 		}]);
 
-		return Jobs;
+		return MoreDetails;
 	}(_react2.default.Component);
 
-	module.exports = Jobs;
+	module.exports = MoreDetails;
 
 /***/ },
 
-/***/ 478:
+/***/ 475:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -199,8 +173,6 @@ webpackJsonp([2],{
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(160);
-
-	var _reactBootstrap = __webpack_require__(218);
 
 	var _firebase = __webpack_require__(469);
 
@@ -218,98 +190,69 @@ webpackJsonp([2],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
-	var title = '';
+	var MoreDetailsDashboard = function (_React$Component) {
+		_inherits(MoreDetailsDashboard, _React$Component);
 
-	var JobsDashboard = function (_React$Component) {
-		_inherits(JobsDashboard, _React$Component);
+		function MoreDetailsDashboard(props) {
+			_classCallCheck(this, MoreDetailsDashboard);
 
-		function JobsDashboard(props) {
-			_classCallCheck(this, JobsDashboard);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobsDashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetailsDashboard).call(this, props));
 
 			_this.state = {
-				data: []
-
+				data: {},
+				mark: {}
 			};
 
 			return _this;
 		}
 
-		_createClass(JobsDashboard, [{
+		_createClass(MoreDetailsDashboard, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-
-				//		console.log("DetailsDashboard componentDidMount")
-				//		this.setState({languages: this.languages})
-
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
-				//		console.log("DetailsDashboard componentWillUpdate")	
+				//		console.log("MoreDetailsDashboard componentWillUpdate")	
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("DetailsDashboard componentDidUpdate")
+				//		console.log("MoreDetailsDashboard componentDidUpdate")
 
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {}
+			value: function componentWillMount() {
+				//		console.log('MoreDetailsDashboard componentWillMount',this.props)
+
+			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
+				var _this2 = this;
 
-				this.setState({ data: nextProps.data });
-				//		console.log(this.props)
+				//		console.log("MoreDetailsDashboard  receive props",nextProps)
+				if (nextProps.data.items === undefined) {} else {
+					(function () {
+
+						var link = nextProps.link.split(".")[0];
+
+						nextProps.data.items.map(function (item) {
+
+							if (item.link === link) {
+
+								this.setState({ data: item });
+							}
+						}.bind(_this2));
+					})();
+				}
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 
-				var htmlTableItems = [];
-
-				this.state.data.map(function (data) {
-					var key = data.title + data.duration;
-					htmlTableItems.push(_react2.default.createElement(
-						'tr',
-						{ key: key },
-						_react2.default.createElement(
-							'td',
-							null,
-							data.title
-						),
-						_react2.default.createElement(
-							'td',
-							null,
-							data.duration
-						),
-						_react2.default.createElement(
-							'td',
-							null,
-							data.position
-						),
-						_react2.default.createElement(
-							'td',
-							null,
-							data.details
-						),
-						_react2.default.createElement(
-							'td',
-							null,
-							data.location
-						),
-						_react2.default.createElement(
-							'td',
-							null,
-							data.country
-						)
-					));
-				});
+				//		console.log(this.state.data)
 
 				return _react2.default.createElement(
 					'div',
@@ -317,63 +260,22 @@ webpackJsonp([2],{
 					_react2.default.createElement(
 						'h2',
 						null,
-						' JobsDashbord'
+						this.state.data.item
 					),
 					_react2.default.createElement(
-						_reactBootstrap.Table,
-						{ responsive: true },
-						_react2.default.createElement(
-							'thead',
-							null,
-							_react2.default.createElement(
-								'tr',
-								null,
-								_react2.default.createElement(
-									'th',
-									null,
-									'Company'
-								),
-								_react2.default.createElement(
-									'th',
-									null,
-									'Duration'
-								),
-								_react2.default.createElement(
-									'th',
-									null,
-									'Position'
-								),
-								_react2.default.createElement(
-									'th',
-									null,
-									'Details'
-								),
-								_react2.default.createElement(
-									'th',
-									null,
-									'Location'
-								),
-								_react2.default.createElement(
-									'th',
-									null,
-									'Country'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'tbody',
-							null,
-							htmlTableItems
-						)
-					)
+						'h4',
+						null,
+						'More Details'
+					),
+					this.state.data.extra
 				);
 			}
 		}]);
 
-		return JobsDashboard;
+		return MoreDetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = JobsDashboard;
+	exports.default = MoreDetailsDashboard;
 
 /***/ }
 

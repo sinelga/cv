@@ -1,19 +1,20 @@
 module.exports = {
-		  path: 'blog',
+		  path: ':topic',
+		  
 				
-		  getChildRoutes(location, cb) {
-		    require.ensure([], (require) => {
-		      cb(null, [
-		        require('./routes/BlogItems')
-	
-		      ])
-		    })
-		  },
+//		  getChildRoutes(location, cb) {
+//		    require.ensure([], (require) => {
+//		      cb(null, [
+//		        require('./routes/BlogItems')
+//	
+//		      ])
+//		    })
+//		  },
 
 		  getComponents(location, cb) {
 		    require.ensure([], (require) => {
 		      cb(null, 
-		    		  require('./components/Blog')
+		    		  require('./components/BlogItems')
 		    		  
 		      )
 //		        cb(null,{

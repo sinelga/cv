@@ -30,7 +30,7 @@ webpackJsonp([0],{
 	  childRoutes: [{
 	    path: '/',
 	    component: __webpack_require__(217),
-	    childRoutes: [__webpack_require__(472), __webpack_require__(474), __webpack_require__(476), __webpack_require__(479), __webpack_require__(483)]
+	    childRoutes: [__webpack_require__(478), __webpack_require__(483), __webpack_require__(485), __webpack_require__(488), __webpack_require__(472)]
 	  }]
 	}; /*eslint-disable no-unused-vars */
 
@@ -229,7 +229,7 @@ webpackJsonp([0],{
 	          ' ',
 	          _react2.default.createElement(
 	            _reactRouter.Link,
-	            { to: '/blog.html', style: styles.link, activeStyle: styles.activeLink },
+	            { to: '/blog', style: styles.link, activeStyle: styles.activeLink },
 	            'Blog'
 	          ),
 	          ' ',
@@ -606,113 +606,43 @@ webpackJsonp([0],{
 	'use strict';
 
 	module.exports = {
-			path: 'blog.html',
+			path: ':id',
 
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/MoreDetails')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
-			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(8/* empty */, function (require) {
-							cb(null, __webpack_require__(473));
-							//		        cb(null,{
-							//		        	chat: require('./components/Chat'),
-							//		        	main: require('./components/Details'),
-							//		        	objlist: require('./components/ObjList')
-							//		        })
-					});
-			}
-	};
-
-/***/ },
-
-/***/ 474:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
-			path: 'cvpdf.html',
-
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/MoreDetails')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
-			getComponents: function getComponents(location, cb) {
+			getChildRoutes: function getChildRoutes(location, cb) {
 					__webpack_require__.e/* nsure */(1, function (require) {
-							cb(null, __webpack_require__(475));
-							//		        cb(null,{
-							//		        	chat: require('./components/Chat'),
-							//		        	main: require('./components/Details'),
-							//		        	objlist: require('./components/ObjList')
-							//		        })
+							cb(null, [__webpack_require__(473)]);
 					});
-			}
-	};
-
-/***/ },
-
-/***/ 476:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
-			path: 'jobs.html',
-
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/MoreDetails')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
-			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(2, function (require) {
-							cb(null, __webpack_require__(477));
-							//		        cb(null,{
-							//		        	chat: require('./components/Chat'),
-							//		        	main: require('./components/Details'),
-							//		        	objlist: require('./components/ObjList')
-							//		        })
-					});
-			}
-	};
-
-/***/ },
-
-/***/ 479:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
-			path: 'contacts.html',
-
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/MoreDetails')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
+			},
 			getComponents: function getComponents(location, cb) {
 					__webpack_require__.e/* nsure */(3, function (require) {
-							cb(null, __webpack_require__(480));
+							cb(null, __webpack_require__(476));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 478:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'blog',
+
+			getChildRoutes: function getChildRoutes(location, cb) {
+					__webpack_require__.e/* nsure */(4, function (require) {
+							cb(null, [__webpack_require__(479)]);
+					});
+			},
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(6, function (require) {
+							cb(null, __webpack_require__(481));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
 							//		        	main: require('./components/Details'),
@@ -730,16 +660,82 @@ webpackJsonp([0],{
 	'use strict';
 
 	module.exports = {
-			path: ':id',
+			path: 'cvpdf.html',
 
-			getChildRoutes: function getChildRoutes(location, cb) {
-					__webpack_require__.e/* nsure */(4, function (require) {
-							cb(null, [__webpack_require__(484)]);
-					});
-			},
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(6, function (require) {
-							cb(null, __webpack_require__(487));
+					__webpack_require__.e/* nsure */(7, function (require) {
+							cb(null, __webpack_require__(484));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 485:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'jobs.html',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(8, function (require) {
+							cb(null, __webpack_require__(486));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 488:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'contacts.html',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(9, function (require) {
+							cb(null, __webpack_require__(489));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
 							//		        	main: require('./components/Details'),

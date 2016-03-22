@@ -3,7 +3,7 @@ import {Button,Well} from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import StarRating from 'react-star-rating'
-import BlogDashboard from './BlogDashboard'
+//import BlogDashboard from './BlogDashboard'
 
 
 const dark = 'hsl(200, 20%, 20%)'
@@ -63,25 +63,25 @@ class BlogItems extends React.Component {
 //
 //			request.send();
 //			
-			var requestm = new XMLHttpRequest();
-			requestm.open('GET', '/www/'+site+'/blog/blog.html.json', true);
-			
-			requestm.onload = function() {
-				  if (requestm.status >= 200 && requestm.status < 400) {
-				    // Success!			  
-				    var data = JSON.parse(requestm.responseText);
-				    this.setState({mark: data});
-				    
-				  } else {
-
-				  }
-				}.bind(this);
-
-				requestm.onerror = function() {
-				  // There was a connection error of some sort
-				};
-
-				requestm.send();			
+//			var requestm = new XMLHttpRequest();
+//			requestm.open('GET', '/www/'+site+'/blog/blog.html.json', true);
+//			
+//			requestm.onload = function() {
+//				  if (requestm.status >= 200 && requestm.status < 400) {
+//				    // Success!			  
+//				    var data = JSON.parse(requestm.responseText);
+//				    this.setState({mark: data});
+//				    
+//				  } else {
+//
+//				  }
+//				}.bind(this);
+//
+//				requestm.onerror = function() {
+//				  // There was a connection error of some sort
+//				};
+//
+//				requestm.send();			
 		
 	}
 
@@ -110,13 +110,12 @@ class BlogItems extends React.Component {
 //	console.log(this.state.data)
     return (
     	<div>
-    		<h2>BLOG</h2>
+    		<h2>Items</h2>
     	      <div style={styles.wrapper}> 
     	      <Well>
-    	      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-    	      	<h1>Blog</h1>
+ 
     	           
-    	      	{this.props.children || <BlogDashboard data={this.state.data} />}
+    	      	{this.props.children }
     	      
     	      </Well>
     	      

@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 473:
+/***/ 486:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19,9 +19,13 @@ webpackJsonp([8],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _BlogDashboard = __webpack_require__(489);
+	var _reactStarRating = __webpack_require__(470);
 
-	var _BlogDashboard2 = _interopRequireDefault(_BlogDashboard);
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	var _JobsDashboard = __webpack_require__(487);
+
+	var _JobsDashboard2 = _interopRequireDefault(_JobsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,8 +34,6 @@ webpackJsonp([8],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import StarRating from 'react-star-rating'
-
 
 	var dark = 'hsl(200, 20%, 20%)';
 	var light = '#fff';
@@ -44,23 +46,23 @@ webpackJsonp([8],{
 		//  color: light
 	};
 
-	var Blog = function (_React$Component) {
-		_inherits(Blog, _React$Component);
+	var Jobs = function (_React$Component) {
+		_inherits(Jobs, _React$Component);
 
-		function Blog(props) {
-			_classCallCheck(this, Blog);
+		function Jobs(props) {
+			_classCallCheck(this, Jobs);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Blog).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Jobs).call(this, props));
 
 			_this.state = {
-				data: {},
+				data: [],
 				mark: {}
 
 			};
 			return _this;
 		}
 
-		_createClass(Blog, [{
+		_createClass(Jobs, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
@@ -76,15 +78,15 @@ webpackJsonp([8],{
 			value: function componentDidMount() {
 				//		console.log("Didmount Details")
 				var site = document.domain;
-				//		
+
 				var request = new XMLHttpRequest();
-				request.open('GET', '/en_US_programming_blog.json', true);
+				request.open('GET', '/jobs.json', true);
 
 				request.onload = function () {
 					if (request.status >= 200 && request.status < 400) {
 						// Success!			 
 						var data = JSON.parse(request.responseText);
-						this.setState({ data: data });
+						this.setState({ data: data.jobs[0].item });
 					} else {
 						// We reached our target server, but it returned an error
 
@@ -96,14 +98,15 @@ webpackJsonp([8],{
 				};
 
 				request.send();
-				//			
+
 				var requestm = new XMLHttpRequest();
-				requestm.open('GET', '/www/' + site + '/blog/blog.html.json', true);
+				requestm.open('GET', '/www/' + site + '/jobs/jobs.html.json', true);
 
 				requestm.onload = function () {
 					if (requestm.status >= 200 && requestm.status < 400) {
 						// Success!			 
 						var data = JSON.parse(requestm.responseText);
+						//				    console.log(data)
 						this.setState({ mark: data });
 					} else {}
 				}.bind(this);
@@ -140,15 +143,10 @@ webpackJsonp([8],{
 			value: function render() {
 
 				var contents = this.state.mark.Contents;
-				//	console.log(this.state.data)
+				//	console.log(contents)
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(
-						'h2',
-						null,
-						'BLOG'
-					),
 					_react2.default.createElement(
 						'div',
 						{ style: styles.wrapper },
@@ -163,9 +161,9 @@ webpackJsonp([8],{
 							_react2.default.createElement(
 								'h1',
 								null,
-								'Blog'
+								'Work Expirience'
 							),
-							this.props.children || _react2.default.createElement(_BlogDashboard2.default, { data: this.state.data })
+							this.props.children || _react2.default.createElement(_JobsDashboard2.default, { data: this.state.data })
 						)
 					),
 					_react2.default.createElement(
@@ -178,14 +176,14 @@ webpackJsonp([8],{
 			}
 		}]);
 
-		return Blog;
+		return Jobs;
 	}(_react2.default.Component);
 
-	module.exports = Blog;
+	module.exports = Jobs;
 
 /***/ },
 
-/***/ 489:
+/***/ 487:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -204,6 +202,14 @@ webpackJsonp([8],{
 
 	var _reactBootstrap = __webpack_require__(218);
 
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -212,24 +218,33 @@ webpackJsonp([8],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var BlogDashboard = function (_React$Component) {
-		_inherits(BlogDashboard, _React$Component);
+	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
+	var title = '';
 
-		function BlogDashboard(props) {
-			_classCallCheck(this, BlogDashboard);
+	var JobsDashboard = function (_React$Component) {
+		_inherits(JobsDashboard, _React$Component);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogDashboard).call(this, props));
+		function JobsDashboard(props) {
+			_classCallCheck(this, JobsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobsDashboard).call(this, props));
 
 			_this.state = {
-				data: {}
+				data: []
+
 			};
 
 			return _this;
 		}
 
-		_createClass(BlogDashboard, [{
+		_createClass(JobsDashboard, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {}
+			value: function componentDidMount() {
+
+				//		console.log("DetailsDashboard componentDidMount")
+				//		this.setState({languages: this.languages})
+
+			}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
@@ -248,7 +263,6 @@ webpackJsonp([8],{
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
 				this.setState({ data: nextProps.data });
 				//		console.log(this.props)
@@ -258,64 +272,94 @@ webpackJsonp([8],{
 			value: function render() {
 
 				var htmlTableItems = [];
-				//		  console.log(this.state.data)
 
-				if (Object.keys(this.state.data).length > 0) {
-
-					Object.getOwnPropertyNames(this.state.data).forEach(function (val, idx, array) {
-						console.log(val + ' -> ' + this.state.data[val]);
-						var key = val;
-						var outlink = '/blog/' + val + ".html";
-						htmlTableItems.push(_react2.default.createElement(
-							'tr',
-							{ key: key },
-							_react2.default.createElement(
-								'td',
-								null,
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: outlink },
-									val
-								)
-							)
-						));
-					}.bind(this));
-				};
-
-				//		  if (this.state.data.items !== undefined) {
-				//			  var link = this.state.data.link
-				//	         
-				//			  title = this.state.data.title
-				//	
-				//			  this.state.data.items.map(function(data) {
-				//				  let imglink = "img/"+link+"/"+data.img
-				//				  let outlink ="/"+link+"/"+ data.link+".html"
-				//				  let duration =''
-				//				 
-				//				  if (data.duration === 1) {
-				//					  duration =data.duration+' year'
-				//				  }	else {
-				//					  duration =data.duration+' years'
-				//				  } 
-				//				  	 
-				//				  var key =data.id
-				//				  htmlListItems.push(<Row><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={4}><h2>{data.item}</h2> <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={20}/></Col><Col xs={6} md={1}><p>{duration}</p></Col><Col xs={6} md={3}>{data.extra}</Col><Col xs={6} md={2}><Link to={outlink}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-				//				 
-				//			  })		 
-				//			 
-				//		  }
+				this.state.data.map(function (data) {
+					var key = data.title + data.duration;
+					htmlTableItems.push(_react2.default.createElement(
+						'tr',
+						{ key: key },
+						_react2.default.createElement(
+							'td',
+							null,
+							data.title
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.duration
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.position
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.details
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.location
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							data.country
+						)
+					));
+				});
 
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
-						'h3',
+						'h2',
 						null,
-						'Index'
+						' JobsDashbord'
 					),
 					_react2.default.createElement(
 						_reactBootstrap.Table,
 						{ responsive: true },
+						_react2.default.createElement(
+							'thead',
+							null,
+							_react2.default.createElement(
+								'tr',
+								null,
+								_react2.default.createElement(
+									'th',
+									null,
+									'Company'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Duration'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Position'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Details'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Location'
+								),
+								_react2.default.createElement(
+									'th',
+									null,
+									'Country'
+								)
+							)
+						),
 						_react2.default.createElement(
 							'tbody',
 							null,
@@ -326,10 +370,10 @@ webpackJsonp([8],{
 			}
 		}]);
 
-		return BlogDashboard;
+		return JobsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = BlogDashboard;
+	exports.default = JobsDashboard;
 
 /***/ }
 

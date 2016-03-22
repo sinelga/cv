@@ -83,10 +83,10 @@ class BlogItemsDashboard extends React.Component {
 
     return (
       <div>
-      <h3>Index</h3>
+      <h3>Items</h3>
       <Table responsive>
       	<tbody>
-      	{htmlTableItems}
+      	
       	</tbody>
       </Table>
       
