@@ -19,17 +19,9 @@ webpackJsonp([3],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactDocumentMeta = __webpack_require__(460);
+	var _BlogDashboard = __webpack_require__(477);
 
-	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
-
-	var _firebase = __webpack_require__(469);
-
-	var _firebase2 = _interopRequireDefault(_firebase);
-
-	var _DetailsDashboard = __webpack_require__(477);
-
-	var _DetailsDashboard2 = _interopRequireDefault(_DetailsDashboard);
+	var _BlogDashboard2 = _interopRequireDefault(_BlogDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52,16 +44,15 @@ webpackJsonp([3],{
 		//  color: light
 	};
 
-	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com/');
-	//var item={}
+	var site = "";
 
-	var Details = function (_React$Component) {
-		_inherits(Details, _React$Component);
+	var Blog = function (_React$Component) {
+		_inherits(Blog, _React$Component);
 
-		function Details(props) {
-			_classCallCheck(this, Details);
+		function Blog(props) {
+			_classCallCheck(this, Blog);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Blog).call(this, props));
 
 			_this.state = {
 				data: {},
@@ -71,57 +62,61 @@ webpackJsonp([3],{
 			return _this;
 		}
 
-		_createClass(Details, [{
+		_createClass(Blog, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {
-				//		console.log("Willmount Details",this.props.params.id)
-
-			}
+			value: function componentWillMount() {}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				//		console.log("Didmount Details")
+				site = document.domain;
 
-				var idlink = this.props.params.id.split(".")[0];
+				console.log(this.state.data);
 
-				if (this.props.params.moredetail === undefined) {
+				//		if (!hasChield) {
 
-					var site = document.domain;
-					var jsonlink = '/www/' + site + '/' + idlink + '/' + idlink + '.html.json';
-					console.log(jsonlink);
+				var request = new XMLHttpRequest();
+				request.open('GET', '/en_US_programming_blog.json', true);
 
-					var requestm = new XMLHttpRequest();
-					requestm.open('GET', jsonlink, true);
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+						this.setState({ data: data });
+					} else {
+						// We reached our target server, but it returned an error
 
-					requestm.onload = function () {
-						if (requestm.status >= 200 && requestm.status < 400) {
-							// Success!			 
-							var data = JSON.parse(requestm.responseText);
-							this.setState({ mark: data });
-						} else {
-							// We reached our target server, but it returned an error
+					}
+				}.bind(this);
 
-						}
-					}.bind(this);
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
 
-					requestm.onerror = function () {
-						// There was a connection error of some sort
-					};
+				request.send();
+				var requestm = new XMLHttpRequest();
+				requestm.open('GET', '/www/' + site + '/blog/blog.json', true);
 
-					requestm.send();
-				}
+				requestm.onload = function () {
+					if (requestm.status >= 200 && requestm.status < 400) {
+						// Success!			 
+						var data = JSON.parse(requestm.responseText);
+						this.setState({ mark: data });
+					} else {}
+				}.bind(this);
 
-				baseRef.orderByChild("link").equalTo(idlink).on("value", function (snapshot) {
+				requestm.onerror = function () {
+					// There was a connection error of some sort
+				};
 
-					snapshot.forEach(function (vdata) {
+				requestm.send();
 
-						this.setState({ data: vdata.val() });
-					}.bind(this));
-				}.bind(this));
+				//		}
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -131,41 +126,67 @@ webpackJsonp([3],{
 			}
 		}, {
 			key: 'componentWillUpdate',
-			value: function componentWillUpdate(prevProps) {
-				//		console.log("Details componentWillUpdate")	
-			}
+			value: function componentWillUpdate(prevProps) {}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("Details componentDidUpdate")
+				//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params)
 
+				var oldId = prevProps.params.topic;
+				var newId = this.props.params.topic;
+
+				if (newId !== oldId) {
+
+					var request = new XMLHttpRequest();
+					request.open('GET', '/en_US_programming_blog.json', true);
+
+					request.onload = function () {
+						if (request.status >= 200 && request.status < 400) {
+							// Success!			 
+							var data = JSON.parse(request.responseText);
+							this.setState({ data: data });
+						} else {
+							// We reached our target server, but it returned an error
+
+						}
+					}.bind(this);
+
+					request.onerror = function () {
+						// There was a connection error of some sort
+					};
+
+					request.send();
+					var requestm = new XMLHttpRequest();
+					requestm.open('GET', '/www/' + site + '/blog/blog.json', true);
+
+					requestm.onload = function () {
+						if (requestm.status >= 200 && requestm.status < 400) {
+							// Success!			 
+							var data = JSON.parse(requestm.responseText);
+							this.setState({ mark: data });
+						} else {}
+					}.bind(this);
+
+					requestm.onerror = function () {
+						// There was a connection error of some sort
+					};
+
+					requestm.send();
+				}
 			}
 		}, {
 			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {
-
-				baseRef.off();
-			}
+			value: function componentWillUnmount() {}
 		}, {
 			key: 'render',
 			value: function render() {
+
 				var contents = this.state.mark.Contents;
-
-				var meta = {};
-
-				if (this.state.data.title !== undefined) {
-					console.log(this.state.data);
-					meta = {
-						title: this.state.data.title,
-						description: this.state.data.title
-					};
-				}
-
+				//	console.log(this.state.data)
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_reactDocumentMeta2.default, meta),
 					_react2.default.createElement(
 						'div',
 						{ style: styles.wrapper },
@@ -177,7 +198,12 @@ webpackJsonp([3],{
 								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
 								'Return'
 							),
-							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
+							_react2.default.createElement(
+								'h2',
+								null,
+								'BLOG'
+							),
+							this.props.children || _react2.default.createElement(_BlogDashboard2.default, { data: this.state.data })
 						)
 					),
 					_react2.default.createElement(
@@ -190,10 +216,10 @@ webpackJsonp([3],{
 			}
 		}]);
 
-		return Details;
+		return Blog;
 	}(_react2.default.Component);
 
-	module.exports = Details;
+	module.exports = Blog;
 
 /***/ },
 
@@ -216,14 +242,6 @@ webpackJsonp([3],{
 
 	var _reactBootstrap = __webpack_require__(218);
 
-	var _firebase = __webpack_require__(469);
-
-	var _firebase2 = _interopRequireDefault(_firebase);
-
-	var _reactStarRating = __webpack_require__(470);
-
-	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -232,16 +250,13 @@ webpackJsonp([3],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
-	var title = '';
+	var BlogDashboard = function (_React$Component) {
+		_inherits(BlogDashboard, _React$Component);
 
-	var DetailsDashboard = function (_React$Component) {
-		_inherits(DetailsDashboard, _React$Component);
+		function BlogDashboard(props) {
+			_classCallCheck(this, BlogDashboard);
 
-		function DetailsDashboard(props) {
-			_classCallCheck(this, DetailsDashboard);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailsDashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogDashboard).call(this, props));
 
 			_this.state = {
 				data: {}
@@ -250,7 +265,7 @@ webpackJsonp([3],{
 			return _this;
 		}
 
-		_createClass(DetailsDashboard, [{
+		_createClass(BlogDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {}
 		}, {
@@ -280,93 +295,56 @@ webpackJsonp([3],{
 			key: 'render',
 			value: function render() {
 
-				var htmlListItems = [];
+				var htmlTableItems = [];
+				//		  console.log(this.state.data)
 
-				if (this.state.data.items !== undefined) {
-					var link = this.state.data.link;
+				if (Object.keys(this.state.data).length > 0) {
 
-					title = this.state.data.title;
-
-					this.state.data.items.map(function (data) {
-						var imglink = "img/" + link + "/" + data.img;
-						var outlink = "/" + link + "/" + data.link + ".html";
-						var duration = '';
-
-						if (data.duration === 1) {
-							duration = data.duration + ' year';
-						} else {
-							duration = data.duration + ' years';
-						}
-
-						var key = data.id;
-						htmlListItems.push(_react2.default.createElement(
-							_reactBootstrap.Row,
-							null,
+					Object.getOwnPropertyNames(this.state.data).forEach(function (val, idx, array) {
+						//				  console.log(val + ' -> ' + this.state.data[val]);
+						var key = val;
+						var outlink = '/blog/' + val;
+						htmlTableItems.push(_react2.default.createElement(
+							'tr',
+							{ key: key },
 							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
-								_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 4 },
-								_react2.default.createElement(
-									'h2',
-									null,
-									data.item
-								),
-								' ',
-								_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 20 })
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 1 },
-								_react2.default.createElement(
-									'p',
-									null,
-									duration
-								)
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 3 },
-								data.extra
-							),
-							_react2.default.createElement(
-								_reactBootstrap.Col,
-								{ xs: 6, md: 2 },
+								'td',
+								null,
 								_react2.default.createElement(
 									_reactRouter.Link,
 									{ to: outlink },
-									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+									val
 								)
 							)
 						));
-					});
-				}
+					}.bind(this));
+				};
 
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
-						'h2',
-						null,
-						title
-					),
-					_react2.default.createElement(
 						'h3',
 						null,
-						'Professional skills'
+						'Index'
 					),
-					htmlListItems
+					_react2.default.createElement(
+						_reactBootstrap.Table,
+						{ responsive: true },
+						_react2.default.createElement(
+							'tbody',
+							null,
+							htmlTableItems
+						)
+					)
 				);
 			}
 		}]);
 
-		return DetailsDashboard;
+		return BlogDashboard;
 	}(_react2.default.Component);
 
-	exports.default = DetailsDashboard;
+	exports.default = BlogDashboard;
 
 /***/ }
 

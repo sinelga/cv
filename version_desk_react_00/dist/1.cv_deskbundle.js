@@ -6,19 +6,15 @@ webpackJsonp([1],{
 	'use strict';
 
 	module.exports = {
-			path: '/:id/:moredetail',
+			path: ':topic',
 
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/Details')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
+			getChildRoutes: function getChildRoutes(location, cb) {
+					__webpack_require__.e/* nsure */(12, function (require) {
+							cb(null, [__webpack_require__(493)]);
+					});
+			},
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(2, function (require) {
+					__webpack_require__.e/* nsure */(11, function (require) {
 							cb(null, __webpack_require__(474));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),

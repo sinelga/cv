@@ -11,23 +11,17 @@ webpackJsonp([2],{
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactBootstrap = __webpack_require__(218);
+
 	var _reactRouter = __webpack_require__(160);
 
 	var _reactDom = __webpack_require__(159);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _firebase = __webpack_require__(469);
+	var _BlogItemsDashboard = __webpack_require__(475);
 
-	var _firebase2 = _interopRequireDefault(_firebase);
-
-	var _reactStarRating = __webpack_require__(470);
-
-	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
-
-	var _MoreDetailsDashboard = __webpack_require__(475);
-
-	var _MoreDetailsDashboard2 = _interopRequireDefault(_MoreDetailsDashboard);
+	var _BlogItemsDashboard2 = _interopRequireDefault(_BlogItemsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,24 +30,27 @@ webpackJsonp([2],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
-
-	//import DocumentMeta from 'react-document-meta'
+	//import StarRating from 'react-star-rating'
 
 
-	var baseRef;
-	var dblink = 'https://cv-mazurov.firebaseio.com/';
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
 
-	baseRef = new _firebase2.default(dblink);
-	//var item={}
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+		//  color: light
+	};
 
-	var MoreDetails = function (_React$Component) {
-		_inherits(MoreDetails, _React$Component);
+	var BlogItems = function (_React$Component) {
+		_inherits(BlogItems, _React$Component);
 
-		function MoreDetails(props) {
-			_classCallCheck(this, MoreDetails);
+		function BlogItems(props) {
+			_classCallCheck(this, BlogItems);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetails).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItems).call(this, props));
 
 			_this.state = {
 				data: {},
@@ -63,47 +60,60 @@ webpackJsonp([2],{
 			return _this;
 		}
 
-		_createClass(MoreDetails, [{
+		_createClass(BlogItems, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {}
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params.id)
+
+			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-
-				//		console.log(this.props.params)
+				//		console.log("Didmount blogItems",this.props.params)
 				var site = document.domain;
+				var topic = this.props.params.topic;
+				//		
+				var request = new XMLHttpRequest();
+				request.open('GET', '/en_US_programming_blog.json', true);
 
-				var jsonlink = '/www/' + site + '/' + this.props.params.id + '/' + this.props.params.moredetail.split(".")[0] + '/' + this.props.params.moredetail + '.json';
-				//		console.log(jsonlink)
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+						this.setState({ data: data });
+					} else {
+						// We reached our target server, but it returned an error
 
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+				//			
 				var requestm = new XMLHttpRequest();
-				requestm.open('GET', jsonlink, true);
+				requestm.open('GET', '/www/' + site + '/blog/' + topic + '/' + topic + '.json', true);
 
 				requestm.onload = function () {
 					if (requestm.status >= 200 && requestm.status < 400) {
-
+						// Success!			 
 						var data = JSON.parse(requestm.responseText);
-						//			    console.log(data)
 						this.setState({ mark: data });
 					} else {}
 				}.bind(this);
 
-				requestm.onerror = function () {};
+				requestm.onerror = function () {
+					// There was a connection error of some sort
+				};
 
 				requestm.send();
-
-				baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function (snapshot) {
-
-					snapshot.forEach(function (vdata) {
-
-						this.setState({ data: vdata.val() });
-					}.bind(this));
-				}.bind(this));
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -114,32 +124,41 @@ webpackJsonp([2],{
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
-				//		console.log("componentWillUpdate")	
+				//		console.log("Details componentWillUpdate")	
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("componentDidUpdate")
+				//		console.log("Details componentDidUpdate")
 
 			}
 		}, {
 			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {
-
-				baseRef.off();
-				//		baseRefClients.off()
-			}
+			value: function componentWillUnmount() {}
 		}, {
 			key: 'render',
 			value: function render() {
 
 				var contents = this.state.mark.Contents;
-
+				//	console.log(this.state.data)
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_MoreDetailsDashboard2.default, { data: this.state.data, link: this.props.params.moredetail }),
+					_react2.default.createElement(
+						'h2',
+						null,
+						this.props.params.topic
+					),
+					_react2.default.createElement(
+						'div',
+						{ style: styles.wrapper },
+						_react2.default.createElement(
+							_reactBootstrap.Well,
+							null,
+							this.props.children || _react2.default.createElement(_BlogItemsDashboard2.default, { data: this.state.data, topic: this.props.params.topic })
+						)
+					),
 					_react2.default.createElement(
 						'div',
 						{ id: 'background' },
@@ -150,10 +169,10 @@ webpackJsonp([2],{
 			}
 		}]);
 
-		return MoreDetails;
+		return BlogItems;
 	}(_react2.default.Component);
 
-	module.exports = MoreDetails;
+	module.exports = BlogItems;
 
 /***/ },
 
@@ -174,13 +193,7 @@ webpackJsonp([2],{
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _firebase = __webpack_require__(469);
-
-	var _firebase2 = _interopRequireDefault(_firebase);
-
-	var _reactStarRating = __webpack_require__(470);
-
-	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+	var _reactBootstrap = __webpack_require__(218);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -190,92 +203,110 @@ webpackJsonp([2],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MoreDetailsDashboard = function (_React$Component) {
-		_inherits(MoreDetailsDashboard, _React$Component);
+	var BlogItemsDashboard = function (_React$Component) {
+		_inherits(BlogItemsDashboard, _React$Component);
 
-		function MoreDetailsDashboard(props) {
-			_classCallCheck(this, MoreDetailsDashboard);
+		function BlogItemsDashboard(props) {
+			_classCallCheck(this, BlogItemsDashboard);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetailsDashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItemsDashboard).call(this, props));
 
 			_this.state = {
 				data: {},
-				mark: {}
+				topic: ""
+
 			};
 
 			return _this;
 		}
 
-		_createClass(MoreDetailsDashboard, [{
+		_createClass(BlogItemsDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
-				//		console.log("MoreDetailsDashboard componentWillUpdate")	
+				//		console.log("DetailsDashboard componentWillUpdate")	
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("MoreDetailsDashboard componentDidUpdate")
+				//		console.log("DetailsDashboard componentDidUpdate")
 
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {
-				//		console.log('MoreDetailsDashboard componentWillMount',this.props)
-
-			}
+			value: function componentWillMount() {}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				var _this2 = this;
+				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
-				//		console.log("MoreDetailsDashboard  receive props",nextProps)
-				if (nextProps.data.items === undefined) {} else {
-					(function () {
-
-						var link = nextProps.link.split(".")[0];
-
-						nextProps.data.items.map(function (item) {
-
-							if (item.link === link) {
-
-								this.setState({ data: item });
-							}
-						}.bind(_this2));
-					})();
-				}
+				this.setState({ data: nextProps.data });
+				this.setState({ topic: nextProps.topic });
+				//		console.log(this.props)
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 
-				//		console.log(this.state.data)
+				var htmlTableItems = [];
+				//		  console.log(this.state.data)
+
+				if (Object.keys(this.state.data).length > 0) {
+
+					Object.getOwnPropertyNames(this.state.data).forEach(function (val, idx, array) {
+
+						if (this.state.topic === val) {
+							this.state.data[val].forEach(function (val) {
+
+								var key = val + val.Stitle;
+								var outlink = '/blog/' + this.state.topic + '/' + val.Stitle;
+								//						  console.log(outlink)
+								htmlTableItems.push(_react2.default.createElement(
+									'tr',
+									{ key: key },
+									_react2.default.createElement(
+										'td',
+										null,
+										_react2.default.createElement(
+											_reactRouter.Link,
+											{ to: outlink },
+											val.Title
+										)
+									)
+								));
+							}.bind(this));
+						}
+					}.bind(this));
+				};
 
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
-						'h2',
+						'h3',
 						null,
-						this.state.data.item
+						'Items'
 					),
 					_react2.default.createElement(
-						'h4',
-						null,
-						'More Details'
-					),
-					this.state.data.extra
+						_reactBootstrap.Table,
+						{ responsive: true },
+						_react2.default.createElement(
+							'tbody',
+							null,
+							htmlTableItems
+						)
+					)
 				);
 			}
 		}]);
 
-		return MoreDetailsDashboard;
+		return BlogItemsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = MoreDetailsDashboard;
+	exports.default = BlogItemsDashboard;
 
 /***/ }
 

@@ -3,13 +3,15 @@ import { Link } from 'react-router'
 import {Well,Table} from 'react-bootstrap'
 
 
-class BlogItemsDashboard extends React.Component {
+class BlogItemDetailsDashboard extends React.Component {
 	
 	constructor(props){
 	    super(props);
 	    this.state = {
 	    	data: {},
-	    	topic: ""
+	    	topic: "",
+	    	stitle: "",
+	    	title: ""
 	    
 	    }
 
@@ -40,6 +42,8 @@ class BlogItemsDashboard extends React.Component {
 		
 		this.setState({data: nextProps.data})
 		this.setState({topic: nextProps.topic})
+		this.setState({stitle: nextProps.stitle})
+
 //		console.log(this.props)
 	}
 	
@@ -47,6 +51,7 @@ class BlogItemsDashboard extends React.Component {
 				  
 		  var htmlTableItems =[]
 //		  console.log(this.state.data)
+		  var title =""
 		  
 		  if (Object.keys(this.state.data).length > 0) {
 			  
@@ -55,10 +60,14 @@ class BlogItemsDashboard extends React.Component {
 				  if (this.state.topic === val) {
 					  this.state.data[val].forEach(function(val) {
 						  
-						  let key = val+val.Stitle
-						  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle
+						  if (this.state.stitle === val.Stitle) {
+//							  console.log(val)
+							  let key = val+val.Stitle
+							  title = val.Title
+							  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle
 //						  console.log(outlink)
-						  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+							  htmlTableItems.push(<tr key={key}><td>{val.Contents}</td></tr>)
+						  }
 					  }.bind(this));	  
 				  }
 				  
@@ -70,7 +79,7 @@ class BlogItemsDashboard extends React.Component {
 
     return (
       <div>
-      <h3>Items</h3>
+      <h3>{title}</h3>
       <Table responsive>
       	<tbody>
       	{htmlTableItems}
@@ -82,4 +91,4 @@ class BlogItemsDashboard extends React.Component {
   }
 }
 
-export default BlogItemsDashboard
+export default BlogItemDetailsDashboard

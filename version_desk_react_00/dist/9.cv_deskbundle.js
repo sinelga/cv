@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 489:
+/***/ 491:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19,13 +19,17 @@ webpackJsonp([9],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactStarRating = __webpack_require__(470);
+	var _reactDocumentMeta = __webpack_require__(460);
 
-	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
 
-	var _ContactsDashboard = __webpack_require__(490);
+	var _firebase = __webpack_require__(469);
 
-	var _ContactsDashboard2 = _interopRequireDefault(_ContactsDashboard);
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _DetailsDashboard = __webpack_require__(492);
+
+	var _DetailsDashboard2 = _interopRequireDefault(_DetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,6 +38,8 @@ webpackJsonp([9],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import StarRating from 'react-star-rating'
+
 
 	var dark = 'hsl(200, 20%, 20%)';
 	var light = '#fff';
@@ -43,25 +49,29 @@ webpackJsonp([9],{
 		padding: '10px 20px',
 		overflow: 'hidden',
 		background: dark
-
+		//  color: light
 	};
 
-	var Contacts = function (_React$Component) {
-		_inherits(Contacts, _React$Component);
+	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com/');
+	//var item={}
 
-		function Contacts(props) {
-			_classCallCheck(this, Contacts);
+	var Details = function (_React$Component) {
+		_inherits(Details, _React$Component);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Contacts).call(this, props));
+		function Details(props) {
+			_classCallCheck(this, Details);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
 
 			_this.state = {
-				data: {}
+				data: {},
+				mark: {}
 
 			};
 			return _this;
 		}
 
-		_createClass(Contacts, [{
+		_createClass(Details, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
@@ -76,28 +86,42 @@ webpackJsonp([9],{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 
-				console.log(document.domain);
-				var site = document.domain;
-				var request = new XMLHttpRequest();
-				request.open('GET', '/www/' + site + '/contacts/contacts.html.json', true);
+				var idlink = this.props.params.id.split(".")[0];
 
-				request.onload = function () {
-					if (request.status >= 200 && request.status < 400) {
-						// Success!			 
-						var data = JSON.parse(request.responseText);
-						//			    console.log(data)
-						this.setState({ data: data });
-					} else {
-						// We reached our target server, but it returned an error
+				if (this.props.params.moredetail === undefined) {
 
-					}
-				}.bind(this);
+					var site = document.domain;
+					var jsonlink = '/www/' + site + '/' + idlink + '/' + idlink + '.html.json';
+					console.log(jsonlink);
 
-				request.onerror = function () {
-					// There was a connection error of some sort
-				};
+					var requestm = new XMLHttpRequest();
+					requestm.open('GET', jsonlink, true);
 
-				request.send();
+					requestm.onload = function () {
+						if (requestm.status >= 200 && requestm.status < 400) {
+							// Success!			 
+							var data = JSON.parse(requestm.responseText);
+							this.setState({ mark: data });
+						} else {
+							// We reached our target server, but it returned an error
+
+						}
+					}.bind(this);
+
+					requestm.onerror = function () {
+						// There was a connection error of some sort
+					};
+
+					requestm.send();
+				}
+
+				baseRef.orderByChild("link").equalTo(idlink).on("value", function (snapshot) {
+
+					snapshot.forEach(function (vdata) {
+
+						this.setState({ data: vdata.val() });
+					}.bind(this));
+				}.bind(this));
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -119,17 +143,29 @@ webpackJsonp([9],{
 			}
 		}, {
 			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {}
+			value: function componentWillUnmount() {
+
+				baseRef.off();
+			}
 		}, {
 			key: 'render',
 			value: function render() {
+				var contents = this.state.mark.Contents;
 
-				var contents = this.state.data.Contents;
-				//	console.log(contents)
+				var meta = {};
+
+				if (this.state.data.title !== undefined) {
+					console.log(this.state.data);
+					meta = {
+						title: this.state.data.title,
+						description: this.state.data.title
+					};
+				}
 
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
 					_react2.default.createElement(
 						'div',
 						{ style: styles.wrapper },
@@ -141,12 +177,7 @@ webpackJsonp([9],{
 								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
 								'Return'
 							),
-							_react2.default.createElement(
-								'h1',
-								null,
-								'Contacts'
-							),
-							this.props.children || _react2.default.createElement(_ContactsDashboard2.default, null)
+							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
 						)
 					),
 					_react2.default.createElement(
@@ -159,14 +190,14 @@ webpackJsonp([9],{
 			}
 		}]);
 
-		return Contacts;
+		return Details;
 	}(_react2.default.Component);
 
-	module.exports = Contacts;
+	module.exports = Details;
 
 /***/ },
 
-/***/ 490:
+/***/ 492:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -185,9 +216,13 @@ webpackJsonp([9],{
 
 	var _reactBootstrap = __webpack_require__(218);
 
-	var _reactFontawesome = __webpack_require__(491);
+	var _firebase = __webpack_require__(469);
 
-	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -197,30 +232,27 @@ webpackJsonp([9],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ContactsDashboard = function (_React$Component) {
-		_inherits(ContactsDashboard, _React$Component);
+	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
+	var title = '';
 
-		function ContactsDashboard(props) {
-			_classCallCheck(this, ContactsDashboard);
+	var DetailsDashboard = function (_React$Component) {
+		_inherits(DetailsDashboard, _React$Component);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ContactsDashboard).call(this, props));
+		function DetailsDashboard(props) {
+			_classCallCheck(this, DetailsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailsDashboard).call(this, props));
 
 			_this.state = {
-				data: []
-
+				data: {}
 			};
 
 			return _this;
 		}
 
-		_createClass(ContactsDashboard, [{
+		_createClass(DetailsDashboard, [{
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-
-				//		console.log("DetailsDashboard componentDidMount")
-				//		this.setState({languages: this.languages})
-
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate(prevProps) {
@@ -239,6 +271,7 @@ webpackJsonp([9],{
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
+				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
 				this.setState({ data: nextProps.data });
 				//		console.log(this.props)
@@ -247,89 +280,93 @@ webpackJsonp([9],{
 			key: 'render',
 			value: function render() {
 
+				var htmlListItems = [];
+
+				if (this.state.data.items !== undefined) {
+					var link = this.state.data.link;
+
+					title = this.state.data.title;
+
+					this.state.data.items.map(function (data) {
+						var imglink = "img/" + link + "/" + data.img;
+						var outlink = "/" + link + "/" + data.link + ".html";
+						var duration = '';
+
+						if (data.duration === 1) {
+							duration = data.duration + ' year';
+						} else {
+							duration = data.duration + ' years';
+						}
+
+						var key = data.id;
+						htmlListItems.push(_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 4 },
+								_react2.default.createElement(
+									'h2',
+									null,
+									data.item
+								),
+								' ',
+								_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 20 })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 1 },
+								_react2.default.createElement(
+									'p',
+									null,
+									duration
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 3 },
+								data.extra
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: outlink },
+									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+								)
+							)
+						));
+					});
+				}
+
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
-						_reactBootstrap.Table,
-						{ responsive: true },
-						_react2.default.createElement(
-							'tbody',
-							null,
-							_react2.default.createElement(
-								'tr',
-								null,
-								_react2.default.createElement(
-									'td',
-									null,
-									_react2.default.createElement(_reactFontawesome2.default, { name: 'home', size: '4x' }),
-									' '
-								),
-								_react2.default.createElement(
-									'td',
-									null,
-									'Högberginkuja 1',
-									_react2.default.createElement('br', null),
-									'10820 Lappohja',
-									_react2.default.createElement('br', null),
-									'Finland'
-								)
-							),
-							_react2.default.createElement(
-								'tr',
-								null,
-								_react2.default.createElement(
-									'td',
-									null,
-									_react2.default.createElement(_reactFontawesome2.default, { name: 'phone', size: '4x' }),
-									' '
-								),
-								_react2.default.createElement(
-									'td',
-									null,
-									'+358451202801'
-								)
-							),
-							_react2.default.createElement(
-								'tr',
-								null,
-								_react2.default.createElement(
-									'td',
-									null,
-									_react2.default.createElement(_reactFontawesome2.default, { name: 'envelope', size: '4x' }),
-									' '
-								),
-								_react2.default.createElement(
-									'td',
-									null,
-									'support@mazurov.eu'
-								)
-							),
-							_react2.default.createElement(
-								'tr',
-								null,
-								_react2.default.createElement(
-									'td',
-									null,
-									_react2.default.createElement(_reactFontawesome2.default, { name: 'skype', size: '4x' }),
-									' '
-								),
-								_react2.default.createElement(
-									'td',
-									null,
-									'mazurovfi'
-								)
-							)
-						)
-					)
+						'h2',
+						null,
+						title
+					),
+					_react2.default.createElement(
+						'h3',
+						null,
+						'Professional skills'
+					),
+					htmlListItems
 				);
 			}
 		}]);
 
-		return ContactsDashboard;
+		return DetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = ContactsDashboard;
+	exports.default = DetailsDashboard;
 
 /***/ }
 

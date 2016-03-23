@@ -17,6 +17,9 @@ const dark = 'hsl(200, 20%, 20%)'
 	//  color: light
 	}
 
+
+var site =""
+
 class Blog extends React.Component {
 
 	constructor(props){
@@ -34,14 +37,18 @@ class Blog extends React.Component {
 	}
 		
 	componentWillMount(){
-//		console.log("Willmount Details",this.props.params.id)
 
+				
 	}	
 	
 	componentDidMount(){
 //		console.log("Didmount Details")
-		var site =document.domain
-//		
+		site =document.domain
+		
+		console.log(this.state.data)
+				
+//		if (!hasChield) {
+		
 		var request = new XMLHttpRequest();
 		request.open('GET', '/en_US_programming_blog.json', true);
 		
@@ -61,10 +68,9 @@ class Blog extends React.Component {
 			  // There was a connection error of some sort
 			};
 
-			request.send();
-//			
+			request.send();			
 			var requestm = new XMLHttpRequest();
-			requestm.open('GET', '/www/'+site+'/blog/blog.html.json', true);
+			requestm.open('GET', '/www/'+site+'/blog/blog.json', true);
 			
 			requestm.onload = function() {
 				  if (requestm.status >= 200 && requestm.status < 400) {
@@ -81,7 +87,9 @@ class Blog extends React.Component {
 				  // There was a connection error of some sort
 				};
 
-				requestm.send();			
+				requestm.send();
+				
+//		}
 		
 	}
 
@@ -91,13 +99,66 @@ class Blog extends React.Component {
 	}
 	
 	componentWillUpdate(prevProps) {
-//		console.log("Details componentWillUpdate")	
+		
+
+		
 	}
 	
 	
 	componentDidUpdate(prevProps) {
 		
-//		console.log("Details componentDidUpdate")
+//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params)
+		
+		   let oldId = prevProps.params.topic
+		   let newId = this.props.params.topic
+		
+		   
+		   if (newId !== oldId) {   
+
+			
+			var request = new XMLHttpRequest();
+			request.open('GET', '/en_US_programming_blog.json', true);
+			
+			request.onload = function() {
+				  if (request.status >= 200 && request.status < 400) {
+				    // Success!			  
+				    var data = JSON.parse(request.responseText);
+				    this.setState({data: data});
+				    
+				  } else {
+				    // We reached our target server, but it returned an error
+
+				  }
+				}.bind(this);
+
+				request.onerror = function() {
+				  // There was a connection error of some sort
+				};
+
+				request.send();			
+				var requestm = new XMLHttpRequest();
+				requestm.open('GET', '/www/'+site+'/blog/blog.json', true);
+				
+				requestm.onload = function() {
+					  if (requestm.status >= 200 && requestm.status < 400) {
+					    // Success!			  
+					    var data = JSON.parse(requestm.responseText);
+					    this.setState({mark: data});
+					    
+					  } else {
+
+					  }
+					}.bind(this);
+
+					requestm.onerror = function() {
+					  // There was a connection error of some sort
+					};
+
+					requestm.send();
+							
+		}
+		
+		
 					
 	}
 
@@ -110,11 +171,12 @@ class Blog extends React.Component {
 //	console.log(this.state.data)
     return (
     	<div>
-    		<h2>BLOG</h2>
+    		
     	      <div style={styles.wrapper}> 
     	      <Well>
+    	      
     	      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-    	      	<h1>Blog</h1>
+    	      	<h2>BLOG</h2>
     	           
     	      	{this.props.children || <BlogDashboard data={this.state.data} />}
     	      

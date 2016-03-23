@@ -30,7 +30,7 @@ webpackJsonp([0],{
 	  childRoutes: [{
 	    path: '/',
 	    component: __webpack_require__(217),
-	    childRoutes: [__webpack_require__(478), __webpack_require__(483), __webpack_require__(485), __webpack_require__(488), __webpack_require__(472)]
+	    childRoutes: [__webpack_require__(472), __webpack_require__(478), __webpack_require__(480), __webpack_require__(483), __webpack_require__(487)]
 	  }]
 	}; /*eslint-disable no-unused-vars */
 
@@ -606,7 +606,7 @@ webpackJsonp([0],{
 	'use strict';
 
 	module.exports = {
-			path: ':id',
+			path: 'blog',
 
 			getChildRoutes: function getChildRoutes(location, cb) {
 					__webpack_require__.e/* nsure */(1, function (require) {
@@ -614,7 +614,7 @@ webpackJsonp([0],{
 					});
 			},
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(3, function (require) {
+					__webpack_require__.e/* nsure */(3/* empty */, function (require) {
 							cb(null, __webpack_require__(476));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
@@ -633,15 +633,50 @@ webpackJsonp([0],{
 	'use strict';
 
 	module.exports = {
-			path: 'blog',
+			path: 'cvpdf.html',
 
-			getChildRoutes: function getChildRoutes(location, cb) {
-					__webpack_require__.e/* nsure */(4, function (require) {
-							cb(null, [__webpack_require__(479)]);
-					});
-			},
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(6, function (require) {
+					__webpack_require__.e/* nsure */(4, function (require) {
+							cb(null, __webpack_require__(479));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 480:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'jobs.html',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(5, function (require) {
 							cb(null, __webpack_require__(481));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
@@ -660,68 +695,6 @@ webpackJsonp([0],{
 	'use strict';
 
 	module.exports = {
-			path: 'cvpdf.html',
-
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/MoreDetails')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
-			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(7, function (require) {
-							cb(null, __webpack_require__(484));
-							//		        cb(null,{
-							//		        	chat: require('./components/Chat'),
-							//		        	main: require('./components/Details'),
-							//		        	objlist: require('./components/ObjList')
-							//		        })
-					});
-			}
-	};
-
-/***/ },
-
-/***/ 485:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
-			path: 'jobs.html',
-
-			//		  getChildRoutes(location, cb) {
-			//		    require.ensure([], (require) => {
-			//		      cb(null, [
-			//		        require('./routes/MoreDetails')
-			//	
-			//		      ])
-			//		    })
-			//		  },
-
-			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(8, function (require) {
-							cb(null, __webpack_require__(486));
-							//		        cb(null,{
-							//		        	chat: require('./components/Chat'),
-							//		        	main: require('./components/Details'),
-							//		        	objlist: require('./components/ObjList')
-							//		        })
-					});
-			}
-	};
-
-/***/ },
-
-/***/ 488:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
 			path: 'contacts.html',
 
 			//		  getChildRoutes(location, cb) {
@@ -734,8 +707,35 @@ webpackJsonp([0],{
 			//		  },
 
 			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(6, function (require) {
+							cb(null, __webpack_require__(484));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 487:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: ':id',
+
+			getChildRoutes: function getChildRoutes(location, cb) {
+					__webpack_require__.e/* nsure */(7, function (require) {
+							cb(null, [__webpack_require__(488)]);
+					});
+			},
+			getComponents: function getComponents(location, cb) {
 					__webpack_require__.e/* nsure */(9, function (require) {
-							cb(null, __webpack_require__(489));
+							cb(null, __webpack_require__(491));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
 							//		        	main: require('./components/Details'),
