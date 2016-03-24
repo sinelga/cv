@@ -3,6 +3,7 @@ import {Button,Well} from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import StarRating from 'react-star-rating'
+import DocumentMeta from 'react-document-meta'
 import BlogItemDetailsDashboard from './BlogItemDetailsDashboard'
 
 
@@ -19,7 +20,8 @@ const dark = 'hsl(200, 20%, 20%)'
 
 var site =""
 var topic =""
-var stitle="" 	
+var stitle=""
+var stitlesplit=""	
 
 class BlogItemDetails extends React.Component {
 
@@ -71,17 +73,18 @@ class BlogItemDetails extends React.Component {
 		
 	componentWillMount(){
 //		console.log("Willmount Details",this.props.params.id)
+		site =document.domain
+		topic = this.props.params.topic
+		stitle = this.props.params.stitle
+		stitlesplit = this.props.params.stitle.split('.')[0]
 
 	}	
 	
 	componentDidMount(){
 //		console.log("Didmount blogItems",this.props.params)
-		site =document.domain
-		topic = this.props.params.topic
-		stitle = this.props.params.stitle
 		
 		 this.loadajax('/en_US_programming_blog.json',false)			 
-		 this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
+		 this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitlesplit+'/'+stitle+'.json',true)
 						
 	}
 
@@ -91,15 +94,7 @@ class BlogItemDetails extends React.Component {
 	}
 	
 	componentWillUpdate(prevProps) {
-//		console.log("Details componentWillUpdate")
-		let oldId = prevProps.params.stitle
-		let newId = this.props.params.stitle
 
-		   if (newId !== oldId) {
-			   
-			   this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
-			   
-		   }
 		
 	}
 	
@@ -114,25 +109,7 @@ class BlogItemDetails extends React.Component {
 
 		   if (newId !== oldId) {
 			   
-				var requestm = new XMLHttpRequest();
-				requestm.open('GET', '/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json', true);
-				
-				requestm.onload = function() {
-					  if (requestm.status >= 200 && requestm.status < 400) {
-					    // Success!			  
-					    var data = JSON.parse(requestm.responseText);
-					    this.setState({mark: data});
-					    
-					  } else {
-
-					  }
-					}.bind(this);
-
-					requestm.onerror = function() {
-					  // There was a connection error of some sort
-					};
-
-					requestm.send(); 
+			   this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
 			   
 			   
 		   }
@@ -144,12 +121,26 @@ class BlogItemDetails extends React.Component {
 	 } 
   render() {
 	
+	  var meta ={}
 	  
+	  var res = stitle.split("-");
+
+	  var title =""
+	   
+		  res.map(function(split){
+			  title = title + split+" "
+			  
+		  })
+	  
+		meta = {
+			title: topic+" "+title,
+			description: topic+" "+title+"details"
+		}  
 	var contents = this.state.mark.Contents
 //	console.log(this.state.data)
     return (
     	<div>
-    	
+    	<DocumentMeta {...meta} />
     	  {this.props.children || <BlogItemDetailsDashboard data={this.state.data} topic={this.props.params.topic} stitle={this.props.params.stitle} />}
    	  		
     	  <div id="background"> {contents}</div>

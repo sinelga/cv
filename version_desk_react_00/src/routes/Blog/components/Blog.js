@@ -3,6 +3,7 @@ import {Button,Well} from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import StarRating from 'react-star-rating'
+import DocumentMeta from 'react-document-meta'
 import BlogDashboard from './BlogDashboard'
 
 
@@ -19,6 +20,7 @@ const dark = 'hsl(200, 20%, 20%)'
 	
 
 var site =""
+var title =""	
 
 class Blog extends React.Component {
 
@@ -71,20 +73,19 @@ class Blog extends React.Component {
 	}
 		
 	componentWillMount(){
-
+		site =document.domain
 				
 	}	
 	
 	componentDidMount(){
-		console.log("Blog Didmount")
-		site =document.domain
+//		console.log("Blog Didmount")
+		
 		
 		 if (Object.keys(this.props.params).length === 0) {
 			 
 			 this.loadajax('/en_US_programming_blog.json',false)			 
 			 this.loadajax('/www/'+site+'/blog/blog.json',true)
 			 
-
 		}
 		
 	}
@@ -112,10 +113,8 @@ class Blog extends React.Component {
 				 this.loadajax('/en_US_programming_blog.json',false)				 
 				 this.loadajax('/www/'+site+'/blog/blog.json',true)
 					
-			   }
-							
-		}
-		
+			   }							
+		}		
 							
 	}
 
@@ -125,10 +124,16 @@ class Blog extends React.Component {
   render() {
 	  
 	var contents = this.state.mark.Contents
-//	console.log(this.state.data)
+
+	var meta ={}
+	meta = {
+		title: "Blog",
+		description: "Blog programming"
+	}
+
     return (
     	<div>
-    		
+    	<DocumentMeta {...meta} />
     	      <div style={styles.wrapper}> 
     	      <Well>
     	      

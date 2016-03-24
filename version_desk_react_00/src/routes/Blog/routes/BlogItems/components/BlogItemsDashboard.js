@@ -56,7 +56,7 @@ class BlogItemsDashboard extends React.Component {
 					  this.state.data[val].forEach(function(val) {
 						  
 						  let key = val+val.Stitle
-						  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle
+						  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle+'.html'
 //						  console.log(outlink)
 						  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
 					  }.bind(this));	  

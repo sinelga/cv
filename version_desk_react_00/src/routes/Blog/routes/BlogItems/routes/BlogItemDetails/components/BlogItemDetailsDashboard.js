@@ -38,14 +38,14 @@ class BlogItemDetailsDashboard extends React.Component {
 		
 	}
 	componentWillReceiveProps(nextProps){
-//		console.log("DetailsDashboard  receive props",nextProps.data.title)
-		
+
+		var stitlesplit = nextProps.stitle.split('.')[0]
+
 		this.setState({data: nextProps.data})
 		this.setState({topic: nextProps.topic})
-		this.setState({stitle: nextProps.stitle})
+		this.setState({stitle: stitlesplit})
 
-//		console.log(this.props)
-	}
+	}	
 	
 	render() {
 				  
@@ -56,16 +56,16 @@ class BlogItemDetailsDashboard extends React.Component {
 		  if (Object.keys(this.state.data).length > 0) {
 			  
 			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
-				  
+				  				  
 				  if (this.state.topic === val) {
+					  
 					  this.state.data[val].forEach(function(val) {
 						  
 						  if (this.state.stitle === val.Stitle) {
 //							  console.log(val)
 							  let key = val+val.Stitle
 							  title = val.Title
-							  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle
-//						  console.log(outlink)
+
 							  htmlTableItems.push(<tr key={key}><td>{val.Contents}</td></tr>)
 						  }
 					  }.bind(this));	  

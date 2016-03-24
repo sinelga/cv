@@ -2,6 +2,7 @@ import React from 'react'
 import {Button,Well} from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
+import DocumentMeta from 'react-document-meta'
 //import StarRating from 'react-star-rating'
 import BlogItemsDashboard from './BlogItemsDashboard'
 
@@ -71,22 +72,22 @@ class BlogItems extends React.Component {
 	}
 		
 	componentWillMount(){
-//		console.log("Willmount Details",this.props.params.id)
+//		console.log("Willmount Details",this.props.params)
+		topic = this.props.params.topic
+		site =document.domain
 
 	}	
 	
 	componentDidMount(){
 //		console.log("Didmount blogItems",this.props.params)
-		site =document.domain
-		topic = this.props.params.topic
-//		
+
 		if (Object.keys(this.props.params).length === 1) {
 			
 			 this.loadajax('/en_US_programming_blog.json',false)			 
 			 this.loadajax('/www/'+site+'/blog/'+topic+'/'+topic+'.json',true)
 
 				
-			}
+		}
 		
 	}
 
@@ -101,9 +102,6 @@ class BlogItems extends React.Component {
 	
 	
 	componentDidUpdate(prevProps) {
-		console.log("BlogItems componentDidUpdate",prevProps.params,this.props.params, Object.keys(this.props.params).length)
-
-//		console.log()
 		
 		let oldId = prevProps.params.stitle
 		let newId = this.props.params.stitle
@@ -111,28 +109,33 @@ class BlogItems extends React.Component {
 		   if (newId !== oldId) {
 			   
 			   if (Object.keys(this.props.params).length === 1) {
-				   
-			   
+				   			   
 					 this.loadajax('/en_US_programming_blog.json',false)			 
 					 this.loadajax('/www/'+site+'/blog/'+topic+'/'+topic+'.json',true)
 				   
-
 				}
 		   }
-		
-					
+							
 	}
 
 	 componentWillUnmount(){		 
 
 	 } 
   render() {
-	
+	  	  
+	  var meta ={}
+
+		meta = {
+			title: topic,
+			description: topic+" index"
+		}
+  	   
 	  
 	var contents = this.state.mark.Contents
 //	console.log(this.state.data)
     return (
     	<div>
+    	<DocumentMeta {...meta} />
     		<h2>{this.props.params.topic}</h2>
     	            	           
     	      	{this.props.children || <BlogItemsDashboard data={this.state.data} topic={this.props.params.topic} />}
