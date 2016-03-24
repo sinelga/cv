@@ -1,25 +1,25 @@
-webpackJsonp([9],{
+webpackJsonp([12],{
 
-/***/ 491:
+/***/ 493:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = {
-			path: '/:id/:moredetail',
+			path: ':stitle',
 
 			//		  getChildRoutes(location, cb) {
 			//		    require.ensure([], (require) => {
 			//		      cb(null, [
-			//		        require('./routes/Details')
+			//		        require('./routes/BlogItemDetails')
 			//	
 			//		      ])
 			//		    })
 			//		  },
 
 			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(10, function (require) {
-							cb(null, __webpack_require__(492));
+					__webpack_require__.e/* nsure */(13, function (require) {
+							cb(null, __webpack_require__(494));
 							//		        cb(null,{
 							//		        	chat: require('./components/Chat'),
 							//		        	main: require('./components/Details'),

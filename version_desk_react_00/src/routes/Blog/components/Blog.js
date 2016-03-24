@@ -16,7 +16,7 @@ const dark = 'hsl(200, 20%, 20%)'
 	  background: dark
 	//  color: light
 	}
-
+	
 
 var site =""
 
@@ -29,34 +29,26 @@ class Blog extends React.Component {
 	    mark: {}
 
 	   }
+	  this.loadajax = this.loadajax.bind(this) 
 	}
 
-	handleReturn(){
-		browserHistory.push('/')
-		
-	}
-		
-	componentWillMount(){
-
-				
-	}	
-	
-	componentDidMount(){
-//		console.log("Didmount Details")
-		site =document.domain
-		
-		console.log(this.state.data)
-				
-//		if (!hasChield) {
-		
+	loadajax(urlstr,mark){
+			
 		var request = new XMLHttpRequest();
-		request.open('GET', '/en_US_programming_blog.json', true);
+		request.open('GET', urlstr, true);
 		
 		request.onload = function() {
 			  if (request.status >= 200 && request.status < 400) {
 			    // Success!			  
 			    var data = JSON.parse(request.responseText);
-			    this.setState({data: data});
+			    
+			    if (mark) {
+			    	this.setState({mark: data});
+			    } else {
+			    	
+			    	this.setState({data: data});
+			    
+			    }
 			    
 			  } else {
 			    // We reached our target server, but it returned an error
@@ -68,28 +60,32 @@ class Blog extends React.Component {
 			  // There was a connection error of some sort
 			};
 
-			request.send();			
-			var requestm = new XMLHttpRequest();
-			requestm.open('GET', '/www/'+site+'/blog/blog.json', true);
-			
-			requestm.onload = function() {
-				  if (requestm.status >= 200 && requestm.status < 400) {
-				    // Success!			  
-				    var data = JSON.parse(requestm.responseText);
-				    this.setState({mark: data});
-				    
-				  } else {
+			request.send();
+		
+	}
+	
+	
+	handleReturn(){
+		browserHistory.push('/')
+		
+	}
+		
+	componentWillMount(){
 
-				  }
-				}.bind(this);
-
-				requestm.onerror = function() {
-				  // There was a connection error of some sort
-				};
-
-				requestm.send();
 				
-//		}
+	}	
+	
+	componentDidMount(){
+		console.log("Blog Didmount")
+		site =document.domain
+		
+		 if (Object.keys(this.props.params).length === 0) {
+			 
+			 this.loadajax('/en_US_programming_blog.json',false)			 
+			 this.loadajax('/www/'+site+'/blog/blog.json',true)
+			 
+
+		}
 		
 	}
 
@@ -100,66 +96,27 @@ class Blog extends React.Component {
 	
 	componentWillUpdate(prevProps) {
 		
-
 		
 	}
-	
-	
+		
 	componentDidUpdate(prevProps) {
 		
-//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params)
+//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params,Object.keys(this.props.params).length)
 		
 		   let oldId = prevProps.params.topic
 		   let newId = this.props.params.topic
-		
-		   
+				   
 		   if (newId !== oldId) {   
-
-			
-			var request = new XMLHttpRequest();
-			request.open('GET', '/en_US_programming_blog.json', true);
-			
-			request.onload = function() {
-				  if (request.status >= 200 && request.status < 400) {
-				    // Success!			  
-				    var data = JSON.parse(request.responseText);
-				    this.setState({data: data});
-				    
-				  } else {
-				    // We reached our target server, but it returned an error
-
-				  }
-				}.bind(this);
-
-				request.onerror = function() {
-				  // There was a connection error of some sort
-				};
-
-				request.send();			
-				var requestm = new XMLHttpRequest();
-				requestm.open('GET', '/www/'+site+'/blog/blog.json', true);
-				
-				requestm.onload = function() {
-					  if (requestm.status >= 200 && requestm.status < 400) {
-					    // Success!			  
-					    var data = JSON.parse(requestm.responseText);
-					    this.setState({mark: data});
-					    
-					  } else {
-
-					  }
-					}.bind(this);
-
-					requestm.onerror = function() {
-					  // There was a connection error of some sort
-					};
-
-					requestm.send();
+			 if (Object.keys(this.props.params).length === 0) {
+				 
+				 this.loadajax('/en_US_programming_blog.json',false)				 
+				 this.loadajax('/www/'+site+'/blog/blog.json',true)
+					
+			   }
 							
 		}
 		
-		
-					
+							
 	}
 
 	 componentWillUnmount(){		 

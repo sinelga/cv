@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 474:
+/***/ 494:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19,9 +19,17 @@ webpackJsonp([11],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _BlogItemsDashboard = __webpack_require__(475);
+	var _reactDocumentMeta = __webpack_require__(460);
 
-	var _BlogItemsDashboard2 = _interopRequireDefault(_BlogItemsDashboard);
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _DetailsDashboard = __webpack_require__(495);
+
+	var _DetailsDashboard2 = _interopRequireDefault(_DetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,16 +52,16 @@ webpackJsonp([11],{
 		//  color: light
 	};
 
-	var site = "";
-	var topic = "";
+	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com/');
+	//var item={}
 
-	var BlogItems = function (_React$Component) {
-		_inherits(BlogItems, _React$Component);
+	var Details = function (_React$Component) {
+		_inherits(Details, _React$Component);
 
-		function BlogItems(props) {
-			_classCallCheck(this, BlogItems);
+		function Details(props) {
+			_classCallCheck(this, Details);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItems).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
 
 			_this.state = {
 				data: {},
@@ -63,7 +71,7 @@ webpackJsonp([11],{
 			return _this;
 		}
 
-		_createClass(BlogItems, [{
+		_createClass(Details, [{
 			key: 'handleReturn',
 			value: function handleReturn() {
 				_reactRouter.browserHistory.push('/');
@@ -77,45 +85,43 @@ webpackJsonp([11],{
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				//		console.log("Didmount blogItems",this.props.params)
-				site = document.domain;
-				topic = this.props.params.topic;
-				//		
-				var request = new XMLHttpRequest();
-				request.open('GET', '/en_US_programming_blog.json', true);
 
-				request.onload = function () {
-					if (request.status >= 200 && request.status < 400) {
-						// Success!			 
-						var data = JSON.parse(request.responseText);
-						this.setState({ data: data });
-					} else {
-						// We reached our target server, but it returned an error
+				var idlink = this.props.params.id.split(".")[0];
 
-					}
-				}.bind(this);
+				if (this.props.params.moredetail === undefined) {
 
-				request.onerror = function () {
-					// There was a connection error of some sort
-				};
+					var site = document.domain;
+					var jsonlink = '/www/' + site + '/' + idlink + '/' + idlink + '.html.json';
+					console.log(jsonlink);
 
-				request.send();
-				var requestm = new XMLHttpRequest();
-				requestm.open('GET', '/www/' + site + '/blog/' + topic + '/' + topic + '.json', true);
+					var requestm = new XMLHttpRequest();
+					requestm.open('GET', jsonlink, true);
 
-				requestm.onload = function () {
-					if (requestm.status >= 200 && requestm.status < 400) {
-						// Success!			 
-						var data = JSON.parse(requestm.responseText);
-						this.setState({ mark: data });
-					} else {}
-				}.bind(this);
+					requestm.onload = function () {
+						if (requestm.status >= 200 && requestm.status < 400) {
+							// Success!			 
+							var data = JSON.parse(requestm.responseText);
+							this.setState({ mark: data });
+						} else {
+							// We reached our target server, but it returned an error
 
-				requestm.onerror = function () {
-					// There was a connection error of some sort
-				};
+						}
+					}.bind(this);
 
-				requestm.send();
+					requestm.onerror = function () {
+						// There was a connection error of some sort
+					};
+
+					requestm.send();
+				}
+
+				baseRef.orderByChild("link").equalTo(idlink).on("value", function (snapshot) {
+
+					snapshot.forEach(function (vdata) {
+
+						this.setState({ data: vdata.val() });
+					}.bind(this));
+				}.bind(this));
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -131,68 +137,49 @@ webpackJsonp([11],{
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
-				//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params)
 
-				var oldId = prevProps.params.stitle;
-				var newId = this.props.params.stitle;
+				//		console.log("Details componentDidUpdate")
 
-				if (newId !== oldId) {
-
-					var request = new XMLHttpRequest();
-					request.open('GET', '/en_US_programming_blog.json', true);
-
-					request.onload = function () {
-						if (request.status >= 200 && request.status < 400) {
-							// Success!			 
-							var data = JSON.parse(request.responseText);
-							this.setState({ data: data });
-						} else {
-							// We reached our target server, but it returned an error
-
-						}
-					}.bind(this);
-
-					request.onerror = function () {
-						// There was a connection error of some sort
-					};
-
-					request.send();
-					var requestm = new XMLHttpRequest();
-					requestm.open('GET', '/www/' + site + '/blog/' + topic + '/' + topic + '.json', true);
-
-					requestm.onload = function () {
-						if (requestm.status >= 200 && requestm.status < 400) {
-							// Success!			 
-							var data = JSON.parse(requestm.responseText);
-							this.setState({ mark: data });
-						} else {}
-					}.bind(this);
-
-					requestm.onerror = function () {
-						// There was a connection error of some sort
-					};
-
-					requestm.send();
-				}
 			}
 		}, {
 			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {}
+			value: function componentWillUnmount() {
+
+				baseRef.off();
+			}
 		}, {
 			key: 'render',
 			value: function render() {
-
 				var contents = this.state.mark.Contents;
-				//	console.log(this.state.data)
+
+				var meta = {};
+
+				if (this.state.data.title !== undefined) {
+					console.log(this.state.data);
+					meta = {
+						title: this.state.data.title,
+						description: this.state.data.title
+					};
+				}
+
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
 					_react2.default.createElement(
-						'h2',
-						null,
-						this.props.params.topic
+						'div',
+						{ style: styles.wrapper },
+						_react2.default.createElement(
+							_reactBootstrap.Well,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Button,
+								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
+								'Return'
+							),
+							this.props.children || _react2.default.createElement(_DetailsDashboard2.default, { data: this.state.data })
+						)
 					),
-					this.props.children || _react2.default.createElement(_BlogItemsDashboard2.default, { data: this.state.data, topic: this.props.params.topic }),
 					_react2.default.createElement(
 						'div',
 						{ id: 'background' },
@@ -203,14 +190,14 @@ webpackJsonp([11],{
 			}
 		}]);
 
-		return BlogItems;
+		return Details;
 	}(_react2.default.Component);
 
-	module.exports = BlogItems;
+	module.exports = Details;
 
 /***/ },
 
-/***/ 475:
+/***/ 495:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -229,6 +216,14 @@ webpackJsonp([11],{
 
 	var _reactBootstrap = __webpack_require__(218);
 
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -237,24 +232,25 @@ webpackJsonp([11],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var BlogItemsDashboard = function (_React$Component) {
-		_inherits(BlogItemsDashboard, _React$Component);
+	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
+	var title = '';
 
-		function BlogItemsDashboard(props) {
-			_classCallCheck(this, BlogItemsDashboard);
+	var DetailsDashboard = function (_React$Component) {
+		_inherits(DetailsDashboard, _React$Component);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItemsDashboard).call(this, props));
+		function DetailsDashboard(props) {
+			_classCallCheck(this, DetailsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DetailsDashboard).call(this, props));
 
 			_this.state = {
-				data: {},
-				topic: ""
-
+				data: {}
 			};
 
 			return _this;
 		}
 
-		_createClass(BlogItemsDashboard, [{
+		_createClass(DetailsDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {}
 		}, {
@@ -278,69 +274,99 @@ webpackJsonp([11],{
 				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
 				this.setState({ data: nextProps.data });
-				this.setState({ topic: nextProps.topic });
 				//		console.log(this.props)
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 
-				var htmlTableItems = [];
-				//		  console.log(this.state.data)
+				var htmlListItems = [];
 
-				if (Object.keys(this.state.data).length > 0) {
+				if (this.state.data.items !== undefined) {
+					var link = this.state.data.link;
 
-					Object.getOwnPropertyNames(this.state.data).forEach(function (val, idx, array) {
+					title = this.state.data.title;
 
-						if (this.state.topic === val) {
-							this.state.data[val].forEach(function (val) {
+					this.state.data.items.map(function (data) {
+						var imglink = "img/" + link + "/" + data.img;
+						var outlink = "/" + link + "/" + data.link + ".html";
+						var duration = '';
 
-								var key = val + val.Stitle;
-								var outlink = '/blog/' + this.state.topic + '/' + val.Stitle;
-								//						  console.log(outlink)
-								htmlTableItems.push(_react2.default.createElement(
-									'tr',
-									{ key: key },
-									_react2.default.createElement(
-										'td',
-										null,
-										_react2.default.createElement(
-											_reactRouter.Link,
-											{ to: outlink },
-											val.Title
-										)
-									)
-								));
-							}.bind(this));
+						if (data.duration === 1) {
+							duration = data.duration + ' year';
+						} else {
+							duration = data.duration + ' years';
 						}
-					}.bind(this));
-				};
+
+						var key = data.id;
+						htmlListItems.push(_react2.default.createElement(
+							_reactBootstrap.Row,
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 4 },
+								_react2.default.createElement(
+									'h2',
+									null,
+									data.item
+								),
+								' ',
+								_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 20 })
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 1 },
+								_react2.default.createElement(
+									'p',
+									null,
+									duration
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 3 },
+								data.extra
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Col,
+								{ xs: 6, md: 2 },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: outlink },
+									_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+								)
+							)
+						));
+					});
+				}
 
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
-						'h3',
+						'h2',
 						null,
-						'Items'
+						title
 					),
 					_react2.default.createElement(
-						_reactBootstrap.Table,
-						{ responsive: true },
-						_react2.default.createElement(
-							'tbody',
-							null,
-							htmlTableItems
-						)
-					)
+						'h3',
+						null,
+						'Professional skills'
+					),
+					htmlListItems
 				);
 			}
 		}]);
 
-		return BlogItemsDashboard;
+		return DetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = BlogItemsDashboard;
+	exports.default = DetailsDashboard;
 
 /***/ }
 

@@ -29,8 +29,42 @@ class BlogItems extends React.Component {
 	    mark: {}
 
 	   }
+	  this.loadajax = this.loadajax.bind(this)
 	}
 
+	loadajax(urlstr,mark){
+		
+		var request = new XMLHttpRequest();
+		request.open('GET', urlstr, true);
+		
+		request.onload = function() {
+			  if (request.status >= 200 && request.status < 400) {
+			    // Success!			  
+			    var data = JSON.parse(request.responseText);
+			    
+			    if (mark) {
+			    	this.setState({mark: data});
+			    } else {
+			    	
+			    	this.setState({data: data});
+			    
+			    }
+			    
+			  } else {
+			    // We reached our target server, but it returned an error
+
+			  }
+			}.bind(this);
+
+			request.onerror = function() {
+			  // There was a connection error of some sort
+			};
+
+			request.send();
+		
+	}
+	
+	
 	handleReturn(){
 		browserHistory.push('/')
 		
@@ -46,45 +80,13 @@ class BlogItems extends React.Component {
 		site =document.domain
 		topic = this.props.params.topic
 //		
-		var request = new XMLHttpRequest();
-		request.open('GET', '/en_US_programming_blog.json', true);
-		
-		request.onload = function() {
-			  if (request.status >= 200 && request.status < 400) {
-			    // Success!			  
-			    var data = JSON.parse(request.responseText);
-			    this.setState({data: data});
-			    
-			  } else {
-			    // We reached our target server, but it returned an error
-
-			  }
-			}.bind(this);
-
-			request.onerror = function() {
-			  // There was a connection error of some sort
-			};
-
-			request.send();			
-			var requestm = new XMLHttpRequest();
-			requestm.open('GET', '/www/'+site+'/blog/'+topic+'/'+topic+'.json', true);
+		if (Object.keys(this.props.params).length === 1) {
 			
-			requestm.onload = function() {
-				  if (requestm.status >= 200 && requestm.status < 400) {
-				    // Success!			  
-				    var data = JSON.parse(requestm.responseText);
-				    this.setState({mark: data});
-				    
-				  } else {
+			 this.loadajax('/en_US_programming_blog.json',false)			 
+			 this.loadajax('/www/'+site+'/blog/'+topic+'/'+topic+'.json',true)
 
-				  }
-				}.bind(this);
-
-				requestm.onerror = function() {
-				  // There was a connection error of some sort
-				};
-
-				requestm.send();			
+				
+			}
 		
 	}
 
@@ -99,52 +101,23 @@ class BlogItems extends React.Component {
 	
 	
 	componentDidUpdate(prevProps) {
-//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params)
+		console.log("BlogItems componentDidUpdate",prevProps.params,this.props.params, Object.keys(this.props.params).length)
 
+//		console.log()
+		
 		let oldId = prevProps.params.stitle
 		let newId = this.props.params.stitle
 
 		   if (newId !== oldId) {
 			   
-				var request = new XMLHttpRequest();
-				request.open('GET', '/en_US_programming_blog.json', true);
-				
-				request.onload = function() {
-					  if (request.status >= 200 && request.status < 400) {
-					    // Success!			  
-					    var data = JSON.parse(request.responseText);
-					    this.setState({data: data});
-					    
-					  } else {
-					    // We reached our target server, but it returned an error
+			   if (Object.keys(this.props.params).length === 1) {
+				   
+			   
+					 this.loadajax('/en_US_programming_blog.json',false)			 
+					 this.loadajax('/www/'+site+'/blog/'+topic+'/'+topic+'.json',true)
+				   
 
-					  }
-					}.bind(this);
-
-					request.onerror = function() {
-					  // There was a connection error of some sort
-					};
-
-					request.send();			
-					var requestm = new XMLHttpRequest();
-					requestm.open('GET', '/www/'+site+'/blog/'+topic+'/'+topic+'.json', true);
-					
-					requestm.onload = function() {
-						  if (requestm.status >= 200 && requestm.status < 400) {
-						    // Success!			  
-						    var data = JSON.parse(requestm.responseText);
-						    this.setState({mark: data});
-						    
-						  } else {
-
-						  }
-						}.bind(this);
-
-						requestm.onerror = function() {
-						  // There was a connection error of some sort
-						};
-
-						requestm.send();   
+				}
 		   }
 		
 					

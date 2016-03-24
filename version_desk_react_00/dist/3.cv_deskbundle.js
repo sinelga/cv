@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 476:
+/***/ 475:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19,9 +19,9 @@ webpackJsonp([3],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _BlogDashboard = __webpack_require__(477);
+	var _BlogItemDetailsDashboard = __webpack_require__(476);
 
-	var _BlogDashboard2 = _interopRequireDefault(_BlogDashboard);
+	var _BlogItemDetailsDashboard2 = _interopRequireDefault(_BlogItemDetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,14 +45,16 @@ webpackJsonp([3],{
 	};
 
 	var site = "";
+	var topic = "";
+	var stitle = "";
 
-	var Blog = function (_React$Component) {
-		_inherits(Blog, _React$Component);
+	var BlogItemDetails = function (_React$Component) {
+		_inherits(BlogItemDetails, _React$Component);
 
-		function Blog(props) {
-			_classCallCheck(this, Blog);
+		function BlogItemDetails(props) {
+			_classCallCheck(this, BlogItemDetails);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Blog).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItemDetails).call(this, props));
 
 			_this.state = {
 				data: {},
@@ -62,32 +64,24 @@ webpackJsonp([3],{
 			return _this;
 		}
 
-		_createClass(Blog, [{
-			key: 'handleReturn',
-			value: function handleReturn() {
-				_reactRouter.browserHistory.push('/');
-			}
-		}, {
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				//		console.log("Didmount Details")
-				site = document.domain;
-
-				console.log(this.state.data);
-
-				//		if (!hasChield) {
+		_createClass(BlogItemDetails, [{
+			key: 'loadajax',
+			value: function loadajax(urlstr, mark) {
 
 				var request = new XMLHttpRequest();
-				request.open('GET', '/en_US_programming_blog.json', true);
+				request.open('GET', urlstr, true);
 
 				request.onload = function () {
 					if (request.status >= 200 && request.status < 400) {
 						// Success!			 
 						var data = JSON.parse(request.responseText);
-						this.setState({ data: data });
+
+						if (mark) {
+							this.setState({ mark: data });
+						} else {
+
+							this.setState({ data: data });
+						}
 					} else {
 						// We reached our target server, but it returned an error
 
@@ -99,24 +93,28 @@ webpackJsonp([3],{
 				};
 
 				request.send();
-				var requestm = new XMLHttpRequest();
-				requestm.open('GET', '/www/' + site + '/blog/blog.json', true);
+			}
+		}, {
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params.id)
 
-				requestm.onload = function () {
-					if (requestm.status >= 200 && requestm.status < 400) {
-						// Success!			 
-						var data = JSON.parse(requestm.responseText);
-						this.setState({ mark: data });
-					} else {}
-				}.bind(this);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//		console.log("Didmount blogItems",this.props.params)
+				site = document.domain;
+				topic = this.props.params.topic;
+				stitle = this.props.params.stitle;
 
-				requestm.onerror = function () {
-					// There was a connection error of some sort
-				};
-
-				requestm.send();
-
-				//		}
+				this.loadajax('/en_US_programming_blog.json', false);
+				this.loadajax('/www/' + site + '/blog/' + topic + '/' + stitle + '/' + stitle + '.html.json', true);
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -126,39 +124,30 @@ webpackJsonp([3],{
 			}
 		}, {
 			key: 'componentWillUpdate',
-			value: function componentWillUpdate(prevProps) {}
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("Details componentWillUpdate")
+				var oldId = prevProps.params.stitle;
+				var newId = this.props.params.stitle;
+
+				if (newId !== oldId) {
+
+					this.loadajax('/www/' + site + '/blog/' + topic + '/' + stitle + '/' + stitle + '.html.json', true);
+				}
+			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps) {
 
-				//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params)
+				//		console.log("Details componentDidUpdate")
+				//		console.log("BlogItemDetails componentDidUpdate",prevProps.params,this.props.params)
 
-				var oldId = prevProps.params.topic;
-				var newId = this.props.params.topic;
+				var oldId = prevProps.params.stitle;
+				var newId = this.props.params.stitle;
 
 				if (newId !== oldId) {
 
-					var request = new XMLHttpRequest();
-					request.open('GET', '/en_US_programming_blog.json', true);
-
-					request.onload = function () {
-						if (request.status >= 200 && request.status < 400) {
-							// Success!			 
-							var data = JSON.parse(request.responseText);
-							this.setState({ data: data });
-						} else {
-							// We reached our target server, but it returned an error
-
-						}
-					}.bind(this);
-
-					request.onerror = function () {
-						// There was a connection error of some sort
-					};
-
-					request.send();
 					var requestm = new XMLHttpRequest();
-					requestm.open('GET', '/www/' + site + '/blog/blog.json', true);
+					requestm.open('GET', '/www/' + site + '/blog/' + topic + '/' + stitle + '/' + stitle + '.html.json', true);
 
 					requestm.onload = function () {
 						if (requestm.status >= 200 && requestm.status < 400) {
@@ -187,25 +176,7 @@ webpackJsonp([3],{
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(
-						'div',
-						{ style: styles.wrapper },
-						_react2.default.createElement(
-							_reactBootstrap.Well,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.Button,
-								{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'large', className: 'pull-right' },
-								'Return'
-							),
-							_react2.default.createElement(
-								'h2',
-								null,
-								'BLOG'
-							),
-							this.props.children || _react2.default.createElement(_BlogDashboard2.default, { data: this.state.data })
-						)
-					),
+					this.props.children || _react2.default.createElement(_BlogItemDetailsDashboard2.default, { data: this.state.data, topic: this.props.params.topic, stitle: this.props.params.stitle }),
 					_react2.default.createElement(
 						'div',
 						{ id: 'background' },
@@ -216,14 +187,14 @@ webpackJsonp([3],{
 			}
 		}]);
 
-		return Blog;
+		return BlogItemDetails;
 	}(_react2.default.Component);
 
-	module.exports = Blog;
+	module.exports = BlogItemDetails;
 
 /***/ },
 
-/***/ 477:
+/***/ 476:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -250,22 +221,26 @@ webpackJsonp([3],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var BlogDashboard = function (_React$Component) {
-		_inherits(BlogDashboard, _React$Component);
+	var BlogItemDetailsDashboard = function (_React$Component) {
+		_inherits(BlogItemDetailsDashboard, _React$Component);
 
-		function BlogDashboard(props) {
-			_classCallCheck(this, BlogDashboard);
+		function BlogItemDetailsDashboard(props) {
+			_classCallCheck(this, BlogItemDetailsDashboard);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogDashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItemDetailsDashboard).call(this, props));
 
 			_this.state = {
-				data: {}
+				data: {},
+				topic: "",
+				stitle: "",
+				title: ""
+
 			};
 
 			return _this;
 		}
 
-		_createClass(BlogDashboard, [{
+		_createClass(BlogItemDetailsDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {}
 		}, {
@@ -289,6 +264,9 @@ webpackJsonp([3],{
 				//		console.log("DetailsDashboard  receive props",nextProps.data.title)
 
 				this.setState({ data: nextProps.data });
+				this.setState({ topic: nextProps.topic });
+				this.setState({ stitle: nextProps.stitle });
+
 				//		console.log(this.props)
 			}
 		}, {
@@ -297,26 +275,33 @@ webpackJsonp([3],{
 
 				var htmlTableItems = [];
 				//		  console.log(this.state.data)
+				var title = "";
 
 				if (Object.keys(this.state.data).length > 0) {
 
 					Object.getOwnPropertyNames(this.state.data).forEach(function (val, idx, array) {
-						//				  console.log(val + ' -> ' + this.state.data[val]);
-						var key = val;
-						var outlink = '/blog/' + val;
-						htmlTableItems.push(_react2.default.createElement(
-							'tr',
-							{ key: key },
-							_react2.default.createElement(
-								'td',
-								null,
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: outlink },
-									val
-								)
-							)
-						));
+
+						if (this.state.topic === val) {
+							this.state.data[val].forEach(function (val) {
+
+								if (this.state.stitle === val.Stitle) {
+									//							  console.log(val)
+									var key = val + val.Stitle;
+									title = val.Title;
+									var outlink = '/blog/' + this.state.topic + '/' + val.Stitle;
+									//						  console.log(outlink)
+									htmlTableItems.push(_react2.default.createElement(
+										'tr',
+										{ key: key },
+										_react2.default.createElement(
+											'td',
+											null,
+											val.Contents
+										)
+									));
+								}
+							}.bind(this));
+						}
 					}.bind(this));
 				};
 
@@ -326,7 +311,7 @@ webpackJsonp([3],{
 					_react2.default.createElement(
 						'h3',
 						null,
-						'Index'
+						title
 					),
 					_react2.default.createElement(
 						_reactBootstrap.Table,
@@ -341,10 +326,10 @@ webpackJsonp([3],{
 			}
 		}]);
 
-		return BlogDashboard;
+		return BlogItemDetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = BlogDashboard;
+	exports.default = BlogItemDetailsDashboard;
 
 /***/ }
 
