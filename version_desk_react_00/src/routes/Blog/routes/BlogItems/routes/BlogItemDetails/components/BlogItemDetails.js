@@ -123,7 +123,7 @@ class BlogItemDetails extends React.Component {
 	
 	  var meta ={}
 	  
-	  var res = stitle.split("-");
+	  var res = stitle.split(".")[0].split("-");
 
 	  var title =""
 	   
