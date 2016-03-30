@@ -2,7 +2,7 @@ import React from 'react'
 import {Button,Well } from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
-import StarRating from 'react-star-rating'
+import DocumentMeta from 'react-document-meta'
 import ContactsDashboard from './ContactsDashboard'
 
 
@@ -87,10 +87,16 @@ class Contacts extends React.Component {
   render() {
 	
 	var contents = this.state.data.Contents
-//	console.log(contents)
+	var meta ={}
+	meta = {
+		title: "Contacts",
+		description: "Contacts freelancer"
+	}
+
 	  	  
     return (
       <div>
+      <DocumentMeta {...meta} />
      
       <div style={styles.wrapper}>
       

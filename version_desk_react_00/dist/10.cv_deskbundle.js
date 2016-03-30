@@ -1,1 +1,282 @@
-webpackJsonp([10],{245:function(t,e,n){"use strict";function o(t){return t&&t.__esModule?t:{"default":t}}function a(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function r(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}var l=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),u=n(1),s=o(u),c=(n(16),n(14)),p=n(13),f=(o(p),n(52)),d=o(f),h=n(246),m=o(h),y="hsl(200, 20%, 20%)",b={};b.wrapper={padding:"10px 20px",overflow:"hidden",background:y};var v="",w="",k="",j="",O=function(t){function e(t){a(this,e);var n=r(this,Object.getPrototypeOf(e).call(this,t));return n.state={data:{},mark:{}},n}return i(e,t),l(e,[{key:"loadajax",value:function(t,e){var n=new XMLHttpRequest;n.open("GET",t,!0),n.onload=function(){if(n.status>=200&&n.status<400){var t=JSON.parse(n.responseText);e?this.setState({mark:t}):this.setState({data:t})}}.bind(this),n.onerror=function(){},n.send()}},{key:"handleReturn",value:function(){c.browserHistory.push("/")}},{key:"componentWillMount",value:function(){v=document.domain,w=this.props.params.topic,k=this.props.params.stitle,j=this.props.params.stitle.split(".")[0]}},{key:"componentDidMount",value:function(){this.loadajax("/en_US_programming_blog.json",!1),this.loadajax("/www/"+v+"/blog/"+w+"/"+j+"/"+k+".json",!0)}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(t){}},{key:"componentDidUpdate",value:function(t){var e=t.params.stitle,n=this.props.params.stitle;n!==e&&this.loadajax("/www/"+v+"/blog/"+w+"/"+k+"/"+k+".html.json",!0)}},{key:"componentWillUnmount",value:function(){}},{key:"render",value:function(){var t={},e=k.split(".")[0].split("-"),n="";e.map(function(t){n=n+t+" "}),t={title:w+" "+n,description:w+" "+n+"details"};var o=this.state.mark.Contents;return s["default"].createElement("div",null,s["default"].createElement(d["default"],t),this.props.children||s["default"].createElement(m["default"],{data:this.state.data,topic:this.props.params.topic,stitle:this.props.params.stitle}),s["default"].createElement("div",{id:"background"}," ",o))}}]),e}(s["default"].Component);t.exports=O},246:function(t,e,n){"use strict";function o(t){return t&&t.__esModule?t:{"default":t}}function a(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function r(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var l=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),u=n(1),s=o(u),c=(n(14),n(16)),p=function(t){function e(t){a(this,e);var n=r(this,Object.getPrototypeOf(e).call(this,t));return n.state={data:{},topic:"",stitle:"",title:""},n}return i(e,t),l(e,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(t){}},{key:"componentDidUpdate",value:function(t){}},{key:"componentWillMount",value:function(){}},{key:"componentWillReceiveProps",value:function(t){var e=t.stitle.split(".")[0];this.setState({data:t.data}),this.setState({topic:t.topic}),this.setState({stitle:e})}},{key:"render",value:function(){var t=[],e="";return Object.keys(this.state.data).length>0&&Object.getOwnPropertyNames(this.state.data).forEach(function(n,o,a){this.state.topic===n&&this.state.data[n].forEach(function(n){if(this.state.stitle===n.Stitle){var o=n+n.Stitle;e=n.Title,t.push(s["default"].createElement("tr",{key:o},s["default"].createElement("td",null,n.Contents)))}}.bind(this))}.bind(this)),s["default"].createElement("div",null,s["default"].createElement("h3",null,e),s["default"].createElement(c.Table,{responsive:!0},s["default"].createElement("tbody",null,t)))}}]),e}(s["default"].Component);e["default"]=p}});
+webpackJsonp([10],{
+
+/***/ 492:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	var _MoreDetailsDashboard = __webpack_require__(493);
+
+	var _MoreDetailsDashboard2 = _interopRequireDefault(_MoreDetailsDashboard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
+
+	//import DocumentMeta from 'react-document-meta'
+
+
+	var baseRef;
+	var dblink = 'https://cv-mazurov.firebaseio.com/';
+
+	baseRef = new _firebase2.default(dblink);
+	//var item={}
+
+	var MoreDetails = function (_React$Component) {
+		_inherits(MoreDetails, _React$Component);
+
+		function MoreDetails(props) {
+			_classCallCheck(this, MoreDetails);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetails).call(this, props));
+
+			_this.state = {
+				data: {},
+				mark: {}
+
+			};
+			return _this;
+		}
+
+		_createClass(MoreDetails, [{
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				//		console.log(this.props.params)
+				var site = document.domain;
+
+				var jsonlink = '/www/' + site + '/' + this.props.params.id + '/' + this.props.params.moredetail.split(".")[0] + '/' + this.props.params.moredetail + '.json';
+				//		console.log(jsonlink)
+
+				var requestm = new XMLHttpRequest();
+				requestm.open('GET', jsonlink, true);
+
+				requestm.onload = function () {
+					if (requestm.status >= 200 && requestm.status < 400) {
+
+						var data = JSON.parse(requestm.responseText);
+						//			    console.log(data)
+						this.setState({ mark: data });
+					} else {}
+				}.bind(this);
+
+				requestm.onerror = function () {};
+
+				requestm.send();
+
+				baseRef.orderByChild("link").equalTo(this.props.params.id).on("value", function (snapshot) {
+
+					snapshot.forEach(function (vdata) {
+
+						this.setState({ data: vdata.val() });
+					}.bind(this));
+				}.bind(this));
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				//		console.log("componentWillReceiveProps Details",this.props.params)
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+
+				baseRef.off();
+				//		baseRefClients.off()
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var contents = this.state.mark.Contents;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_MoreDetailsDashboard2.default, { data: this.state.data, link: this.props.params.moredetail }),
+					_react2.default.createElement(
+						'div',
+						{ id: 'background' },
+						' ',
+						contents
+					)
+				);
+			}
+		}]);
+
+		return MoreDetails;
+	}(_react2.default.Component);
+
+	module.exports = MoreDetails;
+
+/***/ },
+
+/***/ 493:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MoreDetailsDashboard = function (_React$Component) {
+		_inherits(MoreDetailsDashboard, _React$Component);
+
+		function MoreDetailsDashboard(props) {
+			_classCallCheck(this, MoreDetailsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetailsDashboard).call(this, props));
+
+			_this.state = {
+				data: {},
+				mark: {}
+			};
+
+			return _this;
+		}
+
+		_createClass(MoreDetailsDashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("MoreDetailsDashboard componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("MoreDetailsDashboard componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log('MoreDetailsDashboard componentWillMount',this.props)
+
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				var _this2 = this;
+
+				//		console.log("MoreDetailsDashboard  receive props",nextProps)
+				if (nextProps.data.items === undefined) {} else {
+					(function () {
+
+						var link = nextProps.link.split(".")[0];
+
+						nextProps.data.items.map(function (item) {
+
+							if (item.link === link) {
+
+								this.setState({ data: item });
+							}
+						}.bind(_this2));
+					})();
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				//		console.log(this.state.data)
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h2',
+						null,
+						this.state.data.item
+					),
+					_react2.default.createElement(
+						'h4',
+						null,
+						'More Details'
+					),
+					this.state.data.extra
+				);
+			}
+		}]);
+
+		return MoreDetailsDashboard;
+	}(_react2.default.Component);
+
+	exports.default = MoreDetailsDashboard;
+
+/***/ }
+
+});

@@ -1,1 +1,750 @@
-webpackJsonp([8],{0:function(e,t,n){e.exports=n(234)},234:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}var o=n(1),l=r(o),u=n(13),a=n(14),i={component:"div",childRoutes:[{path:"/",component:n(235),childRoutes:[n(241),n(252),n(261),n(250),n(255)]}]};(0,u.render)(l["default"].createElement(a.Router,{history:a.browserHistory,routes:i}),document.getElementById("content"))},235:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),c=r(i),f=n(16),s=n(52),p=r(s),d=n(237),m=r(d),h=n(236),y=r(h),b=n(238),v=r(b),g=function(e){function t(e){o(this,t);var n=l(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:[]},n}return u(t,e),a(t,[{key:"componentWillUpdate",value:function(){}},{key:"componentDidMount",value:function(){}},{key:"componentWillReceiveProps",value:function(){}},{key:"render",value:function(){var e={title:"CV",description:"CV curriculum vitae"};return c["default"].createElement("div",null,c["default"].createElement(p["default"],e),c["default"].createElement(f.Grid,null,c["default"].createElement(m["default"],null),c["default"].createElement(v["default"],null),this.props.children||c["default"].createElement(y["default"],null)))}}]),t}(c["default"].Component);e.exports=g},236:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),c=r(i),f=n(14),s=n(16),p=n(41),d=r(p),m=n(37),h=r(m),y="hsl(200, 20%, 20%)",b={};b.wrapper={padding:"10px 20px",overflow:"hidden",background:y};var v=new d["default"]("https://cv-mazurov.firebaseio.com"),g=function(e){function t(e){o(this,t);var n=l(this,Object.getPrototypeOf(t).call(this,e));return n.state={items:[]},n}return u(t,e),a(t,[{key:"componentDidMount",value:function(){}},{key:"componentWillMount",value:function(){v.on("value",function(e){var t=[];e.forEach(function(e){t.push(e)}.bind(this)),this.setState({items:t})}.bind(this))}},{key:"render",value:function(){var e=[],t=[];return this.state.items.map(function(n){var r=n.val();t=[],r.items.map(function(e){e.id+e.item;t.push(c["default"].createElement(s.ListGroupItem,null,e.item,"  ",c["default"].createElement(h["default"],{name:"airbnb-rating",totalStars:5,rating:e.rating,size:18})))}),e.push(c["default"].createElement("h2",null,r.title));var o="/img/"+r.img,l="/"+r.link+".html";e.push(c["default"].createElement(s.Row,null,c["default"].createElement(s.Col,{xs:6,md:2},c["default"].createElement(s.Image,{src:o,responsive:!0})),c["default"].createElement(s.Col,{xs:6,md:8},c["default"].createElement(s.ListGroup,null,t)),c["default"].createElement(s.Col,{xs:6,md:2},c["default"].createElement(f.Link,{to:l},c["default"].createElement(s.Image,{src:"/img/orange-arrow-right.png",responsive:!0})))))}),c["default"].createElement("div",null,c["default"].createElement("div",{style:b.wrapper},c["default"].createElement(s.Well,null,e)))}}]),t}(c["default"].Component);t["default"]=g},237:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),c=r(i),f=n(14),s="hsl(200, 20%, 20%)",p="#fff",d={};d.wrapper={padding:"10px 20px",overflow:"hidden",background:s,color:p},d.link={padding:11,color:p,fontWeight:200},d.activeLink={background:p,color:s};var m=function(e){function t(e,n){o(this,t);var r=l(this,Object.getPrototypeOf(t).call(this,e,n));return r.logOut=r.logOut.bind(r),r}return u(t,e),a(t,[{key:"logOut",value:function(){alert("log out")}},{key:"render",value:function(){this.props.user;return c["default"].createElement("div",{style:d.wrapper},c["default"].createElement("div",{style:{"float":"left"}},c["default"].createElement(f.Link,{to:"/",style:d.link},"Home")," ",c["default"].createElement(f.Link,{to:"/jobs.html",style:d.link,activeStyle:d.activeLink},"Work Expirience")," ",c["default"].createElement(f.Link,{to:"/contacts.html",style:d.link,activeStyle:d.activeLink},"Contact")," ",c["default"].createElement(f.Link,{to:"/blog",style:d.link,activeStyle:d.activeLink},"Blog")," ",c["default"].createElement(f.Link,{to:"/cvpdf.html",style:d.link,activeStyle:d.activeLink},"CV in PDF")," "))}}]),t}(c["default"].Component);t["default"]=m},238:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),c=r(i),f=n(14),s=n(16),p="hsl(200, 20%, 20%)",d="#fff",m={};m.wrapper={padding:"10px 20px",overflow:"hidden",background:p},m.link={padding:11,color:d,fontWeight:200},m.activeLink={background:d,color:p};var h=function(e){function t(){return o(this,t),l(this,Object.getPrototypeOf(t).apply(this,arguments))}return u(t,e),a(t,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"render",value:function(){var e="/jobs.html";return c["default"].createElement("div",{style:m.wrapper},c["default"].createElement(s.Well,null,c["default"].createElement(s.Row,null,c["default"].createElement(s.Col,{xs:6,md:3},c["default"].createElement(s.Image,{src:"/img/freelancer_transp.png",responsive:!0})),c["default"].createElement(s.Col,{xs:6,md:7},c["default"].createElement("h3",null,"Professional Programming")),c["default"].createElement(s.Col,{xs:6,md:2},c["default"].createElement(s.Image,{src:"/img/free_for_job.png",responsive:!0}))),c["default"].createElement(s.Row,null,c["default"].createElement(s.Col,{xs:6,md:4},c["default"].createElement(s.Image,{src:"/img/mazurov.jpg",thumbnail:!0,responsive:!0})),c["default"].createElement(s.Col,{xs:6,md:6},c["default"].createElement("p",{className:"cvbigtitle"},"CV "),"(curriculum vitae)",c["default"].createElement("p",{className:"name"},"Mazurov Aleksander")),c["default"].createElement(s.Col,{xs:6,md:2},c["default"].createElement(f.Link,{to:e},c["default"].createElement(s.Image,{src:"/img/orange-arrow-right.png",responsive:!0})),c["default"].createElement("h4",null,"Work Experience")))))}}]),t}(c["default"].Component);t["default"]=h},241:function(e,t,n){"use strict";e.exports={path:"blog",getChildRoutes:function(e,t){n.e(7,function(e){t(null,[n(244)])})},getComponents:function(e,t){n.e(4,function(e){t(null,n(239))})}}},250:function(e,t,n){"use strict";e.exports={path:"contacts.html",getComponents:function(e,t){n.e(3,function(e){t(null,n(248))})}}},252:function(e,t,n){"use strict";e.exports={path:"cvpdf.html",getComponents:function(e,t){n.e(6,function(e){t(null,n(251))})}}},255:function(e,t,n){"use strict";e.exports={path:":id",getChildRoutes:function(e,t){n.e(5,function(e){t(null,[n(258)])})},getComponents:function(e,t){n.e(2,function(e){t(null,n(253))})}}},261:function(e,t,n){"use strict";e.exports={path:"jobs.html",getComponents:function(e,t){n.e(1,function(e){t(null,n(259))})}}}});
+webpackJsonp([0],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+
+/***/ 1:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactRouter = __webpack_require__(160);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//import stubbedCourses from './stubs/REAL_ESTATE_OBJS'
+
+	var rootRoute = {
+	  component: 'div',
+	  childRoutes: [{
+	    path: '/',
+	    component: __webpack_require__(217),
+	    childRoutes: [__webpack_require__(472), __webpack_require__(481), __webpack_require__(483), __webpack_require__(486), __webpack_require__(490)]
+	  }]
+	}; /*eslint-disable no-unused-vars */
+
+
+	(0, _reactDom.render)(_react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: rootRoute }), document.getElementById('content'));
+
+/***/ },
+
+/***/ 217:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _reactDocumentMeta = __webpack_require__(460);
+
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+
+	var _GlobalNav = __webpack_require__(467);
+
+	var _GlobalNav2 = _interopRequireDefault(_GlobalNav);
+
+	var _Dashboard = __webpack_require__(468);
+
+	var _Dashboard2 = _interopRequireDefault(_Dashboard);
+
+	var _Head = __webpack_require__(471);
+
+	var _Head2 = _interopRequireDefault(_Head);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = function (_React$Component) {
+		_inherits(App, _React$Component);
+
+		function App(props) {
+			_classCallCheck(this, App);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+
+			_this.state = {
+				data: []
+
+			};
+
+			return _this;
+		}
+
+		_createClass(App, [{
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate() {}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var meta = {
+					title: 'CV',
+					description: 'CV curriculum vitae'
+				};
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
+					_react2.default.createElement(
+						_reactBootstrap.Grid,
+						null,
+						_react2.default.createElement(_GlobalNav2.default, null),
+						_react2.default.createElement(_Head2.default, null),
+						this.props.children || _react2.default.createElement(_Dashboard2.default, null)
+					)
+				);
+			}
+		}]);
+
+		return App;
+	}(_react2.default.Component);
+
+	module.exports = App;
+
+/***/ },
+
+/***/ 467:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+	  padding: '10px 20px',
+	  overflow: 'hidden',
+	  background: dark,
+	  color: light
+	};
+
+	styles.link = {
+	  padding: 11,
+	  color: light,
+	  fontWeight: 200
+	};
+
+	styles.activeLink = {
+
+	  background: light,
+	  color: dark
+	};
+
+	var GlobalNav = function (_React$Component) {
+	  _inherits(GlobalNav, _React$Component);
+
+	  function GlobalNav(props, context) {
+	    _classCallCheck(this, GlobalNav);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GlobalNav).call(this, props, context));
+
+	    _this.logOut = _this.logOut.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(GlobalNav, [{
+	    key: 'logOut',
+	    value: function logOut() {
+	      alert('log out');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var user = this.props.user;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: styles.wrapper },
+	        _react2.default.createElement(
+	          'div',
+	          { style: { float: 'left' } },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/', style: styles.link },
+	            'Home'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/jobs.html', style: styles.link, activeStyle: styles.activeLink },
+	            'Work Expirience'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/contacts.html', style: styles.link, activeStyle: styles.activeLink },
+	            'Contact'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/blog', style: styles.link, activeStyle: styles.activeLink },
+	            'Blog'
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/cvpdf.html', style: styles.link, activeStyle: styles.activeLink },
+	            'CV in PDF'
+	          ),
+	          ' '
+	        )
+	      );
+	    }
+	  }]);
+
+	  return GlobalNav;
+	}(_react2.default.Component);
+
+	//GlobalNav.defaultProps = {
+	//  user: {
+	//    id: 1,
+	//    name: 'Ryan Florence'
+	//  }
+	//}
+
+	exports.default = GlobalNav;
+
+/***/ },
+
+/***/ 468:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	var _firebase = __webpack_require__(469);
+
+	var _firebase2 = _interopRequireDefault(_firebase);
+
+	var _reactStarRating = __webpack_require__(470);
+
+	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+		//  color: light
+	};
+
+	var baseRef = new _firebase2.default('https://cv-mazurov.firebaseio.com');
+
+	var Dashboard = function (_React$Component) {
+		_inherits(Dashboard, _React$Component);
+
+		function Dashboard(props) {
+			_classCallCheck(this, Dashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).call(this, props));
+
+			_this.state = {
+				items: []
+
+			};
+
+			return _this;
+		}
+
+		_createClass(Dashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				baseRef.on("value", function (snapshot) {
+
+					var items = [];
+
+					snapshot.forEach(function (vdata) {
+
+						items.push(vdata);
+					}.bind(this));
+
+					this.setState({ items: items });
+				}.bind(this));
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var htmlitem = [];
+				var htmlListItems = [];
+
+				this.state.items.map(function (vvdata) {
+
+					var item_obj = vvdata.val();
+					htmlListItems = [];
+
+					item_obj.items.map(function (data) {
+						var key = data.id + data.item;
+						htmlListItems.push(_react2.default.createElement(
+							_reactBootstrap.ListGroupItem,
+							null,
+							data.item,
+							'  ',
+							_react2.default.createElement(_reactStarRating2.default, { name: 'airbnb-rating', totalStars: 5, rating: data.rating, size: 18 })
+						));
+					});
+
+					htmlitem.push(_react2.default.createElement(
+						'h2',
+						null,
+						item_obj.title
+					));
+
+					var imglink = '/img/' + item_obj.img;
+					var link = '/' + item_obj.link + ".html";
+
+					htmlitem.push(_react2.default.createElement(
+						_reactBootstrap.Row,
+						null,
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 2 },
+							_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 8 },
+							_react2.default.createElement(
+								_reactBootstrap.ListGroup,
+								null,
+								htmlListItems
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 2 },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: link },
+								_react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+							)
+						)
+					));
+				});
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'div',
+						{ style: styles.wrapper },
+						_react2.default.createElement(
+							_reactBootstrap.Well,
+							null,
+							htmlitem
+						)
+					)
+				);
+			}
+		}]);
+
+		return Dashboard;
+	}(_react2.default.Component);
+
+	exports.default = Dashboard;
+
+/***/ },
+
+/***/ 471:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(218);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+	  padding: '10px 20px',
+	  overflow: 'hidden',
+	  background: dark
+	  //  color: light
+	};
+
+	styles.link = {
+	  padding: 11,
+	  color: light,
+	  fontWeight: 200
+	};
+
+	styles.activeLink = {
+
+	  background: light,
+	  color: dark
+	};
+
+	var Head = function (_React$Component) {
+	  _inherits(Head, _React$Component);
+
+	  function Head() {
+	    _classCallCheck(this, Head);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Head).apply(this, arguments));
+	  }
+
+	  _createClass(Head, [{
+	    key: 'componentDidMount',
+
+
+	    //  constructor(props, context) {
+	    //    super(props, context)
+	    //   
+	    //  }
+
+	    value: function componentDidMount() {
+	      //		console.log("Didmount Head",this.props)
+
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(prevProps) {
+	      //		console.log("Head componentWillUpdate",prevProps)	
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps) {
+
+	      //		console.log("Head componentDidUpdate",prevProps)
+
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      //    const { user } = this.props
+	      var link = '/jobs.html';
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: styles.wrapper },
+	        _react2.default.createElement(
+	          _reactBootstrap.Well,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Row,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 3 },
+	              _react2.default.createElement(_reactBootstrap.Image, { src: '/img/freelancer_transp.png', responsive: true })
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 7 },
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                'Professional Programming'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 2 },
+	              _react2.default.createElement(_reactBootstrap.Image, { src: '/img/free_for_job.png', responsive: true })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Row,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 4 },
+	              _react2.default.createElement(_reactBootstrap.Image, { src: '/img/mazurov.jpg', thumbnail: true, responsive: true })
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 6 },
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'cvbigtitle' },
+	                'CV '
+	              ),
+	              '(curriculum vitae)',
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'name' },
+	                'Mazurov Aleksander'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { xs: 6, md: 2 },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: link },
+	                _react2.default.createElement(_reactBootstrap.Image, { src: '/img/orange-arrow-right.png', responsive: true })
+	              ),
+	              _react2.default.createElement(
+	                'h4',
+	                null,
+	                'Work Experience'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Head;
+	}(_react2.default.Component);
+
+	//GlobalNav.defaultProps = {
+	//  user: {
+	//    id: 1,
+	//    name: 'Ryan Florence'
+	//  }
+	//}
+
+	exports.default = Head;
+
+/***/ },
+
+/***/ 472:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'blog',
+
+			getChildRoutes: function getChildRoutes(location, cb) {
+					__webpack_require__.e/* nsure */(1, function (require) {
+							cb(null, [__webpack_require__(473)]);
+					});
+			},
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(5, function (require) {
+							cb(null, __webpack_require__(479));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 481:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'cvpdf.html',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(6, function (require) {
+							cb(null, __webpack_require__(482));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 483:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'jobs.html',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(7, function (require) {
+							cb(null, __webpack_require__(484));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 486:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: 'contacts.html',
+
+			//		  getChildRoutes(location, cb) {
+			//		    require.ensure([], (require) => {
+			//		      cb(null, [
+			//		        require('./routes/MoreDetails')
+			//	
+			//		      ])
+			//		    })
+			//		  },
+
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(8, function (require) {
+							cb(null, __webpack_require__(487));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ },
+
+/***/ 490:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: ':id',
+
+			getChildRoutes: function getChildRoutes(location, cb) {
+					__webpack_require__.e/* nsure */(9, function (require) {
+							cb(null, [__webpack_require__(491)]);
+					});
+			},
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(11, function (require) {
+							cb(null, __webpack_require__(494));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
+
+/***/ }
+
+});

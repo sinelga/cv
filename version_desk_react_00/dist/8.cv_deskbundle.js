@@ -19,9 +19,9 @@ webpackJsonp([8],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactStarRating = __webpack_require__(470);
+	var _reactDocumentMeta = __webpack_require__(460);
 
-	var _reactStarRating2 = _interopRequireDefault(_reactStarRating);
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
 
 	var _ContactsDashboard = __webpack_require__(488);
 
@@ -125,11 +125,16 @@ webpackJsonp([8],{
 			value: function render() {
 
 				var contents = this.state.data.Contents;
-				//	console.log(contents)
+				var meta = {};
+				meta = {
+					title: "Contacts",
+					description: "Contacts freelancer"
+				};
 
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
 					_react2.default.createElement(
 						'div',
 						{ style: styles.wrapper },
