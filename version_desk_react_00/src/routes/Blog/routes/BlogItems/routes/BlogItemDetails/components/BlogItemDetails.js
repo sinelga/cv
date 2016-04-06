@@ -73,7 +73,7 @@ class BlogItemDetails extends React.Component {
 	}
 		
 	componentWillMount(){
-		console.log("Willmount Details",this.props.params)
+//		console.log("Willmount Details",this.props.params)
 		site =document.domain
 //		topic = this.props.params.topic
 		stopic = this.props.params.stopic
