@@ -19,7 +19,8 @@ const dark = 'hsl(200, 20%, 20%)'
 	}
 
 var site =""
-var topic =""	
+var topic =""
+var stopic =""	
 
 class BlogItems extends React.Component {
 
@@ -73,7 +74,7 @@ class BlogItems extends React.Component {
 		
 	componentWillMount(){
 //		console.log("Willmount Details",this.props.params)
-		topic = this.props.params.topic
+		stopic = this.props.params.stopic
 		site =document.domain
 
 	}	
@@ -84,7 +85,7 @@ class BlogItems extends React.Component {
 		if (Object.keys(this.props.params).length === 1) {
 			
 			 this.loadajax('/en_US_programming_blog.json',false)			 
-			 this.loadajax('/www/'+site+'/blog/'+topic+'/'+topic+'.json',true)
+			 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 
 				
 		}
@@ -111,7 +112,7 @@ class BlogItems extends React.Component {
 			   if (Object.keys(this.props.params).length === 1) {
 				   			   
 					 this.loadajax('/en_US_programming_blog.json',false)			 
-					 this.loadajax('/www/'+site+'/blog/'+topic+'/'+topic+'.json',true)
+					 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 				   
 				}
 		   }

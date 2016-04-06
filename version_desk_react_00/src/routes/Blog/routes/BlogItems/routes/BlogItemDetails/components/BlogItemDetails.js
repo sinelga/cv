@@ -19,6 +19,7 @@ const dark = 'hsl(200, 20%, 20%)'
 	}
 
 var site =""
+var stopic =""	
 var topic =""
 var stitle=""
 var stitlesplit=""	
@@ -72,9 +73,10 @@ class BlogItemDetails extends React.Component {
 	}
 		
 	componentWillMount(){
-//		console.log("Willmount Details",this.props.params.id)
+		console.log("Willmount Details",this.props.params)
 		site =document.domain
-		topic = this.props.params.topic
+//		topic = this.props.params.topic
+		stopic = this.props.params.stopic
 		stitle = this.props.params.stitle
 		stitlesplit = this.props.params.stitle.split('.')[0]
 
@@ -84,7 +86,7 @@ class BlogItemDetails extends React.Component {
 //		console.log("Didmount blogItems",this.props.params)
 		
 		 this.loadajax('/en_US_programming_blog.json',false)			 
-		 this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitlesplit+'/'+stitle+'.json',true)
+		 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stitlesplit+'/'+stitle+'.json',true)
 						
 	}
 
