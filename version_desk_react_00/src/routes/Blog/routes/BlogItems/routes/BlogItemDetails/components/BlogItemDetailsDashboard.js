@@ -9,9 +9,8 @@ class BlogItemDetailsDashboard extends React.Component {
 	    super(props);
 	    this.state = {
 	    	data: {},
-	    	topic: "",
-	    	stitle: "",
-	    	title: ""
+	    	stopic: "",
+	    	stitle: ""
 	    
 	    }
 
@@ -42,7 +41,8 @@ class BlogItemDetailsDashboard extends React.Component {
 		var stitlesplit = nextProps.stitle.split('.')[0]
 
 		this.setState({data: nextProps.data})
-		this.setState({topic: nextProps.topic})
+//		this.setState({topic: nextProps.topic})
+		this.setState({stopic: nextProps.stopic})
 		this.setState({stitle: stitlesplit})
 
 	}	
@@ -51,13 +51,15 @@ class BlogItemDetailsDashboard extends React.Component {
 				  
 		  var htmlTableItems =[]
 //		  console.log(this.state.data)
+		  var topic =""
 		  var title =""
+		  	  
 		  
 		  if (Object.keys(this.state.data).length > 0) {
 			  
 			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
 				  				  
-				  if (this.state.topic === val) {
+				  if (this.state.stopic === val) {
 					  
 					  this.state.data[val].forEach(function(val) {
 						  
@@ -65,6 +67,7 @@ class BlogItemDetailsDashboard extends React.Component {
 //							  console.log(val)
 							  let key = val+val.Stitle
 							  title = val.Title
+							  topic = val.Topic
 
 							  htmlTableItems.push(<tr key={key}><td>{val.Contents}</td></tr>)
 						  }

@@ -78,8 +78,6 @@ class Blog extends React.Component {
 	}	
 	
 	componentDidMount(){
-//		console.log("Blog Didmount")
-		
 		
 		 if (Object.keys(this.props.params).length === 0) {
 			 
@@ -102,10 +100,8 @@ class Blog extends React.Component {
 		
 	componentDidUpdate(prevProps) {
 		
-//		console.log("Blog componentDidUpdate",prevProps.params,this.props.params,Object.keys(this.props.params).length)
-		
-		   let oldId = prevProps.params.topic
-		   let newId = this.props.params.topic
+		   let oldId = prevProps.params.stopic
+		   let newId = this.props.params.stopic
 				   
 		   if (newId !== oldId) {   
 			 if (Object.keys(this.props.params).length === 0) {

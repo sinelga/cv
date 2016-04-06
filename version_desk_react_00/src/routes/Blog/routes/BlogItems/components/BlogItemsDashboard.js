@@ -39,7 +39,8 @@ class BlogItemsDashboard extends React.Component {
 //		console.log("DetailsDashboard  receive props",nextProps.data.title)
 		
 		this.setState({data: nextProps.data})
-		this.setState({topic: nextProps.topic})
+//		this.setState({topic: nextProps.topic})
+		this.setState({stopic: nextProps.stopic})
 //		console.log(this.props)
 	}
 	
@@ -52,13 +53,18 @@ class BlogItemsDashboard extends React.Component {
 			  
 			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
 				  
-				  if (this.state.topic === val) {
+				  if (this.state.stopic === val) {
 					  this.state.data[val].forEach(function(val) {
 						  
+//						  let key = val+val.Stitle
+//						  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle+'.html'
+//						  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+						  this.state.topic = val.Topic
 						  let key = val+val.Stitle
-						  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle+'.html'
+						  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
 //						  console.log(outlink)
 						  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+						  
 					  }.bind(this));	  
 				  }
 				  
@@ -70,7 +76,8 @@ class BlogItemsDashboard extends React.Component {
 
     return (
       <div>
-      <h3>Items</h3>
+      <h3>{this.state.topic}</h3>
+      <h4>Items</h4>
       <Table responsive>
       	<tbody>
       	{htmlTableItems}

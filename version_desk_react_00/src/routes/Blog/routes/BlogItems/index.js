@@ -1,7 +1,6 @@
 module.exports = {
-		  path: ':topic',
-		  
-				
+		  path: ':stopic',
+		  				
 		  getChildRoutes(location, cb) {
 		    require.ensure([], (require) => {
 		      cb(null, [

@@ -1,3 +1,7 @@
+scp juno@104.236.240.215:git/cv/version_desk_react_00/dist/en_US_programming_blog.json .
+
+
+
  git init cv
  
  cd cv/
