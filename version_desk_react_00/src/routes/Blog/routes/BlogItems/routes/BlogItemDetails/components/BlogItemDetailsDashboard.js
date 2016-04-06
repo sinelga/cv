@@ -82,7 +82,8 @@ class BlogItemDetailsDashboard extends React.Component {
 
     return (
       <div>
-      <h3>{title}</h3>
+      <h3>topic:{topic}</h3>
+      <h4>{title}</h4>
       <Table responsive>
       	<tbody>
       	{htmlTableItems}
