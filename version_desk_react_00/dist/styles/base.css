@@ -13,6 +13,9 @@ body {
  	/*background-color: white;*/
 }
 
+.redtitle {
+	color: red;
+}
 
 .cvbigtitle {
   font-size: 410%;

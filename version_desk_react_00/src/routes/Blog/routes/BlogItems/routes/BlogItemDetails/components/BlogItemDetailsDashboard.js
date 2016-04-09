@@ -2,6 +2,13 @@ import React from 'react'
 import { Link } from 'react-router'
 import {Well,Table} from 'react-bootstrap'
 
+const red = 'red'
+const styles = {}
+
+styles.redtopic = {
+		 
+		  color: red,
+}
 
 class BlogItemDetailsDashboard extends React.Component {
 	
@@ -41,7 +48,6 @@ class BlogItemDetailsDashboard extends React.Component {
 		var stitlesplit = nextProps.stitle.split('.')[0]
 
 		this.setState({data: nextProps.data})
-//		this.setState({topic: nextProps.topic})
 		this.setState({stopic: nextProps.stopic})
 		this.setState({stitle: stitlesplit})
 
@@ -51,7 +57,7 @@ class BlogItemDetailsDashboard extends React.Component {
 
 		  var topic =""
 		  var title =""
-		  var contents = 'First &middot; Second'	  
+		  var contents = ''	  
 		  function createMarkup() { return {__html: contents}; };	  
 		  
 		  if (Object.keys(this.state.data).length > 0) {
@@ -76,11 +82,10 @@ class BlogItemDetailsDashboard extends React.Component {
 		  };
 		  
 
-
     return (
       <div>
       
-      <h3>topic:{topic}</h3>
+      <h3 style={styles.redtopic} >topic: {topic}</h3>
       <h4>{title}</h4>
 
       <div dangerouslySetInnerHTML={createMarkup()} />

@@ -131,10 +131,11 @@ class Blog extends React.Component {
     	<div>
     	<DocumentMeta {...meta} />
     	      <div style={styles.wrapper}> 
+    	      <h2>BLOG</h2>
     	      <Well>
     	      
     	      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-    	      	<h2>BLOG</h2>
+    	      	
     	           
     	      	{this.props.children || <BlogDashboard data={this.state.data} />}
     	      
