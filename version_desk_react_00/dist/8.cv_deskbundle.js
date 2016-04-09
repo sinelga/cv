@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 496:
+/***/ 497:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23,7 +23,7 @@ webpackJsonp([8],{
 
 	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
 
-	var _ContactsDashboard = __webpack_require__(497);
+	var _ContactsDashboard = __webpack_require__(498);
 
 	var _ContactsDashboard2 = _interopRequireDefault(_ContactsDashboard);
 
@@ -171,7 +171,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 497:
+/***/ 498:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -190,7 +190,7 @@ webpackJsonp([8],{
 
 	var _reactBootstrap = __webpack_require__(218);
 
-	var _reactFontawesome = __webpack_require__(498);
+	var _reactFontawesome = __webpack_require__(499);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 

@@ -48,12 +48,11 @@ class BlogItemDetailsDashboard extends React.Component {
 	}	
 	
 	render() {
-				  
-		  var htmlTableItems =[]
-//		  console.log(this.state.data)
+
 		  var topic =""
 		  var title =""
-		  	  
+		  var contents = 'First &middot; Second'	  
+		  function createMarkup() { return {__html: contents}; };	  
 		  
 		  if (Object.keys(this.state.data).length > 0) {
 			  
@@ -64,12 +63,10 @@ class BlogItemDetailsDashboard extends React.Component {
 					  this.state.data[val].forEach(function(val) {
 						  
 						  if (this.state.stitle === val.Stitle) {
-//							  console.log(val)
 							  let key = val+val.Stitle
 							  title = val.Title
 							  topic = val.Topic
-
-							  htmlTableItems.push(<tr key={key}><td>{val.Contents}</td></tr>)
+							  contents = val.Contents
 						  }
 					  }.bind(this));	  
 				  }
@@ -82,13 +79,11 @@ class BlogItemDetailsDashboard extends React.Component {
 
     return (
       <div>
+      
       <h3>topic:{topic}</h3>
       <h4>{title}</h4>
-      <Table responsive>
-      	<tbody>
-      	{htmlTableItems}
-      	</tbody>
-      </Table>
+
+      <div dangerouslySetInnerHTML={createMarkup()} />
       
       </div>
     )

@@ -54,16 +54,15 @@ class BlogItemsDashboard extends React.Component {
 			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
 				  
 				  if (this.state.stopic === val) {
-					  this.state.data[val].forEach(function(val) {
+					  this.state.data[val].forEach(function(val,idx) {
 						  
-//						  let key = val+val.Stitle
-//						  let outlink = '/blog/'+this.state.topic+'/'+val.Stitle+'.html'
-//						  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
-						  this.state.topic = val.Topic
-						  let key = val+val.Stitle
-						  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
+						  if (idx < 30) {
+							  this.state.topic = val.Topic
+							  let key = val+val.Stitle
+							  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
 //						  console.log(outlink)
-						  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+							  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+						  }
 						  
 					  }.bind(this));	  
 				  }
