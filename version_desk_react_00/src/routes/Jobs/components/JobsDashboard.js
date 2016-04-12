@@ -4,7 +4,6 @@ import {Grid,Image,Row,Col,Well,ListGroup,ListGroupItem,Table} from 'react-boots
 import Firebase from 'firebase'
 import StarRating from 'react-star-rating'
 
-//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
 var title =''
 
 class JobsDashboard extends React.Component {
@@ -35,9 +34,7 @@ class JobsDashboard extends React.Component {
 //		console.log("DetailsDashboard componentDidUpdate")
 					
 	}
-	
-	
-	
+		
 	componentWillMount(){
 
 		
@@ -69,8 +66,7 @@ class JobsDashboard extends React.Component {
 
     return (
       <div>
-      	
-      	<h2> JobsDashbord</h2>
+      	      	
       	<Table responsive>
       		<thead>
       			<tr>

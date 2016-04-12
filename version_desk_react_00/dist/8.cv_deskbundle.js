@@ -11,7 +11,7 @@ webpackJsonp([8],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(218);
+	var _reactBootstrap = __webpack_require__(219);
 
 	var _reactRouter = __webpack_require__(160);
 
@@ -19,7 +19,7 @@ webpackJsonp([8],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactDocumentMeta = __webpack_require__(469);
+	var _reactDocumentMeta = __webpack_require__(470);
 
 	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
 
@@ -36,7 +36,6 @@ webpackJsonp([8],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var dark = 'hsl(200, 20%, 20%)';
-	var light = '#fff';
 	var styles = {};
 
 	styles.wrapper = {
@@ -44,6 +43,10 @@ webpackJsonp([8],{
 		overflow: 'hidden',
 		background: dark
 
+	};
+
+	styles.table = {
+		'margin-top': '70px'
 	};
 
 	var Contacts = function (_React$Component) {
@@ -139,6 +142,11 @@ webpackJsonp([8],{
 						'div',
 						{ style: styles.wrapper },
 						_react2.default.createElement(
+							'h1',
+							null,
+							'Contacts'
+						),
+						_react2.default.createElement(
 							_reactBootstrap.Well,
 							null,
 							_react2.default.createElement(
@@ -147,11 +155,10 @@ webpackJsonp([8],{
 								'Return'
 							),
 							_react2.default.createElement(
-								'h1',
-								null,
-								'Contacts'
-							),
-							this.props.children || _react2.default.createElement(_ContactsDashboard2.default, null)
+								'div',
+								{ style: styles.table },
+								this.props.children || _react2.default.createElement(_ContactsDashboard2.default, null)
+							)
 						)
 					),
 					_react2.default.createElement(
@@ -188,7 +195,7 @@ webpackJsonp([8],{
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _reactBootstrap = __webpack_require__(218);
+	var _reactBootstrap = __webpack_require__(219);
 
 	var _reactFontawesome = __webpack_require__(499);
 

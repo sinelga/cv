@@ -7,15 +7,18 @@ import JobsDashboard from './JobsDashboard'
 
 
 const dark = 'hsl(200, 20%, 20%)'
-	const light = '#fff'
-	const styles = {}
+const styles = {}
 
-	styles.wrapper = {
-	  padding: '10px 20px',
-	  overflow: 'hidden',
-	  background: dark
-	//  color: light
-	}
+styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+}
+
+styles.table = {
+		'margin-top': '70px'	
+}
+
 
 class Jobs extends React.Component {
 
@@ -111,13 +114,16 @@ class Jobs extends React.Component {
 //	console.log(contents)
     return (
       <div>
-      <div style={styles.wrapper}> 
+      
+      <div style={styles.wrapper}>
+      <h1>Work Expirience</h1>
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-      	<h1>Work Expirience</h1>
-           
-      	{this.props.children || <JobsDashboard data={this.state.data} />}
-      
+      	
+      	<div style={styles.table}>   
+      		{this.props.children || <JobsDashboard data={this.state.data} />}
+      	</div>
+      	
       </Well>
       
   		</div>

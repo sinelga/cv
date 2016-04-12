@@ -7,15 +7,18 @@ import ContactsDashboard from './ContactsDashboard'
 
 
 const dark = 'hsl(200, 20%, 20%)'
-	const light = '#fff'
-	const styles = {}
+const styles = {}
 
-	styles.wrapper = {
-	  padding: '10px 20px',
-	  overflow: 'hidden',
+styles.wrapper = {
+	 padding: '10px 20px',
+	 overflow: 'hidden',
 	  background: dark
 	
-	}
+}
+
+styles.table = {
+		'margin-top': '70px'	
+}
 
 class Contacts extends React.Component {
 
@@ -99,12 +102,13 @@ class Contacts extends React.Component {
       <DocumentMeta {...meta} />
      
       <div style={styles.wrapper}>
-      
+      <h1>Contacts</h1>
       <Well>
       	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-      	<h1>Contacts</h1>
-           
+      	
+      	<div style={styles.table}>
       	{this.props.children || <ContactsDashboard  />}
+      	</div>
       
       </Well>
       
