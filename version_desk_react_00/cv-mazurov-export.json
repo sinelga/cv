@@ -131,7 +131,7 @@
         "duration": 2,
         "extra": "was used in production abandoned now in favor of Linux",
         "id": 1,
-        "img": "linux.png",
+        "img": "solaris.gif",
         "item": "Solaris",
         "link": "solaris",
         "rating": 1
@@ -157,5 +157,49 @@
     ],
     "link": "operatingsystems",
     "title": "Operating Systems"
+  },
+  {
+    "id": 3,
+    "img": "operatingsystems.png",
+    "items": [
+      {
+        "duration": 20,
+        "extra": "mostly used in production before NOSQL DB",
+        "id": 0,
+        "img": "mysql.png",
+        "item": "Mysql",
+        "link": "mysql",
+        "rating": 5
+      },
+      {
+        "duration": 2,
+        "extra": "widely used in production especially in Clouds structure",
+        "id": 1,
+        "img": "redis.png",
+        "item": "Redis",
+        "link": "Redis",
+        "rating": 5
+      },
+      {
+        "duration": 1,
+        "extra": "in some cases was used in production for small application",
+        "id": 2,
+        "img": "sqlite.png",
+        "item": "Sqlite",
+        "link": "sqlite",
+        "rating": 3
+      },
+      {
+        "duration": 1,
+        "extra": "was use before MySQL as main DB",
+        "id": 3,
+        "img": "postgresql.png",
+        "item": "Postgresql",
+        "link": "postgresql",
+        "rating": 3
+      }
+    ],
+    "link": "databases",
+    "title": "Data Bases"
   }
 ]
