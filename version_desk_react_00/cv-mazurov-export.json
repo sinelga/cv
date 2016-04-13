@@ -197,9 +197,62 @@
         "item": "Postgresql",
         "link": "postgresql",
         "rating": 3
+      },
+      {
+        "duration": 1,
+        "extra": "was only tested as potential replacement for MySQL",
+        "id": 4,
+        "img": "oracle.png",
+        "item": "Oracle",
+        "link": "oracle",
+        "rating": 1
       }
     ],
     "link": "databases",
     "title": "Data Bases"
+  },
+  {
+    "id": 4,
+    "img": "telecommunication.png",
+    "items": [
+      {
+        "duration": 18,
+        "extra": "used as main application for production",
+        "id": 0,
+        "img": "asterisk.png",
+        "item": "Asterisk",
+        "link": "asterisk",
+        "rating": 5
+      },
+      {
+        "duration": 2,
+        "extra": "was only tested as potential replacement for Asterisk",
+        "id": 1,
+        "img": "kamailio.png",
+        "item": "Kamailio",
+        "link": "kamailio",
+        "rating": 2
+      },
+      {
+        "duration": 1,
+        "extra": "was used in production",
+        "id": 2,
+        "img": "cisco.png",
+        "item": "Cisco",
+        "link": "Cisco",
+        "rating": 3
+      },
+      {
+        "duration": 10,
+        "extra": "main application for SMS messages actually in use",
+        "id": 3,
+        "img": "kannel.png",
+        "item": "Kannel",
+        "link": "kannel",
+        "rating": 4
+      }
+    ],
+    "link": "telecommunication",
+    "title": "Telecommunication"
   }
 ]
