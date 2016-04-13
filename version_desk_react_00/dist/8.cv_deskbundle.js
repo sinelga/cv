@@ -46,7 +46,7 @@ webpackJsonp([8],{
 	};
 
 	styles.table = {
-		'margin-top': '70px'
+		marginTop: '70px'
 	};
 
 	var Contacts = function (_React$Component) {

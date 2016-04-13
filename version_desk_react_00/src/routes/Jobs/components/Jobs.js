@@ -10,13 +10,13 @@ const dark = 'hsl(200, 20%, 20%)'
 const styles = {}
 
 styles.wrapper = {
-		padding: '10px 20px',
-		overflow: 'hidden',
-		background: dark
+	padding: '10px 20px',
+	overflow: 'hidden',
+	background: dark
 }
 
 styles.table = {
-		'margin-top': '70px'	
+	marginTop: '70px'	
 }
 
 

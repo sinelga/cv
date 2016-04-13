@@ -51,7 +51,7 @@ class Details extends React.Component {
 		
 			var site =document.domain			
 			var jsonlink = '/www/'+site+'/'+idlink+'/'+idlink+'.html.json'
-			console.log(jsonlink)
+//			console.log(jsonlink)
 		
 			var requestm = new XMLHttpRequest();
 			requestm.open('GET', jsonlink, true);
@@ -111,7 +111,7 @@ class Details extends React.Component {
 	var meta ={}
 	
 	if (this.state.data.title !== undefined) {
-		console.log(this.state.data)
+//		console.log(this.state.data)
 		meta = {
 			title: this.state.data.title,
 			description: this.state.data.title

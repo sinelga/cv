@@ -1,117 +1,161 @@
-[ {
-  "id" : 0,
-  "img" : "Programming.png",
-  "items" : [ {
-    "duration" : 3,
-    "extra" : "",
-    "id" : 0,
-    "img" : "",
-    "item" : "C",
-    "rating" : 3
-  }, {
-    "duration" : 10,
-    "extra" : "",
-    "id" : 1,
-    "img" : "",
-    "item" : "Java",
-    "rating" : 5
-  }, {
-    "duration" : 4,
-    "extra" : "",
-    "id" : 2,
-    "img" : "",
-    "item" : "JavaScript",
-    "rating" : 5
-  }, {
-    "duration" : 3,
-    "extra" : "",
-    "id" : 3,
-    "img" : "",
-    "item" : "GoLang",
-    "rating" : 5
-  }, {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 4,
-    "img" : "",
-    "item" : "Dart",
-    "rating" : 2
-  }, {
-    "duration" : 2,
-    "extra" : "",
-    "id" : 5,
-    "img" : "",
-    "language" : "Ruby",
-    "rating" : 3
-  }, {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 6,
-    "img" : "",
-    "item" : "Python",
-    "rating" : 2
-  }, {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 7,
-    "img" : "",
-    "item" : "PHP",
-    "rating" : 1
-  } ],
-  "link" : "languages",
-  "title" : "Languages"
-}, {
-  "id" : 1,
-  "img" : "gears-framework-transparent.png",
-  "items" : [ {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 0,
-    "img" : "",
-    "item" : "React",
-    "rating" : 5
-  }, {
-    "duration" : 2,
-    "extra" : "",
-    "id" : 1,
-    "img" : "",
-    "item" : "Angularjs",
-    "rating" : 5
-  }, {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 3,
-    "img" : "",
-    "item" : "Solaris",
-    "rating" : 1
-  } ],
-  "link" : "frameworks",
-  "title" : "Frameworks"
-}, {
-  "id" : 2,
-  "img" : "operatingsystems.png",
-  "items" : [ {
-    "duration" : 23,
-    "extra" : "",
-    "id" : 0,
-    "img" : "",
-    "item" : "Linux",
-    "rating" : 5
-  }, {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 1,
-    "img" : "",
-    "item" : "FreeBsd",
-    "rating" : 1
-  }, {
-    "duration" : 1,
-    "extra" : "",
-    "id" : 3,
-    "img" : "",
-    "item" : "Solaris",
-    "rating" : 1
-  } ],
-  "link" : "operatingsystems",
-  "title" : "Operating Systems"
-} ]
+[
+  {
+    "id": 0,
+    "img": "Programming.png",
+    "items": [
+      {
+        "duration": 3,
+        "extra": "was used in a big communication project",
+        "id": 0,
+        "img": "c.png",
+        "item": "C",
+        "link": "c",
+        "rating": 3
+      },
+      {
+        "duration": 10,
+        "extra": "was used as main language in production in all areas",
+        "id": 1,
+        "img": "java.jpg",
+        "item": "Java",
+        "link": "java",
+        "rating": 5
+      },
+      {
+        "duration": 4,
+        "extra": "main language for web aplication production",
+        "id": 2,
+        "img": "javascript.png",
+        "item": "JavaScript",
+        "link": "javascript",
+        "rating": 5
+      },
+      {
+        "duration": 3,
+        "extra": "actually used now in production as substitute for JAVA",
+        "id": 3,
+        "img": "golang.png",
+        "item": "GoLang",
+        "link": "golang",
+        "rating": 5
+      },
+      {
+        "duration": 1,
+        "extra": "abandoned now in favor of JavaScript",
+        "id": 4,
+        "img": "dart.png",
+        "item": "Dart",
+        "link": "dart",
+        "rating": 2
+      },
+      {
+        "duration": 2,
+        "extra": "abandoned now in favor of Golang",
+        "id": 5,
+        "img": "ruby.jpg",
+        "item": "Ruby",
+        "link": "ruby",
+        "rating": 3
+      },
+      {
+        "duration": 1,
+        "extra": "in some cases used in production but not widely",
+        "id": 6,
+        "img": "python.png",
+        "item": "Python",
+        "link": "python",
+        "rating": 2
+      },
+      {
+        "duration": 1,
+        "extra": "practically not used any more abandoned now in favor of JavaScript",
+        "id": 7,
+        "img": "php.png",
+        "item": "PHP",
+        "link": "php",
+        "rating": 1
+      }
+    ],
+    "link": "languages",
+    "title": "Languages"
+  },
+  {
+    "id": 1,
+    "img": "gears-framework-transparent.png",
+    "items": [
+      {
+        "duration": 1,
+        "extra": "now used in all new project",
+        "id": 0,
+        "img": "react.png",
+        "item": "React",
+        "link": "react",
+        "rating": 5
+      },
+      {
+        "duration": 2,
+        "extra": "actually used in production",
+        "id": 1,
+        "img": "angularjs.png",
+        "item": "Angularjs",
+        "link": "angularjs",
+        "rating": 5
+      },
+      {
+        "duration": 1,
+        "extra": "still in use but mostly abandoned in favor of Angularjs/React",
+        "id": 2,
+        "img": "rubyonrails.png",
+        "item": "Ruby on Rails",
+        "link": "ruby_on_rails",
+        "rating": 2
+      }
+    ],
+    "link": "frameworks",
+    "title": "Frameworks"
+  },
+  {
+    "id": 2,
+    "img": "operatingsystems.png",
+    "items": [
+      {
+        "duration": 23,
+        "extra": "99% used in production as main OS",
+        "id": 0,
+        "img": "linux.png",
+        "item": "Linux",
+        "link": "linux",
+        "rating": 5
+      },
+      {
+        "duration": 2,
+        "extra": "was used in production abandoned now in favor of Linux",
+        "id": 1,
+        "img": "linux.png",
+        "item": "Solaris",
+        "link": "solaris",
+        "rating": 1
+      },
+      {
+        "duration": 1,
+        "extra": "was used in production abandoned now in favor of Linux",
+        "id": 2,
+        "img": "freebsd.png",
+        "item": "FreeBsd",
+        "link": "freebsd",
+        "rating": 1
+      },
+      {
+        "duration": 1,
+        "extra": "was used in production for VOIP abandoned now in favor of Linux",
+        "id": 3,
+        "img": "cisco.jpg",
+        "item": "Cisco IOS",
+        "link": "cisko-io",
+        "rating": 1
+      }
+    ],
+    "link": "operatingsystems",
+    "title": "Operating Systems"
+  }
+]

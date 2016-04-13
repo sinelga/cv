@@ -12,12 +12,12 @@ const styles = {}
 styles.wrapper = {
 	 padding: '10px 20px',
 	 overflow: 'hidden',
-	  background: dark
+	 background: dark
 	
 }
 
 styles.table = {
-		'margin-top': '70px'	
+	marginTop: '70px'	
 }
 
 class Contacts extends React.Component {
