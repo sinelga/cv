@@ -254,5 +254,67 @@
     ],
     "link": "telecommunication",
     "title": "Telecommunication"
+  },
+  {
+    "id": 5,
+    "img": "cloudcomputing.png",
+    "items": [
+      {
+        "duration": 2,
+        "extra": "actually used in production as main platform",
+        "id": 0,
+        "img": "digitalocean.png",
+        "item": "Digital Ocean",
+        "link": "digital-ocean",
+        "rating": 5
+      },
+      {
+        "duration": 2,
+        "extra": "still main production based on AWS",
+        "id": 1,
+        "img": "aws.gif",
+        "item": "Amazon Web Service",
+        "link": "amazon-web-service",
+        "rating": 2
+      },
+      {
+        "duration": 5,
+        "extra": "still in use but abandoned in favor of Digital Ocean",
+        "id": 2,
+        "img": "googleappengine.jpg",
+        "item": "Google App Engine",
+        "link": "google-app-engine",
+        "rating": 4
+      },
+      {
+        "duration": 5,
+        "extra": "still in use but abandoned in favor of Digital Ocean",
+        "id": 3,
+        "img": "rackspace.png",
+        "item": "Rackspace",
+        "link": "rackspace",
+        "rating": 3
+      },
+      {
+        "duration": 1,
+        "extra": "only was tested",
+        "id": 4,
+        "img": "heroku.png",
+        "item": "Heroku",
+        "link": "heroku",
+        "rating": 1
+      },
+      {
+        "duration": 1,
+        "extra": "basic knowledge",
+        "id": 5,
+        "img": "docker.png",
+        "item": "Docker",
+        "link": "docker",
+        "rating": 1
+      }
+    ],
+    "link": "cloudcomputing",
+    "title": "Cloud Computing"
   }
 ]
