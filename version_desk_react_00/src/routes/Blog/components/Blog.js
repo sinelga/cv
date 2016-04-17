@@ -81,7 +81,7 @@ class Blog extends React.Component {
 		
 		 if (Object.keys(this.props.params).length === 0) {
 			 
-			 this.loadajax('/en_US_programming_blog.json',false)			 
+			 this.loadajax('http://'+site+':8001/blog',false)			 
 			 this.loadajax('/www/'+site+'/blog/blog.json',true)
 			 
 		}
@@ -105,8 +105,7 @@ class Blog extends React.Component {
 				   
 		   if (newId !== oldId) {   
 			 if (Object.keys(this.props.params).length === 0) {
-				 
-				 this.loadajax('/en_US_programming_blog.json',false)				 
+				 this.loadajax('http://'+site+':8001/blog',false)
 				 this.loadajax('/www/'+site+'/blog/blog.json',true)
 					
 			   }							
@@ -134,9 +133,7 @@ class Blog extends React.Component {
     	      <h2>BLOG</h2>
     	      <Well>
     	      
-    	      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
-    	      	
-    	           
+    	      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>	           
     	      	{this.props.children || <BlogDashboard data={this.state.data} />}
     	      
     	      </Well>

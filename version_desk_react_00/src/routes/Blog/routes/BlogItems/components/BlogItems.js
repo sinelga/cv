@@ -80,11 +80,11 @@ class BlogItems extends React.Component {
 	}	
 	
 	componentDidMount(){
-//		console.log("Didmount blogItems",this.props.params)
 
 		if (Object.keys(this.props.params).length === 1) {
-			
-			 this.loadajax('/en_US_programming_blog.json',false)			 
+
+			var stopic = this.props.params.stopic
+			 this.loadajax('http://'+site+':8001/blog/'+stopic,false)
 			 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 
 				
@@ -110,9 +110,8 @@ class BlogItems extends React.Component {
 		   if (newId !== oldId) {
 			   
 			   if (Object.keys(this.props.params).length === 1) {
-				   			   
-					 this.loadajax('/en_US_programming_blog.json',false)			 
-					 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
+				 this.loadajax('http://'+site+':8001/blog/'+stopic,false)
+				 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 				   
 				}
 		   }

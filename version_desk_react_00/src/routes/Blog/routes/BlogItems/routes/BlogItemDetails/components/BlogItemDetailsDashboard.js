@@ -61,24 +61,12 @@ class BlogItemDetailsDashboard extends React.Component {
 		  function createMarkup() { return {__html: contents}; };	  
 		  
 		  if (Object.keys(this.state.data).length > 0) {
-			  
-			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
-				  				  
-				  if (this.state.stopic === val) {
-					  
-					  this.state.data[val].forEach(function(val) {
-						  
-						  if (this.state.stitle === val.Stitle) {
-							  let key = val+val.Stitle
-							  title = val.Title
-							  topic = val.Topic
-							  contents = val.Contents
-						  }
-					  }.bind(this));	  
-				  }
-				  
-			  }.bind(this));
-			  
+			  			  
+			  let key = this.state.data.Stitle
+			  title = this.state.data.Title
+			  topic = this.state.data.Topic
+			  contents = this.state.data.Contents
+			  			  
 		  };
 		  
 

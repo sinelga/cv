@@ -85,7 +85,8 @@ class BlogItemDetails extends React.Component {
 	componentDidMount(){
 //		console.log("Didmount blogItems",this.props.params)
 		
-		 this.loadajax('/en_US_programming_blog.json',false)			 
+//		 this.loadajax('/en_US_programming_blog.json',false)
+		 this.loadajax('http://'+site+':8001/blog/'+stopic+"/"+stitlesplit,false)
 		 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stitlesplit+'/'+stitle+'.json',true)
 						
 	}
@@ -103,14 +104,12 @@ class BlogItemDetails extends React.Component {
 	
 	componentDidUpdate(prevProps) {
 		
-//		console.log("Details componentDidUpdate")
-//		console.log("BlogItemDetails componentDidUpdate",prevProps.params,this.props.params)
-		
 		let oldId = prevProps.params.stitle
 		let newId = this.props.params.stitle
 
 		   if (newId !== oldId) {
-			   
+ 
+			   this.loadajax('http://'+site+':8001/blog/'+stopic+"/"+stitlesplit,false)
 			   this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
 			   
 			   
@@ -122,7 +121,7 @@ class BlogItemDetails extends React.Component {
 
 	 } 
   render() {
-	
+	  
 	  var meta ={}
 	  
 	  var res = stitle.split(".")[0].split("-");
@@ -139,7 +138,7 @@ class BlogItemDetails extends React.Component {
 			description: topic+" "+title+"details"
 		}  
 	var contents = this.state.mark.Contents
-//	console.log(this.state.data)
+
     return (
     	<div>
     	<DocumentMeta {...meta} />

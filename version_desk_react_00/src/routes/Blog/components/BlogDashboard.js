@@ -46,14 +46,19 @@ class BlogDashboard extends React.Component {
 		  
 		  if (Object.keys(this.state.data).length > 0) {
 			  
-			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
+			  Object.getOwnPropertyNames(this.state.data).forEach(function(idx) {
 				  
-				  let itemObj = this.state.data[val]
+				  console.log(this.state.data[idx])
+				  
+				  let topic = this.state.data[idx].Topic
+				  let stopic = this.state.data[idx].Stopic
+				  
+//				  let itemObj = this.state.data[val]
 
-				  let visiblelink = itemObj[0].Topic
-				  let key = val
-				  let outlink = '/blog/'+val
-				  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{visiblelink}</Link></td></tr>)
+//				  let visiblelink = itemObj[0].Topic
+				  let key = stopic
+				  let outlink = '/blog/'+stopic
+				  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{topic}</Link></td></tr>)
 				  
 				  
 			  }.bind(this));

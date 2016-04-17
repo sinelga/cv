@@ -36,7 +36,7 @@ class BlogItemsDashboard extends React.Component {
 		
 	}
 	componentWillReceiveProps(nextProps){
-//		console.log("DetailsDashboard  receive props",nextProps.data.title)
+//		console.log("DetailsDashboard  receive props",nextProps.data)
 		
 		this.setState({data: nextProps.data})
 //		this.setState({topic: nextProps.topic})
@@ -47,26 +47,17 @@ class BlogItemsDashboard extends React.Component {
 	render() {
 				  
 		  var htmlTableItems =[]
+
 //		  console.log(this.state.data)
-		  
-		  if (Object.keys(this.state.data).length > 0) {
+		  		  
+		  if (this.state.data.length === 1) {
 			  
-			  Object.getOwnPropertyNames(this.state.data).forEach(function(val, idx, array) {
+			  this.state.data[0].Items.forEach(function(val) {
 				  
-				  if (this.state.stopic === val) {
-					  this.state.data[val].forEach(function(val,idx) {
-						  
-						  if (idx < 30) {
-							  this.state.topic = val.Topic
-							  let key = val+val.Stitle
-							  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
-//						  console.log(outlink)
-							  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
-						  }
-						  
-					  }.bind(this));	  
-				  }
+				  let key = val+val.Stitle
+				  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
 				  
+				  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
 			  }.bind(this));
 			  
 		  };
@@ -75,7 +66,7 @@ class BlogItemsDashboard extends React.Component {
 
     return (
       <div>
-      <h3>{this.state.topic}</h3>
+      
       <h4>Items</h4>
       <Table responsive>
       	<tbody>
