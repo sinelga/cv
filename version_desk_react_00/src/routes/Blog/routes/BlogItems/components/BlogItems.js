@@ -84,7 +84,7 @@ class BlogItems extends React.Component {
 		if (Object.keys(this.props.params).length === 1) {
 
 			var stopic = this.props.params.stopic
-			 this.loadajax('http://'+site+':8001/blog/'+stopic,false)
+			 this.loadajax('http://'+site+':8001/api/blog/'+stopic,false)
 			 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 
 				
@@ -110,7 +110,7 @@ class BlogItems extends React.Component {
 		   if (newId !== oldId) {
 			   
 			   if (Object.keys(this.props.params).length === 1) {
-				 this.loadajax('http://'+site+':8001/blog/'+stopic,false)
+				 this.loadajax('http://'+site+':8001/api/blog/'+stopic,false)
 				 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 				   
 				}

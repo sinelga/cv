@@ -39,7 +39,10 @@ class Blog extends React.Component {
 		var request = new XMLHttpRequest();
 		request.open('GET', urlstr, true);
 		
+		request.setRequestHeader("x-type","ajax");
 		request.onload = function() {
+			
+		
 			  if (request.status >= 200 && request.status < 400) {
 			    // Success!			  
 			    var data = JSON.parse(request.responseText);
@@ -61,8 +64,9 @@ class Blog extends React.Component {
 			request.onerror = function() {
 			  // There was a connection error of some sort
 			};
-
+			
 			request.send();
+			
 		
 	}
 	
@@ -81,7 +85,7 @@ class Blog extends React.Component {
 		
 		 if (Object.keys(this.props.params).length === 0) {
 			 
-			 this.loadajax('http://'+site+':8001/blog',false)			 
+			 this.loadajax('http://'+site+':8001/api/blog',false)			 
 			 this.loadajax('/www/'+site+'/blog/blog.json',true)
 			 
 		}
@@ -105,7 +109,7 @@ class Blog extends React.Component {
 				   
 		   if (newId !== oldId) {   
 			 if (Object.keys(this.props.params).length === 0) {
-				 this.loadajax('http://'+site+':8001/blog',false)
+				 this.loadajax('http://'+site+':8001/api/blog',false)
 				 this.loadajax('/www/'+site+'/blog/blog.json',true)
 					
 			   }							

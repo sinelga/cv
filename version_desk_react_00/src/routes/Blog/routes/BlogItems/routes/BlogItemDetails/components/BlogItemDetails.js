@@ -86,7 +86,7 @@ class BlogItemDetails extends React.Component {
 //		console.log("Didmount blogItems",this.props.params)
 		
 //		 this.loadajax('/en_US_programming_blog.json',false)
-		 this.loadajax('http://'+site+':8001/blog/'+stopic+"/"+stitlesplit,false)
+		 this.loadajax('http://'+site+':8001/api/blog/'+stopic+"/"+stitlesplit,false)
 		 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stitlesplit+'/'+stitle+'.json',true)
 						
 	}
@@ -109,7 +109,7 @@ class BlogItemDetails extends React.Component {
 
 		   if (newId !== oldId) {
  
-			   this.loadajax('http://'+site+':8001/blog/'+stopic+"/"+stitlesplit,false)
+			   this.loadajax('http://'+site+':8001/api/blog/'+stopic+"/"+stitlesplit,false)
 			   this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
 			   
 			   
