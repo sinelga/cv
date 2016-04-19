@@ -124,16 +124,25 @@ class BlogItems extends React.Component {
 	 } 
   render() {
 	  	  
-	  var meta ={}
+	var meta ={}
+	
+	  if (Object.keys(this.state.data).length === 1){
+	  
+		  topic = this.state.data[0].Topic
 
-		meta = {
-			title: topic,
-			description: topic+" index"
-		}
+	  }
+	
+	console.log(this.state.data)
   	   
 	var mtitle = this.state.mark.Title
 	var mmoto  = this.state.mark.Moto
 	var mcontents = this.state.mark.Contents
+	
+	meta = {
+		title: topic,
+		description: mtitle+" "+mmoto
+	}
+	
 //	console.log(this.state.data)
     return (
     	<div>
