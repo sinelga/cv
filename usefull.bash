@@ -25,6 +25,7 @@ cd version_desk_react_00
 
 npm install react react-bootstrap react-document-meta react-dom react-router --save
 
+npm install babel-core babel-loader babel-preset-es2015 babel-preset-react --save-dev
 
 mkdir dist src links
 
