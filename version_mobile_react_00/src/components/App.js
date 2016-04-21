@@ -11,7 +11,7 @@ class App extends React.Component {
 	constructor(props){
 	    super(props);
 	    this.state = {
-	    		data: {}
+	    	data: {}
 	    	
 	    }
 	    this.loadajax = this.loadajax.bind(this)
@@ -51,7 +51,13 @@ class App extends React.Component {
 		
 	}
 	
-	componentWillUpdate(){
+	componentWillUpdate(prevProps){
+		
+			if (Object.keys(this.props.params).length === 1) {
+				   
+				 this.loadajax('/cv-mazurov-export.json',false)				 
+				   
+			}	
 
 	}
 	
@@ -63,9 +69,9 @@ class App extends React.Component {
 		this.loadajax('/cv-mazurov-export.json',false)
 				   
 	}
-	componentWillReceiveProps(){
+	componentWillReceiveProps(prevProps){
 		
-		console.log("componentWillReceiveProps Details",this.props.params)
+		
 
 	}
 	
@@ -76,8 +82,6 @@ class App extends React.Component {
 		title: 'CV',
 		description: 'CV curriculum vitae'
      }
-	 
-//	 console.log(this.state.data)
 	 
 	 
     return (

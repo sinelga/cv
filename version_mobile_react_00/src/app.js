@@ -15,7 +15,7 @@ const rootRoute = {
 //      require('./routes/Cvpdf'),            
 //      require('./routes/Jobs'),
 //      require('./routes/Contacts'),
-//      require('./routes/Details'),
+      require('./routes/Details'),
       
         
 

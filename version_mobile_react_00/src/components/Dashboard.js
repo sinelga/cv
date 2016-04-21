@@ -34,19 +34,7 @@ class Dashboard extends React.Component {
 	}	
 		  
 	componentWillMount(){
-//		baseRef.on("value", function(snapshot) {
-//
-//			var items = []
-//
-//			snapshot.forEach(function(vdata) {
-//				
-//				items.push(vdata) 
-//											
-//			}.bind(this))
-//			
-//			this.setState({items:items})
-//			
-//		}.bind(this))
+
 		
 	}
 	
@@ -60,49 +48,20 @@ class Dashboard extends React.Component {
 	render() {
 		
 		var htmlitem =[]
-		var key =""
-		
-//		console.log(Object.keys(this.state.data).length)
+//		var key =""
+
 		
 		if (Object.keys(this.state.data).length === 1) {
-			
-//			console.log(this.state.data.data)
-//		 this.state.data.forEach(function(val) {
+
 		this.state.data.data.map(function(val) {
 			
-			console.log(val)
+//			console.log(val)
 			let link ='/'+val.link
-			
-//			htmlitem.push(<p>{val.title}</p>)
-			htmlitem.push(<p><Link key={link} to={link}>{val.title}<FontAwesome className='pull-right' name="arrow-right" size='2x'/></Link></p>)
+			htmlitem.push(<p key={link}><Link  to={link}>{val.title}<FontAwesome className='pull-right' name="arrow-right" size='2x'/></Link></p>)
 			
 		})
 		}
 		
-		
-			
-			
-//		this.state.items.map(function(vvdata) {
-//
-//			var item_obj =vvdata.val()			
-//			var htmlListItems =[]			
-//			item_obj.items.map(function(data){
-//
-//				key =data.id+data.item
-//				htmlListItems.push(<ListGroupItem key={key}>{data.item} <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={18}/></ListGroupItem>)
-//				
-//			})	
-//			
-//			let imglink = '/img/'+item_obj.img
-//			let link ='/'+item_obj.link+".html"
-//
-//			let key2 = key+link
-//			let key3 = key2+key
-//
-//			htmlitem.push(<h2 key={key2}>{item_obj.title}</h2>)			
-//			htmlitem.push(<Row key={key3}><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={8}><ListGroup>{htmlListItems}</ListGroup></Col><Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-//				
-//		})
 		
 
     return (

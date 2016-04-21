@@ -32,13 +32,11 @@ webpackJsonp([0],{
 	    component: __webpack_require__(226),
 	    childRoutes: [
 
-	      //      require('./routes/Blog'),  
-	      //      require('./routes/Cvpdf'),           
-	      //      require('./routes/Jobs'),
-	      //      require('./routes/Contacts'),
-	      //      require('./routes/Details'),
-
-	    ]
+	    //      require('./routes/Blog'),  
+	    //      require('./routes/Cvpdf'),           
+	    //      require('./routes/Jobs'),
+	    //      require('./routes/Contacts'),
+	    __webpack_require__(505)]
 	  }]
 	}; /*eslint-disable no-unused-vars */
 
@@ -131,7 +129,13 @@ webpackJsonp([0],{
 			}
 		}, {
 			key: 'componentWillUpdate',
-			value: function componentWillUpdate() {}
+			value: function componentWillUpdate(prevProps) {
+
+				if (Object.keys(this.props.params).length === 1) {
+
+					this.loadajax('/cv-mazurov-export.json', false);
+				}
+			}
 		}, {
 			key: 'componentWillMount',
 			value: function componentWillMount() {
@@ -144,10 +148,7 @@ webpackJsonp([0],{
 			}
 		}, {
 			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps() {
-
-				console.log("componentWillReceiveProps Details", this.props.params);
-			}
+			value: function componentWillReceiveProps(prevProps) {}
 		}, {
 			key: 'render',
 			value: function render() {
@@ -156,8 +157,6 @@ webpackJsonp([0],{
 					title: 'CV',
 					description: 'CV curriculum vitae'
 				};
-
-				//	 console.log(this.state.data)
 
 				return _react2.default.createElement(
 					'div',
@@ -245,22 +244,7 @@ webpackJsonp([0],{
 			value: function componentDidMount() {}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {
-				//		baseRef.on("value", function(snapshot) {
-				//
-				//			var items = []
-				//
-				//			snapshot.forEach(function(vdata) {
-				//				
-				//				items.push(vdata)
-				//											
-				//			}.bind(this))
-				//			
-				//			this.setState({items:items})
-				//			
-				//		}.bind(this))
-
-			}
+			value: function componentWillMount() {}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
@@ -273,54 +257,26 @@ webpackJsonp([0],{
 			value: function render() {
 
 				var htmlitem = [];
-				var key = "";
-
-				//		console.log(Object.keys(this.state.data).length)
+				//		var key =""
 
 				if (Object.keys(this.state.data).length === 1) {
 
-					//			console.log(this.state.data.data)
-					//		 this.state.data.forEach(function(val) {
 					this.state.data.data.map(function (val) {
 
-						console.log(val);
+						//			console.log(val)
 						var link = '/' + val.link;
-
-						//			htmlitem.push(<p>{val.title}</p>)
 						htmlitem.push(_react2.default.createElement(
 							'p',
-							null,
+							{ key: link },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ key: link, to: link },
+								{ to: link },
 								val.title,
 								_react2.default.createElement(_reactFontawesome2.default, { className: 'pull-right', name: 'arrow-right', size: '2x' })
 							)
 						));
 					});
 				}
-
-				//		this.state.items.map(function(vvdata) {
-				//
-				//			var item_obj =vvdata.val()			
-				//			var htmlListItems =[]			
-				//			item_obj.items.map(function(data){
-				//
-				//				key =data.id+data.item
-				//				htmlListItems.push(<ListGroupItem key={key}>{data.item} <StarRating name="airbnb-rating" totalStars={5} rating={data.rating} size={18}/></ListGroupItem>)
-				//				
-				//			})	
-				//			
-				//			let imglink = '/img/'+item_obj.img
-				//			let link ='/'+item_obj.link+".html"
-				//
-				//			let key2 = key+link
-				//			let key3 = key2+key
-				//
-				//			htmlitem.push(<h2 key={key2}>{item_obj.title}</h2>)			
-				//			htmlitem.push(<Row key={key3}><Col xs={6} md={2}><Image src={imglink} responsive/></Col><Col xs={6} md={8}><ListGroup>{htmlListItems}</ListGroup></Col><Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive/></Link></Col></Row>)
-				//				
-				//		})
 
 				return _react2.default.createElement(
 					'div',
@@ -347,6 +303,33 @@ webpackJsonp([0],{
 	}(_react2.default.Component);
 
 	exports.default = Dashboard;
+
+/***/ },
+
+/***/ 505:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+			path: ':stopic',
+
+			getChildRoutes: function getChildRoutes(location, cb) {
+					__webpack_require__.e/* nsure */(2, function (require) {
+							cb(null, [__webpack_require__(506)]);
+					});
+			},
+			getComponents: function getComponents(location, cb) {
+					__webpack_require__.e/* nsure */(4/* empty */, function (require) {
+							cb(null, __webpack_require__(509));
+							//		        cb(null,{
+							//		        	chat: require('./components/Chat'),
+							//		        	main: require('./components/Details'),
+							//		        	objlist: require('./components/ObjList')
+							//		        })
+					});
+			}
+	};
 
 /***/ }
 
