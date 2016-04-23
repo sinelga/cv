@@ -11,7 +11,7 @@ const rootRoute = {
     component: require('./components/App'),
     childRoutes: [
           
-//      require('./routes/Blog'),   
+      require('./routes/Blog'),   
 //      require('./routes/Cvpdf'),            
 //      require('./routes/Jobs'),
 //      require('./routes/Contacts'),
