@@ -84,7 +84,7 @@ class BlogItems extends React.Component {
 		if (Object.keys(this.props.params).length === 1) {
 
 			var stopic = this.props.params.stopic
-			this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
+//			this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 			this.loadajax('http://'+site+':8001/api/blog/'+stopic,false)
 			 				
 		}
@@ -110,7 +110,7 @@ class BlogItems extends React.Component {
 			   
 			   if (Object.keys(this.props.params).length === 1) {
 				   
-				 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
+//				 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stopic+'.json',true)
 				 this.loadajax('http://'+site+':8001/api/blog/'+stopic,false)
 				 
 				   
@@ -132,15 +132,15 @@ class BlogItems extends React.Component {
 
 	  }
 	
-	console.log(this.state.data)
+//	console.log(this.state.data)
   	   
-	var mtitle = this.state.mark.Title
-	var mmoto  = this.state.mark.Moto
-	var mcontents = this.state.mark.Contents
+//	var mtitle = this.state.mark.Title
+//	var mmoto  = this.state.mark.Moto
+//	var mcontents = this.state.mark.Contents
 	
 	meta = {
-		title: topic,
-		description: mtitle+" "+mmoto
+		title: topic
+//		description: mtitle+" "+mmoto
 	}
 	
 //	console.log(this.state.data)
@@ -150,9 +150,7 @@ class BlogItems extends React.Component {
     		<h2>{this.props.params.topic}</h2>
     	            	           
     	      	{this.props.children || <BlogItemsDashboard data={this.state.data} stopic={this.props.params.stopic} />}
-    	          	     
-    	  		<div id="background"><h3>{mtitle}</h3> <h4>{mmoto}</h4>{mcontents}</div>
-    	
+    	          	         	  		    	
     	</div>
  
     )

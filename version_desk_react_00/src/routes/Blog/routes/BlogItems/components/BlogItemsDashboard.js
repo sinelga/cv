@@ -52,12 +52,14 @@ class BlogItemsDashboard extends React.Component {
 		  		  
 		  if (this.state.data.length === 1) {
 			  
-			  this.state.data[0].Items.forEach(function(val) {
+			  this.state.data[0].Items.forEach(function(val,idx) {
 				  
+				  if (idx <30) {
 				  let key = val+val.Stitle
 				  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
 				  
 				  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+				  }
 			  }.bind(this));
 			  
 		  };

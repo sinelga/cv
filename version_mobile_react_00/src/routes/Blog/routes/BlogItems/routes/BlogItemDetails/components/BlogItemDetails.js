@@ -84,7 +84,7 @@ class BlogItemDetails extends React.Component {
 	
 	componentDidMount(){
 
-		 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stitlesplit+'/'+stitle+'.json',true)
+//		 this.loadajax('/www/'+site+'/blog/'+stopic+'/'+stitlesplit+'/'+stitle+'.json',true)
 		 this.loadajax('http://'+site+':8001/api/blog/'+stopic+"/"+stitlesplit,false)
 		 
 						
@@ -106,7 +106,7 @@ class BlogItemDetails extends React.Component {
 		let newId = this.props.params.stitle
 
 		   if (newId !== oldId) {
-			   this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
+//			   this.loadajax('/www/'+site+'/blog/'+topic+'/'+stitle+'/'+stitle+'.html.json',true)
 			   this.loadajax('http://'+site+':8001/api/blog/'+stopic+"/"+stitlesplit,false)
 			   			   
 		   }
@@ -124,20 +124,20 @@ class BlogItemDetails extends React.Component {
 	  
 	  if (Object.keys(this.state.data).length > 0){
 		  
-		  console.log(this.state.data)
+//		  console.log(this.state.data)
 		  topic = this.state.data.Topic
 		  title = this.state.data.Title
 	  }
 	  
  
 	
-	var mtitle = this.state.mark.Title
-	var mmoto  = this.state.mark.Moto
-	var mcontents = this.state.mark.Contents
+//	var mtitle = this.state.mark.Title
+//	var mmoto  = this.state.mark.Moto
+//	var mcontents = this.state.mark.Contents
 	
 	meta = {
-			title: topic+" "+topic+" "+title,
-			description: mtitle+" "+mmoto
+			title: topic+" "+topic+" "+title
+//			description: mtitle+" "+mmoto
 	} 
 	
 
@@ -145,8 +145,7 @@ class BlogItemDetails extends React.Component {
     	<div>
     	<DocumentMeta {...meta} />
     	  {this.props.children || <BlogItemDetailsDashboard data={this.state.data} stopic={this.props.params.stopic} stitle={this.props.params.stitle} />}
-   	  		
-    	  <div id="background"> <h3>{mtitle}</h3> <h4>{mmoto}</h4>{mcontents}</div>
+   	  		    	  
     	
     	</div>
  

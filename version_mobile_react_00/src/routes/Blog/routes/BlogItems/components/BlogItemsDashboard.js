@@ -47,17 +47,18 @@ class BlogItemsDashboard extends React.Component {
 	render() {
 				  
 		  var htmlTableItems =[]
-
-//		  console.log(this.state.data)
 		  		  
 		  if (this.state.data.length === 1) {
 			  
-			  this.state.data[0].Items.forEach(function(val) {
+			  this.state.data[0].Items.forEach(function(val,idx) {
 				  
+//				  console.log(idx)
+				  if (idx <3) {
 				  let key = val+val.Stitle
 				  let outlink = '/blog/'+this.state.stopic+'/'+val.Stitle+'.html'
 				  
 				  htmlTableItems.push(<tr key={key}><td><Link to={outlink}>{val.Title}</Link></td></tr>)
+			  }
 			  }.bind(this));
 			  
 		  };

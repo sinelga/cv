@@ -84,7 +84,7 @@ class Blog extends React.Component {
 		
 		 if (Object.keys(this.props.params).length === 0) {
 			 
-			 this.loadajax('/www/'+site+'/blog/blog.json',true)
+//			 this.loadajax('/www/'+site+'/blog/blog.json',true)
 			 this.loadajax('http://'+site+':8001/api/blog',false)			 
 			 
 			 
@@ -110,7 +110,7 @@ class Blog extends React.Component {
 		   if (newId !== oldId) {   
 			 if (Object.keys(this.props.params).length === 0) {
 				 
-				 this.loadajax('/www/'+site+'/blog/blog.json',true)
+//				 this.loadajax('/www/'+site+'/blog/blog.json',true)
 				 this.loadajax('http://'+site+':8001/api/blog',false)
 				 
 					
@@ -125,9 +125,9 @@ class Blog extends React.Component {
   render() {
 	  
 	
-	var mtitle = this.state.mark.Title
-	var mmoto  = this.state.mark.Moto
-	var mcontents = this.state.mark.Contents
+//	var mtitle = this.state.mark.Title
+//	var mmoto  = this.state.mark.Moto
+//	var mcontents = this.state.mark.Contents
 
 	var meta ={}
 	meta = {
@@ -147,8 +147,7 @@ class Blog extends React.Component {
     	      
     	      </Well>
     	      
-    	  		</div>
-    	  		<div id="background"> <h3>{mtitle}</h3> <h4>{mmoto}</h4>{mcontents}</div>
+    	  		</div>    	  		
     	
     	</div>
  

@@ -46,9 +46,7 @@ class MoreDetailsDashboard extends React.Component {
 	}
 	
 	render() {
-		var htmlListItems =[]
-//		console.log(this.state.data)
-		
+		var htmlListItems =[]		
 		
 		 if (Object.keys(this.state.data).length > 0) {
 			
