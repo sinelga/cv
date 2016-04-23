@@ -1,51 +1,6 @@
-webpackJsonp([0],{
+webpackJsonp([3],{
 
-/***/ 0:
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(1);
-
-
-/***/ },
-
-/***/ 1:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(33);
-
-	var _reactRouter = __webpack_require__(167);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//import stubbedCourses from './stubs/REAL_ESTATE_OBJS'
-
-	var rootRoute = {
-	  component: 'div',
-	  childRoutes: [{
-	    path: '/',
-	    component: __webpack_require__(226),
-	    childRoutes: [
-
-	    //      require('./routes/Blog'),  
-	    //      require('./routes/Cvpdf'),           
-	    //      require('./routes/Jobs'),
-	    //      require('./routes/Contacts'),
-	    __webpack_require__(505)]
-	  }]
-	}; /*eslint-disable no-unused-vars */
-
-
-	(0, _reactDom.render)(_react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: rootRoute }), document.getElementById('content'));
-
-/***/ },
-
-/***/ 226:
+/***/ 507:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56,15 +11,15 @@ webpackJsonp([0],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(227);
+	var _reactRouter = __webpack_require__(167);
 
-	var _reactDocumentMeta = __webpack_require__(492);
+	var _reactDom = __webpack_require__(33);
 
-	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Dashboard = __webpack_require__(504);
+	var _MoreDetailsDashboard = __webpack_require__(508);
 
-	var _Dashboard2 = _interopRequireDefault(_Dashboard);
+	var _MoreDetailsDashboard2 = _interopRequireDefault(_MoreDetailsDashboard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73,30 +28,34 @@ webpackJsonp([0],{
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import GlobalNav from './GlobalNav'
+	//import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
+
+	//import DocumentMeta from 'react-document-meta'
+	//import Firebase from 'firebase'
+	//import StarRating from 'react-star-rating'
 
 
-	//import Head from './Head'
+	var stopic = "";
+	var link = '';
 
-	var site = "";
+	var MoreDetails = function (_React$Component) {
+		_inherits(MoreDetails, _React$Component);
 
-	var App = function (_React$Component) {
-		_inherits(App, _React$Component);
+		function MoreDetails(props) {
+			_classCallCheck(this, MoreDetails);
 
-		function App(props) {
-			_classCallCheck(this, App);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetails).call(this, props));
 
 			_this.state = {
-				data: {}
+				data: {},
+				mark: {}
 
 			};
 			_this.loadajax = _this.loadajax.bind(_this);
 			return _this;
 		}
 
-		_createClass(App, [{
+		_createClass(MoreDetails, [{
 			key: 'loadajax',
 			value: function loadajax(urlstr, mark) {
 
@@ -128,67 +87,81 @@ webpackJsonp([0],{
 				request.send();
 			}
 		}, {
-			key: 'componentWillUpdate',
-			value: function componentWillUpdate(prevProps) {
-
-				//			console.log(Object.keys(this.props.params).length)
-
-				//		console.log(this.props.params,prevProps.params)
-
-				var oldId = prevProps.params.stopic;
-				var newId = this.props.params.stopic;
-
-				if (newId !== oldId) {
-
-					if (Object.keys(this.props.params).length > 0) {
-
-						this.loadajax('/cv-mazurov-export.json', false);
-					}
-				}
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
 			}
 		}, {
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				site = document.domain;
+				//		console.log(this.props.params)
+				stopic = this.props.params.stopic;
+				link = this.props.params.link;
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+
 				this.loadajax('/cv-mazurov-export.json', false);
 			}
 		}, {
 			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps(prevProps) {}
+			value: function componentWillReceiveProps() {
+				console.log("more componentWillReceiveProps Details", this.props.params);
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("MoreDetails componentDidUpdate")
+
+				//		let oldId = prevProps.params.stitle
+				//		let newId = this.props.params.stitle
+				//
+				//		   if (newId !== oldId) {
+				//			  
+				//			   console.log(this.props.params)
+				//			   if (Object.keys(this.props.params).length === 1) {
+				//				  
+				//				 this.loadajax('/cv-mazurov-export.json',false)
+				//				
+				//				  
+				//				}
+				//		   }
+
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+
+				//		baseRef.off()
+				//		baseRefClients.off()
+			}
 		}, {
 			key: 'render',
 			value: function render() {
 
-				var meta = {
-					title: 'CV',
-					description: 'CV curriculum vitae'
-				};
-
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_reactDocumentMeta2.default, meta),
-					_react2.default.createElement(
-						_reactBootstrap.Grid,
-						null,
-						this.props.children || _react2.default.createElement(_Dashboard2.default, { data: this.state.data })
-					)
+					_react2.default.createElement(_MoreDetailsDashboard2.default, { data: this.state.data, stopic: stopic, link: link })
 				);
 			}
 		}]);
 
-		return App;
+		return MoreDetails;
 	}(_react2.default.Component);
 
-	module.exports = App;
+	module.exports = MoreDetails;
 
 /***/ },
 
-/***/ 504:
+/***/ 508:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -207,10 +180,6 @@ webpackJsonp([0],{
 
 	var _reactBootstrap = __webpack_require__(227);
 
-	var _reactFontawesome = __webpack_require__(503);
-
-	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -222,69 +191,79 @@ webpackJsonp([0],{
 	//import Firebase from 'firebase'
 	//import StarRating from 'react-star-rating'
 
-	var dark = 'hsl(200, 20%, 20%)';
-	var styles = {};
+	var stopic = "";
+	var link = '';
 
-	styles.wrapper = {
-		padding: '10px 20px',
-		overflow: 'hidden',
-		background: dark
-	};
+	var MoreDetailsDashboard = function (_React$Component) {
+		_inherits(MoreDetailsDashboard, _React$Component);
 
-	//var baseRef = new Firebase('https://cv-mazurov.firebaseio.com');
+		function MoreDetailsDashboard(props) {
+			_classCallCheck(this, MoreDetailsDashboard);
 
-	var Dashboard = function (_React$Component) {
-		_inherits(Dashboard, _React$Component);
-
-		function Dashboard(props) {
-			_classCallCheck(this, Dashboard);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetailsDashboard).call(this, props));
 
 			_this.state = {
 				data: {}
-
+				//	    	mark: {}
 			};
 
 			return _this;
 		}
 
-		_createClass(Dashboard, [{
+		_createClass(MoreDetailsDashboard, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {}
 		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("MoreDetailsDashboard componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("MoreDetailsDashboard componentDidUpdate")
+
+			}
+		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {}
+			value: function componentWillMount() {
+				//		console.log('MoreDetailsDashboard componentWillMount',this.props)
+
+			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
 
-				//		console.log("componentWillReceiveProps Details",nextProps)
-				this.setState({ data: nextProps });
+				stopic = nextProps.stopic;
+				link = nextProps.link;
+				this.setState({ data: nextProps.data });
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+				var htmlListItems = [];
+				//		console.log(this.state.data)
 
-				var htmlitem = [];
-				//		var key =""
+				if (Object.keys(this.state.data).length > 0) {
 
-				if (Object.keys(this.state.data).length === 1) {
+					this.state.data.map(function (val) {
 
-					this.state.data.data.map(function (val) {
-
-						//			console.log(val)
-						var link = '/' + val.link;
-						htmlitem.push(_react2.default.createElement(
-							'p',
-							{ key: link },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: link },
-								val.title,
-								_react2.default.createElement(_reactFontawesome2.default, { className: 'pull-right', name: 'arrow-right', size: '2x' })
-							)
-						));
+						if (val.link === stopic) {
+							val.items.map(function (val) {
+								var linkshot = link.split(".")[0];
+								if (val.link === linkshot) {
+									var key = val.link;
+									var imglink = "/img/" + stopic + "/" + val.img;
+									htmlListItems.push(_react2.default.createElement(
+										'div',
+										{ key: key },
+										_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true }),
+										val.extra
+									));
+								}
+							});
+						}
 					});
 				}
 
@@ -292,54 +271,19 @@ webpackJsonp([0],{
 					'div',
 					null,
 					_react2.default.createElement(
-						'div',
-						{ style: styles.wrapper },
-						_react2.default.createElement(
-							'h2',
-							null,
-							'Knowlege'
-						),
-						_react2.default.createElement(
-							_reactBootstrap.Well,
-							null,
-							htmlitem
-						)
-					)
+						'h4',
+						null,
+						'More Details'
+					),
+					htmlListItems
 				);
 			}
 		}]);
 
-		return Dashboard;
+		return MoreDetailsDashboard;
 	}(_react2.default.Component);
 
-	exports.default = Dashboard;
-
-/***/ },
-
-/***/ 505:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
-			path: ':stopic',
-
-			getChildRoutes: function getChildRoutes(location, cb) {
-					__webpack_require__.e/* nsure */(2, function (require) {
-							cb(null, [__webpack_require__(506)]);
-					});
-			},
-			getComponents: function getComponents(location, cb) {
-					__webpack_require__.e/* nsure */(4/* empty */, function (require) {
-							cb(null, __webpack_require__(509));
-							//		        cb(null,{
-							//		        	chat: require('./components/Chat'),
-							//		        	main: require('./components/Details'),
-							//		        	objlist: require('./components/ObjList')
-							//		        })
-					});
-			}
-	};
+	exports.default = MoreDetailsDashboard;
 
 /***/ }
 
