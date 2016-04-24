@@ -3,19 +3,22 @@ import { Link } from 'react-router'
 
 const dark = 'hsl(200, 20%, 20%)'
 const light = '#fff'
+//const light = 'blue'	
 const styles = {}
 
-styles.wrapper = {
-  padding: '10px 20px',
-  overflow: 'hidden',
-  background: dark,
-  color: light
-}
+//styles.wrapper = {
+//  padding: '10px 20px',
+//  overflow: 'hidden',
+//  background: dark,
+//  color: light
+//}
 
 styles.link = {
-  padding: 11,
+  padding: 9,
+  
   color: light,
-  fontWeight: 200
+  fontWeight: 200,
+  fontSize: '120%'
 }
 
 styles.activeLink = {

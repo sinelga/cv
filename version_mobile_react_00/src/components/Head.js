@@ -6,12 +6,6 @@ const dark = 'hsl(200, 20%, 20%)'
 const light = '#fff'
 const styles = {}
 
-styles.wrapper = {
-  padding: '10px 20px',
-  overflow: 'hidden',
-  background: dark
-//  color: light
-}
 
 styles.link = {
   padding: 11,

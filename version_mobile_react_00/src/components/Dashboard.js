@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-      <div style={styles.wrapper}>
+      
       <h2>Knowlege</h2>
       	<Well>
    	  	
@@ -74,7 +74,7 @@ class Dashboard extends React.Component {
    
     	</Well>
     	</div>
-      </div>
+      
     )
   }
 }
