@@ -62,7 +62,7 @@ class Head extends React.Component {
       		<Col xs={6} md={4}>Professional Programming</Col>      	
       	</Row>
       	<Row>
-  		<Col xs={6} md={4}><Image src='/img/Free-lancer.png' responsive/></Col>
+  		<Col xs={6} md={4}><Image src='/img/Free-lancer.png' responsive /></Col>
   		
   		<Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive /></Link></Col>
   		</Row>     	
