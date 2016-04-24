@@ -5,12 +5,10 @@ body {
    height: 100%;
         
   	font-family: 'Finger Paint', cursive  !important;
-/*  	color:#ffd9d9;
-  	color:#000000; */
   	text-shadow: 1px 1px 1px #aaa;
   	margin: 10px;
  /*	font-size: 170%;*/
- 	/*background-color: white;*/
+ 
 }
 
 .redtitle {
@@ -68,26 +66,5 @@ body {
 	
 	/*width: 50%;*/
 }
-/*.wrapper  {
-  padding: '10px 20px';
-  overflow: 'hidden';
-  background: hsl(200, 20%, 20%);
 
-}*/
 
-#container {
-   position: relative;
-}
-
-#background {
-   position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   z-index: -1;
-   overflow: hidden;
-   opacity: 0.2;
-   color:black;
-   font-size: 170%;
-}

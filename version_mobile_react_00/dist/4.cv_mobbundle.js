@@ -1,1 +1,1 @@
-webpackJsonp([4],{248:function(n,t,o){"use strict";n.exports={path:":stopic",getChildRoutes:function(n,t){o.e(9,function(n){t(null,[o(251)])})},getComponents:function(n,t){o.e(8,function(n){t(null,o(246))})}}}});
+webpackJsonp([4],{249:function(n,t,o){"use strict";n.exports={path:":stopic",getChildRoutes:function(n,t){o.e(9,function(n){t(null,[o(252)])})},getComponents:function(n,t){o.e(8,function(n){t(null,o(247))})}}}});

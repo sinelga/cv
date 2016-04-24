@@ -1,1 +1,348 @@
-webpackJsonp([4],{243:function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),i=n(1),c=o(i),s=n(17),f=n(14),p=n(13),d=(o(p),n(44)),h=o(d),b=n(244),m=o(b),y="hsl(200, 20%, 20%)",v={};v.wrapper={padding:"10px 20px",overflow:"hidden",background:y};var k="",w=function(e){function t(e){a(this,t);var n=r(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{},mark:{}},n.loadajax=n.loadajax.bind(n),n}return l(t,e),u(t,[{key:"loadajax",value:function(e,t){var n=new XMLHttpRequest;n.open("GET",e,!0),n.onload=function(){if(n.status>=200&&n.status<400){var e=JSON.parse(n.responseText);t?this.setState({mark:e}):this.setState({data:e})}}.bind(this),n.onerror=function(){},n.send()}},{key:"handleReturn",value:function(){f.browserHistory.push("/")}},{key:"componentWillMount",value:function(){k=document.domain}},{key:"componentDidMount",value:function(){0===Object.keys(this.props.params).length&&(this.loadajax("/www/"+k+"/blog/blog.json",!0),this.loadajax("http://"+k+":8001/api/blog",!1))}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){var t=e.params.stopic,n=this.props.params.stopic;n!==t&&0===Object.keys(this.props.params).length&&(this.loadajax("/www/"+k+"/blog/blog.json",!0),this.loadajax("http://"+k+":8001/api/blog",!1))}},{key:"componentWillUnmount",value:function(){}},{key:"render",value:function(){var e=this.state.mark.Title,t=this.state.mark.Moto,n=this.state.mark.Contents,o={};return o={title:"Blog",description:"Blog programming"},c["default"].createElement("div",null,c["default"].createElement(h["default"],o),c["default"].createElement("div",{style:v.wrapper},c["default"].createElement("h2",null,"BLOG"),c["default"].createElement(s.Well,null,c["default"].createElement(s.Button,{onClick:this.handleReturn,bsStyle:"primary",bsSize:"large",className:"pull-right"},"Return"),this.props.children||c["default"].createElement(m["default"],{data:this.state.data}))),c["default"].createElement("div",{id:"background"}," ",c["default"].createElement("h3",null,e)," ",c["default"].createElement("h4",null,t),n))}}]),t}(c["default"].Component);e.exports=w},244:function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),i=n(1),c=o(i),s=n(14),f=n(17),p=function(e){function t(e){a(this,t);var n=r(this,Object.getPrototypeOf(t).call(this,e));return n.state={data:{}},n}return l(t,e),u(t,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"componentWillMount",value:function(){}},{key:"componentWillReceiveProps",value:function(e){this.setState({data:e.data})}},{key:"render",value:function(){var e=[];return Object.keys(this.state.data).length>0&&this.state.data.forEach(function(t){var n=t.Topic,o=t.Stopic,a=o,r="/blog/"+o;e.push(c["default"].createElement("tr",{key:a},c["default"].createElement("td",null,c["default"].createElement(s.Link,{to:r},n))))}.bind(this)),c["default"].createElement("div",null,c["default"].createElement("h3",null,"Index"),c["default"].createElement(f.Table,{responsive:!0},c["default"].createElement("tbody",null,e)))}}]),t}(c["default"].Component);t["default"]=p}});
+webpackJsonp([4],{
+
+/***/ 489:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(221);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactDocumentMeta = __webpack_require__(472);
+
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+
+	var _BlogItemsDashboard = __webpack_require__(490);
+
+	var _BlogItemsDashboard2 = _interopRequireDefault(_BlogItemsDashboard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import StarRating from 'react-star-rating'
+
+
+	var dark = 'hsl(200, 20%, 20%)';
+	var light = '#fff';
+	var styles = {};
+
+	styles.wrapper = {
+		padding: '10px 20px',
+		overflow: 'hidden',
+		background: dark
+		//  color: light
+	};
+
+	var site = "";
+	var topic = "";
+	var stopic = "";
+
+	var BlogItems = function (_React$Component) {
+		_inherits(BlogItems, _React$Component);
+
+		function BlogItems(props) {
+			_classCallCheck(this, BlogItems);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItems).call(this, props));
+
+			_this.state = {
+				data: {},
+				mark: {}
+
+			};
+			_this.loadajax = _this.loadajax.bind(_this);
+			return _this;
+		}
+
+		_createClass(BlogItems, [{
+			key: 'loadajax',
+			value: function loadajax(urlstr, mark) {
+
+				var request = new XMLHttpRequest();
+				request.open('GET', urlstr, true);
+
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+
+						if (mark) {
+							this.setState({ mark: data });
+						} else {
+
+							this.setState({ data: data });
+						}
+					} else {
+						// We reached our target server, but it returned an error
+
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+			}
+		}, {
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params)
+				stopic = this.props.params.stopic;
+				site = document.domain;
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				if (Object.keys(this.props.params).length === 1) {
+
+					var stopic = this.props.params.stopic;
+					this.loadajax('/www/' + site + '/blog/' + stopic + '/' + stopic + '.json', true);
+					this.loadajax('http://' + site + ':8001/api/blog/' + stopic, false);
+				}
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				//		console.log("componentWillReceiveProps Details",this.props.params)
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("Details componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				var oldId = prevProps.params.stitle;
+				var newId = this.props.params.stitle;
+
+				if (newId !== oldId) {
+
+					if (Object.keys(this.props.params).length === 1) {
+
+						this.loadajax('/www/' + site + '/blog/' + stopic + '/' + stopic + '.json', true);
+						this.loadajax('http://' + site + ':8001/api/blog/' + stopic, false);
+					}
+				}
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var meta = {};
+
+				if (Object.keys(this.state.data).length === 1) {
+
+					topic = this.state.data[0].Topic;
+				}
+
+				console.log(this.state.data);
+
+				var mtitle = this.state.mark.Title;
+				var mmoto = this.state.mark.Moto;
+				var mcontents = this.state.mark.Contents;
+
+				meta = {
+					title: topic,
+					description: mtitle + " " + mmoto
+				};
+
+				//	console.log(this.state.data)
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
+					_react2.default.createElement(
+						'h2',
+						null,
+						this.props.params.topic
+					),
+					this.props.children || _react2.default.createElement(_BlogItemsDashboard2.default, { data: this.state.data, stopic: this.props.params.stopic }),
+					_react2.default.createElement(
+						'div',
+						{ id: 'background' },
+						_react2.default.createElement(
+							'h3',
+							null,
+							mtitle
+						),
+						' ',
+						_react2.default.createElement(
+							'h4',
+							null,
+							mmoto
+						),
+						mcontents
+					)
+				);
+			}
+		}]);
+
+		return BlogItems;
+	}(_react2.default.Component);
+
+	module.exports = BlogItems;
+
+/***/ },
+
+/***/ 490:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+			value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactBootstrap = __webpack_require__(221);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BlogItemsDashboard = function (_React$Component) {
+			_inherits(BlogItemsDashboard, _React$Component);
+
+			function BlogItemsDashboard(props) {
+					_classCallCheck(this, BlogItemsDashboard);
+
+					var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BlogItemsDashboard).call(this, props));
+
+					_this.state = {
+							data: {},
+							topic: ""
+
+					};
+
+					return _this;
+			}
+
+			_createClass(BlogItemsDashboard, [{
+					key: 'componentDidMount',
+					value: function componentDidMount() {}
+			}, {
+					key: 'componentWillUpdate',
+					value: function componentWillUpdate(prevProps) {
+							//		console.log("DetailsDashboard componentWillUpdate")	
+					}
+			}, {
+					key: 'componentDidUpdate',
+					value: function componentDidUpdate(prevProps) {
+
+							//		console.log("DetailsDashboard componentDidUpdate")
+
+					}
+			}, {
+					key: 'componentWillMount',
+					value: function componentWillMount() {}
+			}, {
+					key: 'componentWillReceiveProps',
+					value: function componentWillReceiveProps(nextProps) {
+							//		console.log("DetailsDashboard  receive props",nextProps.data)
+
+							this.setState({ data: nextProps.data });
+							//		this.setState({topic: nextProps.topic})
+							this.setState({ stopic: nextProps.stopic });
+							//		console.log(this.props)
+					}
+			}, {
+					key: 'render',
+					value: function render() {
+
+							var htmlTableItems = [];
+
+							//		  console.log(this.state.data)
+
+							if (this.state.data.length === 1) {
+
+									this.state.data[0].Items.forEach(function (val, idx) {
+
+											if (idx < 30) {
+													var key = val + val.Stitle;
+													var outlink = '/blog/' + this.state.stopic + '/' + val.Stitle + '.html';
+
+													htmlTableItems.push(_react2.default.createElement(
+															'tr',
+															{ key: key },
+															_react2.default.createElement(
+																	'td',
+																	null,
+																	_react2.default.createElement(
+																			_reactRouter.Link,
+																			{ to: outlink },
+																			val.Title
+																	)
+															)
+													));
+											}
+									}.bind(this));
+							};
+
+							return _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+											'h4',
+											null,
+											'Items'
+									),
+									_react2.default.createElement(
+											_reactBootstrap.Table,
+											{ responsive: true },
+											_react2.default.createElement(
+													'tbody',
+													null,
+													htmlTableItems
+											)
+									)
+							);
+					}
+			}]);
+
+			return BlogItemsDashboard;
+	}(_react2.default.Component);
+
+	exports.default = BlogItemsDashboard;
+
+/***/ }
+
+});
