@@ -83,8 +83,7 @@ class DetailsDashboard extends React.Component {
 
     return (
       <div>
-      	<h2>{title}</h2>
-      	<h3>Professional skills</h3>
+
   	  	
   		{htmlListItems}
        	        

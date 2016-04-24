@@ -6,6 +6,7 @@ import DocumentMeta from 'react-document-meta'
 //import Firebase from 'firebase'
 //import StarRating from 'react-star-rating'
 import DetailsDashboard from './DetailsDashboard'
+import MiddleNav from './MiddleNav'
 
 
 const dark = 'hsl(200, 20%, 20%)'
@@ -115,32 +116,11 @@ class Details extends React.Component {
 			
 			
 		}
-		
-		
-		
-		
+				
 		
 	}
 
 	componentDidUpdate(prevProps) {
-		
-//		console.log("Details componentDidUpdate")
-//		console.log(Object.keys(this.props.params).length)
-//		let oldId = prevProps.params.stitle
-//		let newId = this.props.params.stitle
-//
-//		   if (newId !== oldId) {
-//			   
-//			   console.log(this.props.params)
-//			   if (Object.keys(this.props.params).length === 1) {
-//				   
-//				 this.loadajax('/cv-mazurov-export.json',false)
-//				 
-//				   
-//				}
-//		   }
-		
-		
 		
 		
 					
@@ -169,15 +149,17 @@ class Details extends React.Component {
     return (
       <div>
       <DocumentMeta {...meta} />
-      <div style={styles.wrapper}> 
-      <Well>
-      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>
+    
+      <MiddleNav  /><br />
+      
+     
+      	
       
       	{this.props.children || <DetailsDashboard stopic={stopic} data={this.state.data} />}
       
-      </Well>
       
-  		</div>
+      
+  		
   		
       </div>
     )
