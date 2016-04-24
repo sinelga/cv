@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import {Grid,Image,Well} from 'react-bootstrap'
+import {Row,Col,Image,Well} from 'react-bootstrap'
 
 const dark = 'hsl(200, 20%, 20%)'
 const light = '#fff'
@@ -54,15 +54,23 @@ class Head extends React.Component {
     let link = '/jobs.html'
 
     return (
-      <div style={styles.wrapper}>
-        
+              
       	<Well>
-      	<Image src='/img/mazurovopt.jpg' responsive/>
-      	<h4>Professional Programming</h4>
+      	
+      	<Row>
+      		<Col xs={6} md={4}><Image src='/img/mazurovopt.jpg' thumbnail responsive/></Col>
+      		<Col xs={6} md={4}>Professional Programming</Col>      	
+      	</Row>
+      	<Row>
+  		<Col xs={6} md={4}><Image src='/img/Free-lancer.png' responsive/></Col>
+  		
+  		<Col xs={6} md={2}><Link to={link}><Image src='/img/orange-arrow-right.png' responsive /></Link></Col>
+  		</Row>     	
+  
 
         </Well> 
         
-      </div>
+      
     )
   }
 }
