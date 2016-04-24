@@ -19,7 +19,6 @@ styles.link = {
 }
 
 styles.activeLink = {
-  
   background: light,
   color: dark
 }
@@ -28,22 +27,22 @@ class GlobalNav extends React.Component {
 
   constructor(props, context) {
     super(props, context)
-    this.logOut = this.logOut.bind(this)
+//    this.logOut = this.logOut.bind(this)
   }
 
-  logOut() {
-    alert('log out')
-  }
+//  logOut() {
+//    alert('log out')
+//  }
 
   render() {
-    const { user } = this.props
+//    const { user } = this.props
 
     return (
 
         <div style={{ float: 'left' }}>
                 
           <Link to="/" style={styles.link}>Home</Link>{' '}
-          <Link to="/jobs.html" style={styles.link} activeStyle={styles.activeLink}>Expirience</Link>{' '}
+          <Link to="/jobs.html" style={styles.link} activeStyle={styles.activeLink}>Work</Link>{' '}
           <Link to="/contacts.html" style={styles.link} activeStyle={styles.activeLink}>Contact</Link>{' '}
           <Link to="/blog" style={styles.link} activeStyle={styles.activeLink}>Blog</Link>{' '}
          

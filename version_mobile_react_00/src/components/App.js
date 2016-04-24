@@ -3,7 +3,7 @@ import {Grid} from 'react-bootstrap'
 import DocumentMeta from 'react-document-meta'
 import GlobalNav from './GlobalNav'
 import Dashboard from './Dashboard'
-//import Head from './Head'
+import Head from './Head'
 
 var site =""
 
@@ -102,7 +102,9 @@ class App extends React.Component {
       <DocumentMeta {...meta} />	 
       
       <Grid>
-      <GlobalNav />
+      <GlobalNav /><br />
+      <Head />
+      
       	{this.props.children || <Dashboard data={this.state.data} />} 
       	
       	 
