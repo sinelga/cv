@@ -19,6 +19,7 @@ class App extends React.Component {
 	
 	loadajax(urlstr,mark){
 		
+//		console.log("load")
 		var request = new XMLHttpRequest();
 		request.open('GET', urlstr, true);
 		
@@ -54,20 +55,21 @@ class App extends React.Component {
 	componentWillUpdate(prevProps){
 			
 //			console.log(Object.keys(this.props.params).length)
-		
+////			console.log(Object.keys(prevProps.props.params).length)
+//		
 //		console.log(this.props.params,prevProps.params)
-		
-		let oldId = prevProps.params.stopic
-		let newId = this.props.params.stopic
-		
-		if (newId !== oldId) {
-		
-			if (Object.keys(this.props.params).length > 0 ) {
-				   
-				 this.loadajax('/cv-mazurov-export.json',false)				 
-				   
-			}
-		}
+//		
+//		let oldId = prevProps.params.stopic
+//		let newId = this.props.params.stopic
+//		
+//		if (newId !== oldId) {
+//		
+////			if (Object.keys(this.props.params).length > 0 ) {
+//				   
+//				 this.loadajax('/cv-mazurov-export.json',false)				 
+//				   
+////			}
+//		}
 
 	}
 	
@@ -81,7 +83,8 @@ class App extends React.Component {
 	}
 	componentWillReceiveProps(prevProps){
 		
-		
+//		console.log("App componentWillReceiveProps")
+		this.loadajax('/cv-mazurov-export.json',false)
 
 	}
 	
