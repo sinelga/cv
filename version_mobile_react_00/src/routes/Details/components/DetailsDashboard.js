@@ -84,8 +84,11 @@ class DetailsDashboard extends React.Component {
     return (
       <div>
 
+      <Well>
   	  	
   		{htmlListItems}
+  		
+  	</Well>	
        	        
       </div>
     )
