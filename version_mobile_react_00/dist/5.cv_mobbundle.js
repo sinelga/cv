@@ -353,6 +353,7 @@ webpackJsonp([5],{
 	//}
 	styles.middletitle = {
 			color: light,
+			background: dark,
 			fontSize: '120%'
 	};
 
@@ -391,24 +392,20 @@ webpackJsonp([5],{
 									'div',
 									null,
 									_react2.default.createElement(
-											_reactBootstrap.Well,
+											_reactBootstrap.Row,
 											null,
 											_react2.default.createElement(
-													_reactBootstrap.Row,
-													null,
+													_reactBootstrap.Col,
+													{ xs: 6, md: 4, style: styles.middletitle },
+													' BLOG'
+											),
+											_react2.default.createElement(
+													_reactBootstrap.Col,
+													{ xs: 6, md: 4 },
 													_react2.default.createElement(
-															_reactBootstrap.Col,
-															{ xs: 6, md: 4, style: styles.middletitle },
-															' BLOG'
-													),
-													_react2.default.createElement(
-															_reactBootstrap.Col,
-															{ xs: 6, md: 4 },
-															_react2.default.createElement(
-																	_reactBootstrap.Button,
-																	{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'lg' },
-																	'Return'
-															)
+															_reactBootstrap.Button,
+															{ onClick: this.handleReturn, bsStyle: 'primary', bsSize: 'lg' },
+															'Return'
 													)
 											)
 									)
