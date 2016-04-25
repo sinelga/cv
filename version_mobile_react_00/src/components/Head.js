@@ -8,7 +8,7 @@ const styles = {}
 
 
 styles.link = {
-  padding: 11,
+  padding: 10,
   color: light,
   fontWeight: 200
 }

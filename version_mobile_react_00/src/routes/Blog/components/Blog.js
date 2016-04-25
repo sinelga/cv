@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 //import StarRating from 'react-star-rating'
 import DocumentMeta from 'react-document-meta'
 import BlogDashboard from './BlogDashboard'
+import MiddleNav from './MiddleNav'
 
 
 const dark = 'hsl(200, 20%, 20%)'
@@ -138,18 +139,16 @@ class Blog extends React.Component {
     return (
     	<div>
     	<DocumentMeta {...meta} />
-    	      <div style={styles.wrapper}> 
-    	      <h2>BLOG</h2>
-    	      <Well>
     	      
-    	      	<Button onClick={this.handleReturn} bsStyle="primary" bsSize="large" className='pull-right'>Return</Button>	           
+    	      <MiddleNav  /><br />
+    	      <Well>
+    	          	      		           
     	      	{this.props.children || <BlogDashboard data={this.state.data} />}
     	      
     	      </Well>
     	      
     	  		</div>    	  		
-    	
-    	</div>
+    	    	
  
     )
   }

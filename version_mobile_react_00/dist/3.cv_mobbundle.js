@@ -1,1 +1,1 @@
-webpackJsonp([3],{260:function(n,t,o){"use strict";n.exports={path:"/:stopic/:link",getComponents:function(n,t){o.e(6,function(n){t(null,o(258))})}}}});
+webpackJsonp([3],{261:function(n,t,o){"use strict";n.exports={path:"/:stopic/:link",getComponents:function(n,t){o.e(6,function(n){t(null,o(259))})}}}});
