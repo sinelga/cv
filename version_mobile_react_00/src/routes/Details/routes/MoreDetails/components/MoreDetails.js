@@ -1,5 +1,5 @@
 import React from 'react'
-//import {Button,Thumbnail,Grid,Image,Label,Well, Row,Col,Alert,ListGroup,ListGroupItem } from 'react-bootstrap'
+import {Well} from 'react-bootstrap'
 import { browserHistory,Link } from 'react-router'
 import ReactDOM from 'react-dom'
 //import DocumentMeta from 'react-document-meta'
@@ -116,9 +116,9 @@ class MoreDetails extends React.Component {
 	  	  
     return (
       <div>
- 
-      <MoreDetailsDashboard data={this.state.data} stopic={stopic} link={link} />
-      
+      	<Well>
+      		<MoreDetailsDashboard data={this.state.data} stopic={stopic} link={link} />
+      	</Well>	
       </div>
     )
   }

@@ -353,7 +353,6 @@ webpackJsonp([5],{
 	//}
 	styles.middletitle = {
 			color: light,
-			background: dark,
 			fontSize: '120%'
 	};
 
