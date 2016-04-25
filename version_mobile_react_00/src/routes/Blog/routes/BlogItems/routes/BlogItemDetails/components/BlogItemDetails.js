@@ -144,8 +144,9 @@ class BlogItemDetails extends React.Component {
     return (
     	<div>
     	<DocumentMeta {...meta} />
-    	  {this.props.children || <BlogItemDetailsDashboard data={this.state.data} stopic={this.props.params.stopic} stitle={this.props.params.stitle} />}
-   	  		    	  
+    		<Well>
+    			{this.props.children || <BlogItemDetailsDashboard data={this.state.data} stopic={this.props.params.stopic} stitle={this.props.params.stitle} />}
+   	  		</Well>    	  
     	
     	</div>
  
