@@ -16,8 +16,8 @@ const styles = {}
 
 styles.middletitle= {
 	color: light,
-	background: dark,
-	fontSize: '120%'
+	
+	fontSize: '150%'
 }
 
 styles.link = {

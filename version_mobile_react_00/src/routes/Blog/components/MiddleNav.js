@@ -14,8 +14,7 @@ const styles = {}
 //  color: light
 //}
 styles.middletitle= {
-		color: light,
-		background: dark,
+		color: light,		
 		fontSize: '120%'
 	}
 
