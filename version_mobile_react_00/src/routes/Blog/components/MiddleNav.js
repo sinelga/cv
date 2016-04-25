@@ -13,6 +13,10 @@ const styles = {}
 //  background: dark,
 //  color: light
 //}
+styles.middletitle= {
+		color: light,
+		fontSize: '120%'
+	}
 
 styles.link = {
   padding: 9,
@@ -41,7 +45,7 @@ class MiddleNav extends React.Component {
 	        <div>
 	        <Well>
 	      	<Row>
-      			<Col xs={6} md={4}> <h2>BLOG</h2></Col>
+      			<Col xs={6} md={4} style={styles.middletitle}> BLOG</Col>
       			<Col xs={6} md={4}><Button onClick={this.handleReturn} bsStyle="primary" bsSize="lg">Return</Button></Col>      	
       		</Row>
 	        	

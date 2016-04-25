@@ -27,7 +27,7 @@ webpackJsonp([5],{
 
 	var _BlogDashboard2 = _interopRequireDefault(_BlogDashboard);
 
-	var _MiddleNav = __webpack_require__(523);
+	var _MiddleNav = __webpack_require__(516);
 
 	var _MiddleNav2 = _interopRequireDefault(_MiddleNav);
 
@@ -313,7 +313,7 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 523:
+/***/ 516:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -351,6 +351,10 @@ webpackJsonp([5],{
 	//  background: dark,
 	//  color: light
 	//}
+	styles.middletitle = {
+			color: light,
+			fontSize: '120%'
+	};
 
 	styles.link = {
 			padding: 9,
@@ -394,13 +398,8 @@ webpackJsonp([5],{
 													null,
 													_react2.default.createElement(
 															_reactBootstrap.Col,
-															{ xs: 6, md: 4 },
-															' ',
-															_react2.default.createElement(
-																	'h2',
-																	null,
-																	'BLOG'
-															)
+															{ xs: 6, md: 4, style: styles.middletitle },
+															' BLOG'
 													),
 													_react2.default.createElement(
 															_reactBootstrap.Col,
