@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import {Image} from 'react-bootstrap'
+import {Image,Row,Col} from 'react-bootstrap'
 //import Firebase from 'firebase'
 //import StarRating from 'react-star-rating'
 
@@ -58,7 +58,8 @@ class MoreDetailsDashboard extends React.Component {
 					  		if (val.link === linkshot){
 					  			let key = val.link
 					  			let imglink = "/img/"+stopic+"/"+val.img
-					  			htmlListItems.push(<div key={key}><Image src={imglink} responsive/>{val.extra}</div>)
+//					  			htmlListItems.push(<div key={key}><Image src={imglink} responsive/>{val.extra}</div>)
+					  			htmlListItems.push(<Row><Col xs={4} md={4}></Col></Row>)
 					  		 
 					  		}
 					  		
