@@ -59,7 +59,7 @@ class MoreDetailsDashboard extends React.Component {
 					  			let key = val.link
 					  			let imglink = "/img/"+stopic+"/"+val.img
 //					  			htmlListItems.push(<div key={key}><Image src={imglink} responsive/>{val.extra}</div>)
-					  			htmlListItems.push(<Row><Col xs={4} md={4}></Col></Row>)
+					  			htmlListItems.push(<Row><Col xs={4} md={4}><Image src={imglink} responsive/></Col><Col xs={8} md={8}>{val.extra}</Col></Row>)
 					  		 
 					  		}
 					  		
