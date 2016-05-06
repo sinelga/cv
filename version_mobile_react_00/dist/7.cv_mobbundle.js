@@ -1,1 +1,302 @@
-webpackJsonp([7],{250:function(t,e,n){"use strict";function o(t){return t&&t.__esModule?t:{"default":t}}function a(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function r(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}var u=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),s=n(1),l=o(s),c=(n(18),n(19)),p=n(16),f=(o(p),n(49)),d=o(f),h=n(251),y=o(h),v="hsl(200, 20%, 20%)",b={};b.wrapper={padding:"10px 20px",overflow:"hidden",background:v};var m="",k="",w="",O="",j="",_="",g=function(t){function e(t){a(this,e);var n=r(this,Object.getPrototypeOf(e).call(this,t));return n.state={data:{},mark:{}},n}return i(e,t),u(e,[{key:"loadajax",value:function(t,e){var n=new XMLHttpRequest;n.open("GET",t,!0),n.onload=function(){if(n.status>=200&&n.status<400){var t=JSON.parse(n.responseText);e?this.setState({mark:t}):this.setState({data:t})}}.bind(this),n.onerror=function(){},n.send()}},{key:"handleReturn",value:function(){c.browserHistory.push("/")}},{key:"componentWillMount",value:function(){m=document.domain,k=this.props.params.stopic,O=this.props.params.stitle,_=this.props.params.stitle.split(".")[0]}},{key:"componentDidMount",value:function(){this.loadajax("http://"+m+":8001/api/blog/"+k+"/"+_,!1)}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(t){}},{key:"componentDidUpdate",value:function(t){var e=t.params.stitle,n=this.props.params.stitle;n!==e&&this.loadajax("http://"+m+":8001/api/blog/"+k+"/"+_,!1)}},{key:"componentWillUnmount",value:function(){}},{key:"render",value:function(){var t={};return Object.keys(this.state.data).length>0&&(w=this.state.data.Topic,j=this.state.data.Title),t={title:w+" "+w+" "+j},l["default"].createElement("div",null,l["default"].createElement(d["default"],t),this.props.children||l["default"].createElement(y["default"],{data:this.state.data,stopic:this.props.params.stopic,stitle:this.props.params.stitle}))}}]),e}(l["default"].Component);t.exports=g},251:function(t,e,n){"use strict";function o(t){return t&&t.__esModule?t:{"default":t}}function a(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function r(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var u=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),s=n(1),l=o(s),c=(n(19),n(18),"red"),p={};p.redtopic={color:c};var f=function(t){function e(t){a(this,e);var n=r(this,Object.getPrototypeOf(e).call(this,t));return n.state={data:{},stopic:"",stitle:""},n}return i(e,t),u(e,[{key:"componentDidMount",value:function(){}},{key:"componentWillUpdate",value:function(t){}},{key:"componentDidUpdate",value:function(t){}},{key:"componentWillMount",value:function(){}},{key:"componentWillReceiveProps",value:function(t){var e=t.stitle.split(".")[0];this.setState({data:t.data}),this.setState({stopic:t.stopic}),this.setState({stitle:e})}},{key:"render",value:function(){function t(){return{__html:o}}var e="",n="",o="";if(Object.keys(this.state.data).length>0){this.state.data.Stitle;n=this.state.data.Title,e=this.state.data.Topic,o=this.state.data.Contents}return l["default"].createElement("div",null,l["default"].createElement("h3",{style:p.redtopic},"topic: ",e),l["default"].createElement("h4",null,n),l["default"].createElement("div",{dangerouslySetInnerHTML:t()}))}}]),e}(l["default"].Component);e["default"]=f}});
+webpackJsonp([7],{
+
+/***/ 521:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(231);
+
+	var _reactRouter = __webpack_require__(169);
+
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _MoreDetailsDashboard = __webpack_require__(522);
+
+	var _MoreDetailsDashboard2 = _interopRequireDefault(_MoreDetailsDashboard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import DocumentMeta from 'react-document-meta'
+	//import Firebase from 'firebase'
+	//import StarRating from 'react-star-rating'
+
+
+	var stopic = "";
+	var link = '';
+
+	var MoreDetails = function (_React$Component) {
+		_inherits(MoreDetails, _React$Component);
+
+		function MoreDetails(props) {
+			_classCallCheck(this, MoreDetails);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetails).call(this, props));
+
+			_this.state = {
+				data: {},
+				mark: {}
+
+			};
+			_this.loadajax = _this.loadajax.bind(_this);
+			return _this;
+		}
+
+		_createClass(MoreDetails, [{
+			key: 'loadajax',
+			value: function loadajax(urlstr, mark) {
+
+				var request = new XMLHttpRequest();
+				request.open('GET', urlstr, true);
+
+				request.onload = function () {
+
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+
+						if (mark) {
+							this.setState({ mark: data });
+						} else {
+
+							this.setState({ data: data });
+						}
+					} else {
+						// We reached our target server, but it returned an error
+
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+			}
+		}, {
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log(this.props.params)
+				stopic = this.props.params.stopic;
+				link = this.props.params.link;
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				this.loadajax('/cv-mazurov-export.json', false);
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				console.log("more componentWillReceiveProps Details", this.props.params);
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("MoreDetails componentDidUpdate")
+
+				//		let oldId = prevProps.params.stitle
+				//		let newId = this.props.params.stitle
+				//
+				//		   if (newId !== oldId) {
+				//			  
+				//			   console.log(this.props.params)
+				//			   if (Object.keys(this.props.params).length === 1) {
+				//				  
+				//				 this.loadajax('/cv-mazurov-export.json',false)
+				//				
+				//				  
+				//				}
+				//		   }
+
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+
+				//		baseRef.off()
+				//		baseRefClients.off()
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Well,
+						null,
+						_react2.default.createElement(_MoreDetailsDashboard2.default, { data: this.state.data, stopic: stopic, link: link })
+					)
+				);
+			}
+		}]);
+
+		return MoreDetails;
+	}(_react2.default.Component);
+
+	module.exports = MoreDetails;
+
+/***/ },
+
+/***/ 522:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(169);
+
+	var _reactBootstrap = __webpack_require__(231);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//import Firebase from 'firebase'
+	//import StarRating from 'react-star-rating'
+
+	var stopic = "";
+	var link = '';
+
+	var MoreDetailsDashboard = function (_React$Component) {
+		_inherits(MoreDetailsDashboard, _React$Component);
+
+		function MoreDetailsDashboard(props) {
+			_classCallCheck(this, MoreDetailsDashboard);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MoreDetailsDashboard).call(this, props));
+
+			_this.state = {
+				data: {}
+				//	    	mark: {}
+			};
+
+			return _this;
+		}
+
+		_createClass(MoreDetailsDashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("MoreDetailsDashboard componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("MoreDetailsDashboard componentDidUpdate")
+
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log('MoreDetailsDashboard componentWillMount',this.props)
+
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+
+				stopic = nextProps.stopic;
+				link = nextProps.link;
+				this.setState({ data: nextProps.data });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var htmlListItems = [];
+
+				if (Object.keys(this.state.data).length > 0) {
+
+					this.state.data.map(function (val) {
+
+						if (val.link === stopic) {
+							val.items.map(function (val) {
+								var linkshot = link.split(".")[0];
+								if (val.link === linkshot) {
+									var key = val.link;
+									var imglink = "/img/" + stopic + "/" + val.img;
+									//					  			htmlListItems.push(<div key={key}><Image src={imglink} responsive/>{val.extra}</div>)
+									htmlListItems.push(_react2.default.createElement(
+										_reactBootstrap.Row,
+										null,
+										_react2.default.createElement(
+											_reactBootstrap.Col,
+											{ xs: 4, md: 4 },
+											_react2.default.createElement(_reactBootstrap.Image, { src: imglink, responsive: true })
+										),
+										_react2.default.createElement(
+											_reactBootstrap.Col,
+											{ xs: 8, md: 8 },
+											val.extra
+										)
+									));
+								}
+							});
+						}
+					});
+				}
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h4',
+						null,
+						'More Details'
+					),
+					htmlListItems
+				);
+			}
+		}]);
+
+		return MoreDetailsDashboard;
+	}(_react2.default.Component);
+
+	exports.default = MoreDetailsDashboard;
+
+/***/ }
+
+});

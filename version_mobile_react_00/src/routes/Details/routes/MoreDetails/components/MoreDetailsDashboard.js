@@ -42,7 +42,6 @@ class MoreDetailsDashboard extends React.Component {
 		link = nextProps.link
 		this.setState({data: nextProps.data})
 
-
 	}
 	
 	render() {
@@ -65,17 +64,11 @@ class MoreDetailsDashboard extends React.Component {
 					  		
 					  	})
 				 }
-			 
-				 
+			 				 
 			 })
-			 
-			 
-			 
+			 			 
 		 }
-		
-		
-		
-		
+				
 
     return (
       <div>
