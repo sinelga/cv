@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 499:
+/***/ 501:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11,7 +11,7 @@ webpackJsonp([8],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(221);
+	var _reactBootstrap = __webpack_require__(222);
 
 	var _reactRouter = __webpack_require__(160);
 
@@ -19,11 +19,11 @@ webpackJsonp([8],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactDocumentMeta = __webpack_require__(472);
+	var _reactDocumentMeta = __webpack_require__(473);
 
 	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
 
-	var _ContactsDashboard = __webpack_require__(500);
+	var _ContactsDashboard = __webpack_require__(502);
 
 	var _ContactsDashboard2 = _interopRequireDefault(_ContactsDashboard);
 
@@ -178,7 +178,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 500:
+/***/ 502:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -195,9 +195,9 @@ webpackJsonp([8],{
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _reactBootstrap = __webpack_require__(221);
+	var _reactBootstrap = __webpack_require__(222);
 
-	var _reactFontawesome = __webpack_require__(501);
+	var _reactFontawesome = __webpack_require__(503);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
