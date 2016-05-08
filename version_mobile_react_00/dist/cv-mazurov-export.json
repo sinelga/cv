@@ -274,4 +274,34 @@
   } ],
   "link" : "cloudcomputing",
   "title" : "Cloud Computing"
+}, {
+  "id" : 6,
+  "img" : "seocomputing.png",
+  "items" : [ {
+    "duration" : 6,
+    "extra" : "constantly monitored and studied",
+    "id" : 0,
+    "img" : "seo.jpg",
+    "item" : "Organic Optimization",
+    "link" : "otganic-optimization",
+    "rating" : 5
+  }, {
+    "duration" : 3,
+    "extra" : "used in production",
+    "id" : 1,
+    "img" : "adwords.png",
+    "item" : "AdWords",
+    "link" : "adwords",
+    "rating" : 3
+  }, {
+    "duration" : 3,
+    "extra" : "used in production",
+    "id" : 2,
+    "img" : "adsense.png",
+    "item" : "AdSense",
+    "link" : "adsense",
+    "rating" : 3
+  } ],
+  "link" : "seocomputing",
+  "title" : "SEO Computing"
 } ]
